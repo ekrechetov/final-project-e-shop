@@ -2,12 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./dbconfig/database');
-// const router = express.Router();
+const passport = require('passport');
 const PORT = 5000;
 const app = express();
 
 // Note model
 const User = require('./dbmodels/user');
+
+//passport
+app.use(passport.initialize());
+require('./passport')(passport);
 
 //mongoose connect
 mongoose.connect(config.database, { useNewUrlParser: true, useFindAndModify: false} );
