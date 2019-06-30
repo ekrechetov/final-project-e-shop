@@ -1,0 +1,19 @@
+.all-photos-block {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    height: 100px;
+    justify-content: space-around;
+    margin-top: 15px;
+    &__image {
+        display: block;
+        width: 30%;
+        border: 2px solid rgb(240, 240, 240);
+        &_active {
+            border-bottom: 1px solid #000;
+        }
+        &:hover {
+            border: 2px solid gold;
+        }
+    }
+}

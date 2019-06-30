@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
+import ProductDetails from './pages/ProductDetails';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -36,6 +37,7 @@ class App extends Component {
                   <Route exact path="/login" component={ Login } />
                 </div>
             </div>
+            <Route exact path="/product-details" component={ ProductDetails } />
           </Router>
         </Provider>
     );
