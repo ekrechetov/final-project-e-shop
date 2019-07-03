@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 import Stock from "../Stock/Stock";
 import SpecialsOffers from '../SpecialsOffers/SpecialsOffers';
 import AdvantagesList from '../AdvantagesList/AdvantagesList';
+import Slider from "../Slider/Slider";
 
 
 const useStyles = makeStyles({
@@ -24,6 +25,7 @@ export default function MainContainer(props) {
     return (
         <Container className={classes.container} maxWidth="xl">
             <Header theme={props.theme}/>
+            <Slider />
             <CardMenu/>
             <Stock/>
             <AdvantagesList/>

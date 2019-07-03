@@ -37,6 +37,12 @@ export default function App(props) {
  import setAuthToken from './setAuthToken';
  import {setCurrentUser, logoutUser} from './actions/authentication';
 
+import Navbar from './components/Navbar';
+import Register from './components/Register';
+import Login from './components/Login';
+import Home from './components/Home';
+import Slider from "./components/Slider/Slider";
+import ProductDetails from './pages/ProductDetails';
  import Navbar from './components/Navbar';
  import Register from './components/Register';
  import Login from './components/Login';
@@ -55,6 +61,25 @@ export default function App(props) {
 }
 }
 
+class App extends Component {
+  render() {
+    return (
+      <Provider store = { store }>
+        <Router>
+            <div>
+              <Navbar />
+                <Route path="/" component={ Home } />
+                <div className="container">
+                  <Route exact path="/register" component={ Register } />
+                  <Route exact path="/login" component={ Login } />
+                </div>
+              <Slider />
+            </div>
+            <Route exact path="/product-details" component={ ProductDetails } />
+          </Router>
+        </Provider>
+    );
+  }
  class App extends Component {
  render() {
  return (
