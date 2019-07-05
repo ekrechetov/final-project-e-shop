@@ -24,7 +24,6 @@ export default function MainContainer(props) {
     const classes = useStyles();
     return (
         <Container className={classes.container} maxWidth="xl">
-            <Header theme={props.theme}/>
             <Slider />
             <CardMenu/>
             <Stock/>

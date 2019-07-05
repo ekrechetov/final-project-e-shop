@@ -1,6 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-// import mainLogo from './main-logo.png'
+import mainLogo from './main-logo.png'
 
 // const url = 'client/src/components/Logo/main-logo.png';
 const useStyles = makeStyles({
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
         logo: {
             width: '50px',
             height: '50px',
-            // backgroundImage: 'url(' + mainLogo + ');',
+            backgroundImage: 'url(' + mainLogo + ');',
             // backgroundImage: `url(${url})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',

@@ -1,16 +1,17 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import {makeStyles} from '@material-ui/core/styles';
+// import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import AccountBox from '@material-ui/icons/AccountBox';
 import Logo from '../Logo/Logo';
+import SearchInput from '../SearchInput/SearchInput';
 import MenuList from '../MenuList/MenuList'
 import Badges from "../Badges/Badges";
 
 
 const useStyles = makeStyles((theme) => ({
     header: {
-        padding: '5px 10px',
+        padding: '5px 20px',
         boxSizing: 'border-box',
         width: '100%',
         height: '80px',
@@ -19,13 +20,14 @@ const useStyles = makeStyles((theme) => ({
     containerBox: {
         position: 'relative',
         display: 'flex',
+        width: '100%',
+        // justifyContent: 'space-between',
         height: '100%',
-
     },
     textField: {
-        marginLeft: '30px',
-        '&:hover': {
-        },
+        position: 'relative',
+        right: '100px',
+        '&:hover': {},
 
         '&:focused': {
             backgroundColor: '#fff',
@@ -33,38 +35,43 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     accountIcon: {
-        position: 'absolute',
-        right: '30px',
+        position: 'relative',
+        right: '65px',
         cursor: 'pointer',
-        color: 'red'
+        color: theme.palette.primary.dark
     },
 
     icon: {
         backgroundColor: 'blue'
+    },
+
+    '@media (max-width: 1199)': {
+        header: {}
     }
 }));
 
 export default function Header(props) {
     const classes = useStyles();
     return (
-            <header className={classes.header}>
-                <Box className={classes.containerBox} display="flex" alignItems="center">
-                    <Logo img={`url("client/src/components/Logo/main-logo.png");`}/>
-                    {/*'url(' + photo.url + ')'*/}
-                    <TextField
-                        component='div'
-                        id="filled-search"
-                        label="Search field"
-                        type="search"
-                        className={classes.textField}
-                        margin="normal"
-                        // variant="filled"
-                    />
-                    <MenuList/>
-                    <Badges/>
-                    <AccountBox className={classes.accountIcon}/>
-                </Box>
-            </header>
+        <header className={classes.header}>
+            <Box className={classes.containerBox} display="flex" alignItems="center">
+                <Logo img={`url("client/src/components/Logo/main-logo.png");`}/>
+                {/*'url(' + photo.url + ')'*/}
+                {/*<TextField*/}
+                {/*    component='div'*/}
+                {/*    id="filled-search"*/}
+                {/*    label="Search field"*/}
+                {/*    type="search"*/}
+                {/*    className={classes.textField}*/}
+                {/*    margin="normal"*/}
+                {/*/>*/}
+                <SearchInput/>
+                <Badges/>
+                <AccountBox className={classes.accountIcon}/>
+
+                <MenuList/>
+            </Box>
+        </header>
     );
 }
 

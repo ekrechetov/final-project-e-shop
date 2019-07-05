@@ -1,24 +1,31 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
         link: {
+            padding: '10px 20px',
             textDecoration: 'none',
-            // textTransform: 'uppercase',
-            color: 'rgba(200, 150, 200, 0.9)'
+            color: theme.palette.primary.dark,
+            textAlign: 'right',
+            whiteSpace: 'nowrap',
+
+            '&:hover': {
+                
+            }
         },
         listItem: {
-            margin: '0 20px',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            padding: '10px 20px',
             listStyle: 'none',
             fontSize: '14px',
             fontWeight: 'bold'
         }
     }
-);
+));
 
 export default function MenuItem(props) {
     const classes = useStyles();
-    console.log(props.data);
     return (props.data.map((item, index) => {
             return (
                 <li className={classes.listItem}>
