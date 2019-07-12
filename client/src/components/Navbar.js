@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authentication';
-import Basket from './basket/Basket';
+import CartLink from './cart/CartLink';
 
 class Navbar extends Component {
   onLogout(e) {
@@ -37,7 +37,7 @@ class Navbar extends Component {
         <div>
           {isAuthenticated ? authLinks : guestLinks}
         </div>
-        <Basket/>
+        <CartLink/>
       </nav>
     );
   }

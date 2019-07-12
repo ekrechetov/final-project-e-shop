@@ -9,6 +9,9 @@ const app = express();
 // Note model
 const User = require('./dbmodels/user');
 
+// Product model
+const Product = require('./dbmodels/product');
+
 //passport
 app.use(passport.initialize());
 require('./passport')(passport);
@@ -37,6 +40,16 @@ app.use('/', require('./api'));
 // app.get('/users', (req, res) => {
 //   res.json(User)
 // });
+
+//test get products for cart:
+app.get('/cart', (req, res) => {
+  Product.find({}, function(err, result){     
+  if(err) return console.log(err);   
+  console.log("Products is finded");
+  console.log(result);
+  res.send(result);
+  });  
+});
 
 app.listen(PORT, (req, res) => {
   console.log(`Server is listening on port: ${PORT}`)

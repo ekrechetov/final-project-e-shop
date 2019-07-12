@@ -1,9 +1,12 @@
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import {makeStyles} from '@material-ui/core';
 import MainContainer from './components/MainContainer/MainContainer';
 import Header from './components/Header/Header';
 import img from './0r7qN8U.png';
+import Cart from './pages/Cart/Cart';
 
 const useStyles = makeStyles({
     page: {
@@ -21,12 +24,17 @@ const useStyles = makeStyles({
 export default function App(props) {
     const classes = useStyles();
     return (
+      <Router>       
         <div className={classes.page}>
             <Box className={classes.containerBox}>
                 <Header/>
+
+                <Route exact  path="/cart" component={Cart}/> 
+                
                 <MainContainer/>
             </Box>
         </div>
+      </Router>  
     )
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {makeStyles} from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
@@ -7,7 +8,6 @@ import Logo from '../Logo/Logo';
 import SearchInput from '../SearchInput/SearchInput';
 import MenuList from '../MenuList/MenuList'
 import Badges from "../Badges/Badges";
-
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header(props) {
-    const classes = useStyles();
+    const classes = useStyles();    
     return (
         <header className={classes.header}>
             <Box className={classes.containerBox} display="flex" alignItems="center">
@@ -66,13 +66,13 @@ export default function Header(props) {
                 {/*    margin="normal"*/}
                 {/*/>*/}
                 <SearchInput/>
-                <Badges/>
+
+                <Link to={'/cart'}><Badges/></Link>
+
                 <AccountBox className={classes.accountIcon}/>
 
                 <MenuList/>
             </Box>
         </header>
-    );
-}
-
-
+        );
+    }
