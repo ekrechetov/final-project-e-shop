@@ -9,6 +9,7 @@ const app = express();
 // Note model
 const User = require('./dbmodels/user');
 
+
 // Product model
 const Product = require('./dbmodels/product');
 

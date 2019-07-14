@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import './Slider.sass';
 
-import Slide_1 from './../../images/img-slider/bvlgari-blv-pour-homme.jpg';
+import Slide_1 from './../../images/img-slider/1_3_1.jpg';
 import Slide_2 from './../../images/img-slider/dsquared2-wood-for-him-edt.jpg';
 import Slide_3 from './../../images/img-slider/bvlgari-man-wood-neroli.jpg';
 import Slide_4 from './../../images/img-slider/nikos-sculpture-pour-homme.jpg';
@@ -16,9 +16,9 @@ class Slider extends Component {
         this.state = {
             slides: [
                 {
-                    title: 'Bvlgari BLV Pour Homme',
+                    title: 'Bentley For Men Intense',
                     description: 'Туалетная вода',
-                    text: 'Редкая в наше время парфюмерная композиция Bvlgari BLV Pour Homme, несмотря на свой почтенный возраст, не перестает привлекать внимание любителей и профессионалов.',
+                    text: 'Восхитительный и поистине непревзойденным аромат, который не нуждается в особом представлении. Bentley for Men Intense – настоящий мужской парфюм для ценителей роскоши и красоты от известного на весь мир автомобильного бренда Bentley.',
                     eachSlide: `url(${Slide_1})`
                 },
                 {
