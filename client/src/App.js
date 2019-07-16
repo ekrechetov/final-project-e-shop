@@ -2,39 +2,48 @@ import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import Box from '@material-ui/core/Box';
-import {makeStyles} from '@material-ui/core';
+import { makeStyles, Switch } from '@material-ui/core';
 import MainContainer from './components/MainContainer/MainContainer';
 import Header from './components/Header/Header';
 import img from './0r7qN8U.png';
 import Cart from './pages/Cart/Cart';
 
-const useStyles = makeStyles({
-    page: {
-        width: '100%',
-        // backgroundImage: 'url(' + img + ');'
-        // backgroundColor: 'red'
-    },
+import ProductDetails from './pages/ProductDetails'
+import {Switch as Sw} from 'react-router-dom';
+import store from './store';
+import { Provider } from 'react-redux';
 
-    containerBox: {
-        width: '100%',
-        // backgroundImage: 'url(' + img + ');'
-    }
+
+
+const useStyles = makeStyles({
+  page: {
+    width: '100%',
+    // backgroundImage: 'url(' + img + ');'
+    // backgroundColor: 'red'
+  },
+
+  containerBox: {
+    width: '100%',
+    // backgroundImage: 'url(' + img + ');'
+  }
 });
 
 export default function App(props) {
     const classes = useStyles();
     return (
+      <Provider store = { store }>
       <Router>       
         <div className={classes.page}>
             <Box className={classes.containerBox}>
-                <Header/>
+                {/* <Header/> */}
 
                 <Route exact  path="/cart" component={Cart}/> 
-                
-                <MainContainer/>
+                <Route exact  path="/" component={MainContainer}/>
+                <Route exact  path="/product/:id" component={ProductDetails}/>
             </Box>
         </div>
       </Router>  
+      </Provider>
     )
 }
 

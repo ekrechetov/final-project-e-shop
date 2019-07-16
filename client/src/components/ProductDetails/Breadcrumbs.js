@@ -4,12 +4,16 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
+import {connect} from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
     justifyContent: 'center',
     flexWrap: 'wrap',
-    marginTop: 70,
+    marginTop: 40,
+  },
+  fs: {
+    fontSize: 14,
   },
 }));
 
@@ -18,23 +22,31 @@ function handleClick(event) {
   alert('You clicked a breadcrumb.');
 }
 
-export default function SimpleBreadcrumbs() {
+  function SimpleBreadcrumbs(props) {
   const classes = useStyles();
-
+  const {data} = props
   return (
     <div className={classes.root}>
       <Paper elevation={0}>
         <Breadcrumbs aria-label="Breadcrumb">
-          <Link color="inherit" href="/">
-            Home
+          <Link className={classes.fs} color="inherit" href="/">
+            Главная
           </Link>
-          <Link color="inherit" href="/getting-started/installation/" onClick={handleClick}>
-            Wireless
+          <Link className={classes.fs} color="inherit" href="/getting-started/installation/" onClick={handleClick}>
+            {data.category}
           </Link>
-          <Typography color="textPrimary">Apple Air Pods</Typography>
+          <Typography className={classes.fs} color="textPrimary">{data.title}</Typography>
         </Breadcrumbs>
       </Paper>
       <br />
     </div>
   );
 }
+
+const mapStoreToProps = ({data}) => {
+  return {
+    data
+  }
+}
+
+export default connect(mapStoreToProps)(SimpleBreadcrumbs)

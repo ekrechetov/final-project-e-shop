@@ -1,0 +1,75 @@
+.info-block {
+    &__title {
+        font-family: "Dosis",sans-serif;
+        font-weight: 500;
+        font-size: calcFluidSize(20, 28, 320, 768);
+        padding-bottom: calcFluidSize(20, 40, 320, 768);
+        border-bottom: 2px solid rgb(240, 240, 240);
+    }
+    &__price {
+        font-family: "Dosis",sans-serif;
+        margin-top: 25px;
+        font-size: calcFluidSize(15, 20, 320, 768);
+        font-weight: 600;
+    }
+    &__description {
+        font-family: 'Montserrat', sans-serif;
+        font-size: calcFluidSize(10, 14, 320, 768);
+        line-height: calcFluidSize(20, 25, 320, 768);
+        margin-top: 25px;
+    }
+    &__brand {
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 35px;
+        font-size: calcFluidSize(10, 14, 320, 768);
+    }
+    &__code {
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 15px;
+        font-size: calcFluidSize(10, 14, 320, 768);
+    }   
+}
+
+@media(min-width: 769px) {
+    .info-block {
+        &__title {
+            font-size: calcFluidSize(20, 28, 769, 1200);
+            padding-bottom: calcFluidSize(20, 40, 769, 1200);
+        }
+        &__price {
+            font-size: calcFluidSize(16, 20, 769, 1200);
+        }
+        &__description {
+            font-size: calcFluidSize(11, 14, 769, 1200);
+            line-height: calcFluidSize(20, 30, 769, 1200);
+        }
+        &__brand {
+            font-size: calcFluidSize(11, 14, 769, 1200);
+        }
+        &__code {
+            font-size: calcFluidSize(11, 14, 769, 1200);
+        }   
+    }
+}
+
+@media(min-width: 1201px) {
+    .info-block {
+        &__title {
+            font-size: 28px;
+            padding-bottom: 40px;
+        }
+        &__price {
+            font-size: 20px;
+        }
+        &__description {
+            font-size: 14px;
+            line-height: 30px;
+        }
+        &__brand {
+            font-size: 14px;
+        }
+        &__code {
+            font-size: 14px;
+        }   
+    }
+}
