@@ -13,6 +13,9 @@ const User = require('./dbmodels/user');
 // Product model
 const Product = require('./dbmodels/product');
 
+// Cart model
+const Cart = require('./dbmodels/cart');
+
 //passport
 app.use(passport.initialize());
 require('./passport')(passport);
@@ -42,11 +45,11 @@ app.use('/', require('./api'));
 //   res.json(User)
 // });
 
-//test get products for cart:
+//test get products from cart collection:
 app.get('/cart', (req, res) => {
-  Product.find({}, function(err, result){     
+  Cart.find({userName: 'ekrechetov'}, function(err, result){     
   if(err) return console.log(err);   
-  console.log("Products is finded");
+  console.log("Cart products are finded");
   console.log(result);
   res.send(result);
   });  
