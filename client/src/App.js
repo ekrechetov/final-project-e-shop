@@ -35,7 +35,7 @@ export default function App(props) {
       <Router>       
         <div className={classes.page}>
             <Box className={classes.containerBox}>
-                {/* <Header/> */}
+                <Header/>
 
                 <Route exact  path="/cart" component={Cart}/> 
                 <Route exact  path="/" component={MainContainer}/>
