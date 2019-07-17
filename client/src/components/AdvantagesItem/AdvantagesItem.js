@@ -23,10 +23,14 @@ const useStyles = makeStyles((theme) => ({
         },
         advantagesTitle: {
             margin: '25px 0 10px 0',
-            textAlign: 'center'
+            textAlign: 'center',
+            lineHeight: '1.5rem',
+            fontSize: '1.1rem',
+            fontWeight: 'bold'
         },
         advantagesDescription: {
-            textAlign: 'center'
+            textAlign: 'center',
+            lineHeight: '1.4rem'
         }
     })
 );

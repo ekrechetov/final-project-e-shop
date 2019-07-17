@@ -2,27 +2,36 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
-
+import img1 from '../../images/card-menu-1.jpg';
+import img2 from '../../images/card-menu-2.jfif';
+import img3 from '../../images/card-menu-3.jpg';
+import img4 from '../../images/card-menu-4.jpg';
+import img5 from '../../images/card-menu-5.jpg'
 const images = [
     {
-        url: '/client/src/components/CardMenu/2.jpg',
-        title: 'Хиты Продаж',
-        width: '50%',
+        url: img1,
+        title: 'Парфюмированная вода',
+        width: '49%',
     },
     {
-        url: '',
-        title: 'Акции',
-        width: '50%',
+        url: img2,
+        title: 'Туалетная вода',
+        width: '49%',
     },
     {
-        url: '',
-        title: 'Новинки',
-        width: '50%',
+        url: img3,
+        title: 'Духи',
+        width: '32%',
     },
     {
-        url: '',
-        title: 'Новинки',
-        width: '50%',
+        url: img4,
+        title: 'Одеколон',
+        width: '32%',
+    },
+    {
+        url: img5,
+        title: 'Дезодоранты',
+        width: '32%',
     },
 
 ];
@@ -31,6 +40,7 @@ const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
+        justifyContent: 'space-between',
         alignItems: 'center',
         minWidth: 200,
         width: '100%',
@@ -43,6 +53,7 @@ const useStyles = makeStyles(theme => ({
             width: '100% !important', // Overrides inline-style
             height: 200,
         },
+        marginTop: '20px',
         '&:hover, &$focusVisible': {
             zIndex: 1,
             '& $imageBackdrop': {
@@ -86,7 +97,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.common.black,
         opacity: 0.4,
         transition: theme.transitions.create('opacity'),
-        margin: '1%'
+        // marginTop: '20px'
     },
     imageTitle: {
         position: 'relative',

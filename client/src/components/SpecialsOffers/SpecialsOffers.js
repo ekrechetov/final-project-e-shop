@@ -3,10 +3,12 @@ import Tabs from '@material-ui/core/Tabs/index';
 import Tab from '@material-ui/core/Tab/index';
 import SwipeableViews from 'react-swipeable-views';
 import Stock from "../Stock/Stock";
+import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = {
+const styles = (theme) => ({
     tabs: {
         background: '#fff',
+        fontFamily: 'Roboto , sans-serif'
     },
     slide: {
         // padding: 15,
@@ -22,7 +24,7 @@ const styles = {
     slide3: {
         backgroundColor: '#6AC0FF',
     },
-};
+});
 
 class SpecialsOffers extends React.Component {
     state = {
@@ -61,4 +63,4 @@ class SpecialsOffers extends React.Component {
     }
 }
 
-export default SpecialsOffers;
+export default withStyles(styles)(SpecialsOffers);

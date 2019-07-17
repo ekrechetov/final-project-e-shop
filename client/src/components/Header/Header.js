@@ -1,4 +1,6 @@
 import React from 'react';
+import {Provider} from 'react-redux';
+import {BrowserRouter, Route} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {makeStyles} from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
@@ -8,6 +10,10 @@ import Logo from '../Logo/Logo';
 import SearchInput from '../SearchInput/SearchInput';
 import MenuList from '../MenuList/MenuList'
 import Badges from "../Badges/Badges";
+import AccountIcon from "../AccountIcon/AccountIcon";
+import store from "../../store";
+import Register from "../Register";
+
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -16,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '80px',
         backgroundColor: theme.palette.primary.main,
+        fontFamily: 'Roboto, sans-serif'
     },
     containerBox: {
         position: 'relative',
@@ -67,9 +74,9 @@ export default function Header(props) {
                 {/*/>*/}
                 <SearchInput/>
 
-                <Link to={'/cart'}><Badges/></Link>
+                <Badges/>
 
-                <AccountBox className={classes.accountIcon}/>
+                <AccountIcon/>
 
                 <MenuList/>
             </Box>

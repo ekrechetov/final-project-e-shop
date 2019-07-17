@@ -13,7 +13,8 @@ const useStyles = makeStyles({
             justifyContent: 'space-between',
             alignItems: 'center',
             maxHeight: '120px',
-            paddingTop: '10px'
+            padding: '10px 20px',
+            fontFamily: 'Roboto, sans-serif',
         },
         footerSignWrap: {
             display: 'flex',
@@ -29,8 +30,7 @@ const useStyles = makeStyles({
             fontSize: '12px'
         }
 
-    }
-);
+    });
 
 export default function Footer() {
     const classes = useStyles();

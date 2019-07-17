@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {makeStyles} from '@material-ui/core/styles';
 import mainLogo from './main-logo.png'
 
@@ -8,6 +9,7 @@ const useStyles = makeStyles({
             display: 'flex',
             alignItems: 'center',
             textDecoration: 'none',
+            // fontFamily: 'Roboto sans-serif'
         },
         logo: {
             width: '50px',
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
         },
         logoTitle: {
             marginLeft: '10px',
-            fontSize: '20px',
+            fontSize: '1.8rem',
         }
     }
 );
@@ -30,13 +32,13 @@ export default function Logo(props) {
     const classes = useStyles();
     console.log(props);
     return (
-        <a className={classes.logoWrap} href='#!'>
+        <Link to='/' className={classes.logoWrap}>
             <span className={classes.logo} style={{backgroundImage: props.img}}>
                 {/*<img src={props} alt='img' width='512' height='512'/>*/}
             </span>
             <span className={classes.logoTitle}>
-                OurLogo
+                ParfuMe
             </span>
-        </a>
+        </Link>
     );
 }

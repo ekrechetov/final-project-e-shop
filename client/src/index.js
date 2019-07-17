@@ -19,7 +19,7 @@ const theme = createMuiTheme({
             main: blue[500],
             light: blue[200],
         }
-    }
+    },
 });
 ReactDOM.render(
     <MuiThemeProvider theme={theme}>

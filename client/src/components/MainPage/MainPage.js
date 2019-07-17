@@ -11,25 +11,25 @@ import Slider from "../Slider/Slider";
 
 
 const useStyles = makeStyles({
-        container: {
+        mainPage: {
             // height: '200px',
             // backgroundImage: 'url(' + img + ');',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat'
+            // backgroundPosition: 'center',
+            // backgroundSize: 'cover',
+            // backgroundRepeat: 'no-repeat'
+            fontFamily: 'Roboto, sans-serif'
         }
     }
 );
-export default function MainContainer(props) {
+export default function MainPage(props) {
     const classes = useStyles();
     return (
-        <Container className={classes.container} maxWidth="xl">
+        <Container className={classes.mainPage} maxWidth="xl">
             <Slider />
             <CardMenu/>
             <Stock/>
             <AdvantagesList/>
             <SpecialsOffers/>
-            <Footer/>
         </Container>
     );
 }

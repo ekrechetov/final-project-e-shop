@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
             right: '0',
         },
         menuList: {
-            display: 'flex',
+            display: 'none',
             flexDirection: 'column',
             // alignItems: 'flex-end',
             zIndex: '2',
@@ -62,7 +62,7 @@ const menuListData = [
 let toggleMenu = (event) => {
     const target = event.target;
     const menuList = document.querySelector('#menuList');
-    menuList.style.display === 'none' ? menuList.style.display = 'flex' : menuList.style.display = 'none';
+    getComputedStyle(menuList).getPropertyValue('display') === 'none' ? menuList.style.display = 'flex' : menuList.style.display = 'none';
 
 }
 

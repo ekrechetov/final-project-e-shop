@@ -24,7 +24,7 @@ const advantagesArr = [
 const useStyles = makeStyles({
         advantagesWrap: {
             display: 'flex',
-            justifyContent: 'center'
+            justifyContent: 'center',
         }
     }
 );

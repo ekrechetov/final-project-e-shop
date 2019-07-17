@@ -1,5 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
         link: {
@@ -8,7 +9,8 @@ const useStyles = makeStyles((theme) => ({
             color: theme.palette.primary.dark,
             textAlign: 'right',
             whiteSpace: 'nowrap',
-
+            letterSpacing: '0.02rem',
+            fontSize: '1rem',
             '&:hover': {
                 
             }
@@ -29,9 +31,9 @@ export default function MenuItem(props) {
     return (props.data.map((item, index) => {
             return (
                 <li className={classes.listItem}>
-                    <a href={item.href} key={index + 10} className={classes.link}>
+                    <Link to={item.href} key={index + 10} className={classes.link}>
                         {item.text}
-                    </a>
+                    </Link>
                 </li>
             );
         })
