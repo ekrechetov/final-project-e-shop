@@ -1,8 +1,9 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
-import MenuItem from '../MenuItem/MenuItem';
+// import MenuItem from '../MenuItem/MenuItem';
 import burgerMenuButtonImg from './burger-menu-button.png';
 import {palette} from "@material-ui/system";
+import CategoriesList from '../Categories/CategoriesList'
 
 const useStyles = makeStyles((theme) => ({
         menu: {
@@ -36,28 +37,28 @@ const useStyles = makeStyles((theme) => ({
     }
 ));
 
-const menuListData = [
-    {
-        "href": "#!",
-        "text": "Парфюмированная вода"
-    },
-    {
-        "href": "#!",
-        "text": "Туалетная вода"
-    },
-    {
-        "href": "#!",
-        "text": "Духи"
-    },
-    {
-        "href": "#!",
-        "text": "Одеколон"
-    },
-    {
-        "href": "#!",
-        "text": "Дезодоранты"
-    }
-];
+// const menuListData = [
+//     {
+//         "href": "#!",
+//         "text": "Парфюмированная вода"
+//     },
+//     {
+//         "href": "#!",
+//         "text": "Туалетная вода"
+//     },
+//     {
+//         "href": "#!",
+//         "text": "Духи"
+//     },
+//     {
+//         "href": "#!",
+//         "text": "Одеколон"
+//     },
+//     {
+//         "href": "#!",
+//         "text": "Дезодоранты"
+//     }
+// ];
 
 let toggleMenu = (event) => {
     const target = event.target;
@@ -72,7 +73,8 @@ export default function MenuList() {
         <div className={classes.menu}>
             <span className={classes.burgerMenuButton} id='burgerMenuButton' onClick={toggleMenu}/>
             <ul className={classes.menuList} id='menuList'>
-                <MenuItem data={menuListData}/>
+                {/* <MenuItem data={menuListData}/> */}
+                <CategoriesList />
             </ul>
         </div>
     );

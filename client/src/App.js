@@ -15,6 +15,7 @@ import Register from './components/Register';
 import MainPage from "./components/MainPage/MainPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import Categories from "./pages/Categories";
 import Cart from './pages/Cart/Cart';
 import ProductDetails from './pages/ProductDetails'
 import setAuthToken from './setAuthToken';
@@ -45,6 +46,7 @@ export default function App(props) {
                 <Route exact path="/cart" component={Cart}/>
                 <Route exact path="/" component={MainPage}/>
                 <Route exact path="/login" component={Register}/>
+                <Route exact path="/categories" component={Categories}/>
                 <Route exact path="/product/:id" component={ProductDetails}/>
                 <Footer/>
                 {/*</Box>*/}
