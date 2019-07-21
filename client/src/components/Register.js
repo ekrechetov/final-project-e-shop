@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../actions/authentication';
+import './Register.scss';
+
 
 class Register extends Component {
     state = {
@@ -56,13 +58,13 @@ class Register extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div>
-        <h2>Registration</h2>
+      <div className='register'>
+        <h2>Регистрация</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="введите Ваше имя"
               name="name"
               onChange={this.handleInputChange}
               value={this.state.name}
@@ -77,7 +79,7 @@ class Register extends Component {
           <div>
             <input
               type="email"
-              placeholder="Email"
+              placeholder="введите Ваш email"
               name="email"
               onChange={this.handleInputChange}
               value={this.state.email}
@@ -87,7 +89,7 @@ class Register extends Component {
           <div>
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Ваш пароль"
               name="password"
               onChange={this.handleInputChange}
               value={this.state.password}
@@ -97,7 +99,7 @@ class Register extends Component {
           <div>
             <input
                   type="password"
-                  placeholder="Confirm Password"
+                  placeholder="повторите Ваш пароль"
                   name="password_confirm"
                   onChange={this.handleInputChange}
                   value={this.state.password_confirm}
@@ -106,7 +108,7 @@ class Register extends Component {
           </div>
           <div>
             <button type="submit">
-                        Register New User
+                        Зарегистрироваться
             </button>
           </div>
         </form>

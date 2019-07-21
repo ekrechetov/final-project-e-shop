@@ -1,3 +1,3 @@
 module.exports = {
-    database: 'mongodb+srv://Kostya:kikines88@e-shop-elmlx.mongodb.net/shop?retryWrites=true&w=majority'
+    database: 'mongodb+srv://linca2012:linca2012123@e-shop-elmlx.mongodb.net/shop?retryWrites=true&w=majority'
 }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './Slider.sass';
+import './Slider.scss';
 
 import Slide_1 from './../../images/img-slider/1_3_1.jpg';
 import Slide_2 from './../../images/img-slider/dsquared2-wood-for-him-edt.jpg';
