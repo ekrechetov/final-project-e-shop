@@ -4,6 +4,7 @@ import authReducer from './authReducer';
 import quantityReducer from './quantityReducer'
 import loadProductDataReducer from './loadProductDataReducer';
 import productLoadingReducer from './productLoadingReducer';
+import cartReducer from './cartReducer';
 
 export default combineReducers({
   errors: errorReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   quantity: quantityReducer,
   data : loadProductDataReducer,
   loading : productLoadingReducer,
+  cart: cartReducer,
 });

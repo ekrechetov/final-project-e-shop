@@ -12,7 +12,8 @@ const cartSchema = new Schema(
     code: {type: String},  
     category: {type: String},  
     price: {type: Number},
-    quantity: {type: Number}
+    quantity: {type: Number},
+    availability: {type: Number}
   },
   { versionKey: false }
 );

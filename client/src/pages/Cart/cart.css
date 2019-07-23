@@ -13,10 +13,11 @@ li {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.cart-header-content {
+.cart-header-content, .cart-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px;
 }
 .cart-title {
   font-size: 26px;
@@ -29,6 +30,10 @@ li {
 .cart-img {
   max-width: 100%;
 }
-.cart-footer {
-  text-align: center;
+.cart-item {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(173, 170, 170);
+  padding: 15px;
 }
