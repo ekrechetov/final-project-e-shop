@@ -20,6 +20,23 @@ const Cart = require('./dbmodels/cart');
 app.use(passport.initialize());
 require('./passport')(passport);
 
+
+// app.param('alias', function (req, res, next, id) {
+//   // try to get the user details from the User model and attach it to the request object
+//   Product.find(id, function (err, user) {
+//     if (err) {
+//       next(err)
+//     } else if (code) {
+//       req.code = code
+//       next()
+//     } else {
+//       next(new Error('failed to load alias'))
+//     }
+//   })
+// })
+
+
+
 //mongoose connect
 mongoose.connect(config.database, { useNewUrlParser: true, useFindAndModify: false} );
 
