@@ -155,7 +155,7 @@ router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) =
 // });
 //get
 router.get("/categories/", (req,res)=>{
-    Product.find({})
+  Product.find({})
     .then(product=>{
         res.send(product);
     });

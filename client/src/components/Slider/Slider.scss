@@ -1,5 +1,5 @@
 $color_silver_approx: #c2c2c1;
-$color_west_side_approx: #fe980f;
+$color_west_side_approx: #512da8;
 $color_gray_nickel_approx: #c4c4be;
 $color_masala_approx: #3d3d3d;
 $color_tuatara_approx: #363432;
@@ -100,7 +100,7 @@ $white: #fff;
     width: 60%;
     margin-left: 7%;
     h3 {
-      padding-top: 20%;
+      padding-top: 15%;
       font-size: 30px;
       color: $color_west_side_approx;
       text-transform: uppercase;
@@ -127,6 +127,7 @@ $white: #fff;
     .slide-description {
       h3 {
         font-size: 24px;
+        padding-top: 10%;
       }
     }
   }
@@ -141,6 +142,7 @@ $white: #fff;
     .slide-description {
       h3 {
         font-size: 20px;
+        padding-top: 10%;
       }
       span, p {
         font-size: 14px;
@@ -157,6 +159,10 @@ $white: #fff;
     .slide-description {
       width: 80%;
       margin-left: 10%;
+      text-align: center;
+      h3 {
+        padding-top: 5%;
+      }
     }
   }
 }
@@ -167,7 +173,7 @@ $white: #fff;
 
     .slide-description {
       h3 {
-        padding-top: 10%;
+        padding-top: 5%;
         font-size: 16px;
       }
 

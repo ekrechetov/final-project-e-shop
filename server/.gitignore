@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 .idea/
-dbconfig/
+/dbconfig/database.js
 
 # testing
 /coverage

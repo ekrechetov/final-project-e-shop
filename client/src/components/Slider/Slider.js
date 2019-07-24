@@ -3,10 +3,10 @@ import React, {Component} from 'react';
 import './Slider.scss';
 
 import Slide_1 from './../../images/img-slider/1_3_1.jpg';
-import Slide_2 from './../../images/img-slider/dsquared2-wood-for-him-edt.jpg';
-import Slide_3 from './../../images/img-slider/bvlgari-man-wood-neroli.jpg';
-import Slide_4 from './../../images/img-slider/nikos-sculpture-pour-homme.jpg';
-import Slide_5 from './../../images/img-slider/lancome-hypnose-homme-tester.jpg';
+import Slide_2 from './../../images/img-slider/seduction.jpg';
+import Slide_3 from './../../images/img-slider/hugo.jpg';
+import Slide_4 from './../../images/img-slider/clinique.jpg';
+import Slide_5 from './../../images/img-slider/sora.jpg';
 import Slide_6 from './../../images/img-slider/franck-olivier-bamboo-for-men_1.jpg';
 
 
@@ -22,27 +22,27 @@ class Slider extends Component {
                     eachSlide: `url(${Slide_1})`
                 },
                 {
-                    title: 'Dsquared2 Wood pour Homme',
+                    title: 'Blue Seduction Antonio Banderas',
                     description: 'Туалетная вода',
-                    text: 'Красивый и аккуратный мужской аромат Dsquared2 Wood pour Homme, появился на рынке Европы в самом начале осени. Сочетание традиционных компонентов подано тут с особой тщательностью, от чего получается совершенно особый ансамбль.',
+                    text: 'С первых аккордов аромата Blue Seduction Antonio Banderas понимаешь – вот он, идеальный мужской парфюм. Он легок и современен. Его благородство и элегантность в нотах прохлады и свежести. ',
                     eachSlide: `url(${Slide_2})`
                 },
                 {
-                    title: 'Bvlgari Man Wood Neroli',
+                    title: 'Hugo Boss Hugo Extreme Men',
                     description: 'Парфюмированная вода',
-                    text: 'Долгожданная мировая новинка Bvlgari Man Wood Neroli, сейчас является самым перспективным ароматом из знаменитой мужской серии Bvlgari Man Wood Essence. Выверенная до мелочей парфюмированная вода, создана в лесной и фужерной тематике, которая очень популярна в этом сезоне.',
+                    text: 'Такой аромат забыть невозможно — кажется, он способен дарить такой заряд силы и ярких эмоций, что желание трудиться, добиваться побед и жить на полную появляется само собой.',
                     eachSlide: `url(${Slide_3})`
                 },
                 {
-                    title: 'Nikos Sculpture pour Homme',
-                    description: 'Туалетная вода',
-                    text: 'Уникальный мужской аромат Nikos Sculpture pour Homme, был выпущен более двадцати лет назад. Большинство запахов за это время просто исчезает с продажи, но эта туалетная вода только приобрела новых поклонников среди сильного пола. ',
+                    title: 'Clinique Happy For Men',
+                    description: 'Одеколон',
+                    text: 'Счастье – часть концепции роскошного одеколона для мужчин Happy от американского бренда Clinique. Новый запах – это квинтэссенция ярких эмоций, искренней радости и бесконечного счастья в лаконичном оранжевом флаконе.',
                     eachSlide: `url(${Slide_4})`
                 },
                 {
-                    title: 'Lancome Hypnose Homme',
-                    description: 'Туалетная вода тестер с крышечкой',
-                    text: 'Мужской и безумно харизматичный аромат Lancome Hypnose Homme, напоминает невидимый костюм, сшитый из драгоценных специй, по вашим личным меркам. Роскошная и неповторимая структура пирамиды, соткана из восточной и фужерной нежности, в которой вы можете оставаться кем пожелаете.',
+                    title: 'Sora Danger Sportive',
+                    description: 'Одеколон',
+                    text: 'Ароматы для мужчины, поступки которого воплощают уверенность и надежность. Ноты Sora Danger Sportive подчеркивают сложную структуру композиции, что по глубине не уступает современному мужчине.',
                     eachSlide: `url(${Slide_5})`
                 },
                 {
@@ -173,13 +173,13 @@ class Slider extends Component {
         let playStop;
 
         if (this.state.autoplay) {
-            playStop = <svg fill='#FE980F' height='24' viewBox='0 0 24 24' width='24'>
+            playStop = <svg fill='#512da8' height='24' viewBox='0 0 24 24' width='24'>
                 <path d='M0 0h24v24H0z' fill='none'/>
                 <path
                     d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z'/>
             </svg>;
         } else {
-            playStop = <svg fill='#FE980F' height='24' viewBox='0 0 24 24' width='24'>
+            playStop = <svg fill='#512da8' height='24' viewBox='0 0 24 24' width='24'>
                 <path d='M0 0h24v24H0z' fill='none'/>
                 <path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z'/>
             </svg>;
