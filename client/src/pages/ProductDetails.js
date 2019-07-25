@@ -6,6 +6,7 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import '../styles/ProductDetails/main.scss'
 import ProductDetailsMain from '../components/ProductDetails/ProductDetailsMain'
+import {changeQuantity} from '../actions/quantity'
 
 class ProductDetails extends Component {
 
@@ -13,7 +14,10 @@ class ProductDetails extends Component {
         const {getData} = this.props
         getData(window.location.pathname.split('/')[2])
     }
-
+    componentWillUnmount() {
+        const {changeQuantity} = this.props
+        changeQuantity(1)
+      }
     render() {
         const {isLoading} = this.props
 
@@ -37,7 +41,8 @@ const mapStoreToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-     getData : (id) => dispatch(getData(id))
+     getData : (id) => dispatch(getData(id)),
+     changeQuantity : (quantity) => dispatch(changeQuantity(quantity))
     }
 }
 

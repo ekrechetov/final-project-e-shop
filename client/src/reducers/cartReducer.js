@@ -2,7 +2,8 @@ import {
   GET_LOCAL_STORAGE_CART,
   INCREMENT_CART_ITEM,
   DECREMENT_CART_ITEM,
-  DELETE_CART_ITEM
+  DELETE_CART_ITEM,
+  ADD_CART_ITEM
   } from "../actions/types";
 
 const initialState = [];
@@ -40,6 +41,9 @@ export default function(state = initialState, action) {
       });
       return newArj;      
     }     
+    case ADD_CART_ITEM: {
+      return [...state, action.payload]
+    }
 
     default: return state;
   }

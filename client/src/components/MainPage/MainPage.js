@@ -8,6 +8,7 @@ import Stock from "../Stock/Stock";
 import SpecialsOffers from '../SpecialsOffers/SpecialsOffers';
 import AdvantagesList from '../AdvantagesList/AdvantagesList';
 import Slider from "../Slider/Slider";
+import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles({
