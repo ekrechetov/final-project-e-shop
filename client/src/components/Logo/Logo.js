@@ -9,7 +9,6 @@ const useStyles = makeStyles({
             display: 'flex',
             alignItems: 'center',
             textDecoration: 'none',
-            // fontFamily: 'Roboto sans-serif'
         },
         logo: {
             width: '50px',
@@ -23,6 +22,18 @@ const useStyles = makeStyles({
         logoTitle: {
             marginLeft: '10px',
             fontSize: '1.8rem',
+            fontWeight: 'bold',
+            letterSpacing: '0.01rem'
+        },
+        '@media (max-width: 767px)': {
+            logoWrap: {
+                flexDirection: 'column'
+            },
+            logoTitle: {
+                marginLeft: '-3px',
+                marginTop: '5px',
+                fontSize: '0.7rem'
+            }
         }
     }
 );
@@ -37,7 +48,7 @@ export default function Logo(props) {
                 {/*<img src={props} alt='img' width='512' height='512'/>*/}
             </span>
             <span className={classes.logoTitle}>
-                ParfuMe
+                ParfuMan
             </span>
         </Link>
     );

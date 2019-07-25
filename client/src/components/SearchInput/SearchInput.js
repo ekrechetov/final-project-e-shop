@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex',
             alignItems: 'center',
             maxWidth: '250px',
-            margin: '0 95px 0 20px',
+            margin: '0 160px 0 20px',
             position: 'relative'
         },
 
@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
 
             '&::-ms-clear': {
                 display: 'none'
+            },
+
+            '&:focus': {
+                outline: '1px solid' + theme.palette.secondary.light
             }
         },
 

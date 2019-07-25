@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
@@ -21,9 +21,10 @@ import ProductDetails from './pages/ProductDetails'
 import setAuthToken from './setAuthToken';
 import store from './store';
 import img from './0r7qN8U.png';
+import withStyles from "@material-ui/core/styles/withStyles";
 
 
-const useStyles = makeStyles({
+const styles = (theme) => ({
     page: {
         width: '100%',
         // backgroundImage: 'url(' + img + ');'
@@ -32,45 +33,48 @@ const useStyles = makeStyles({
 
     containerBox: {
         width: '100%',
+
         // backgroundImage: 'url(' + img + ');'
     }
 });
 
-export default function App(props) {
-    const classes = useStyles();
-    return (
-        <Provider store={store}>
-            <BrowserRouter>
-                {/*<Box className={classes.containerBox}>*/}
-                <Header/>
-                <Route exact path="/cart" component={Cart}/>
-                <Route exact path="/" component={MainPage}/>
-                <Route exact path="/login" component={Register}/>
-                <Route exact path="/categories" component={Categories}/>
-                <Route exact path="/product/:id" component={ProductDetails}/>
-                <Footer/>
-                {/*</Box>*/}
-            </BrowserRouter>
-        </Provider>
-    );
-  }
- /* class App extends Component {
- render() {
- return (
- <Provider store = {store}>
- <Router>
- <div>
- <Navbar />
- <Route path="/" component={Home} />
- <div className="container">
- <Route exact path="/register" component={Register} />
- <Route exact path="/login" component={Login} />
- </div>
- </div>
- <Route exact path="/product-details" component={ProductDetails} />
- </Router>
- </Provider>
- );
+class App extends Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <BrowserRouter>
+                    <Box className={this.props.classes.containerBox}>
+                        <Header/>
+                        <Route exact path="/cart" component={Cart}/>
+                        <Route exact path="/" component={MainPage}/>
+                        <Route exact path="/login" component={Register}/>
+                        <Route exact path="/categories" component={Categories}/>
+                        <Route exact path="/product/:id" component={ProductDetails}/>
+                        <Footer/>
+                    </Box>
+                </BrowserRouter>
+            </Provider>
+        );
+    }
+}
+export default withStyles(styles)(App);
+/* class App extends Component {
+render() {
+return (
+<Provider store = {store}>
+<Router>
+<div>
+<Navbar />
+<Route path="/" component={Home} />
+<div className="container">
+<Route exact path="/register" component={Register} />
+<Route exact path="/login" component={Login} />
+</div>
+</div>
+<Route exact path="/product-details" component={ProductDetails} />
+</Router>
+</Provider>
+);
 }
 }
 */

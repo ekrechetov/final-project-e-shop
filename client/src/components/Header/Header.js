@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {Link} from 'react-router-dom';
@@ -13,23 +13,25 @@ import Badges from "../Badges/Badges";
 import AccountIcon from "../AccountIcon/AccountIcon";
 import store from "../../store";
 import Register from "../Register";
+import withStyles from "@material-ui/core/styles/withStyles";
+import ContactInfo from '../ContactInfo/ContactInfo'
 
 
-const useStyles = makeStyles((theme) => ({
+const styles = (theme) => ({
     header: {
-        padding: '5px 20px',
+        padding: '30px 20px 5px 20px',
         boxSizing: 'border-box',
         width: '100%',
-        height: '80px',
+        height: '160px',
         backgroundColor: theme.palette.primary.main,
-        fontFamily: 'Roboto, sans-serif'
+        overflow: 'hidden',
+        fontFamily: 'Roboto, sans-serif',
+        transition: 'all 0.3s ease'
     },
     containerBox: {
         position: 'relative',
         display: 'flex',
         width: '100%',
-        // justifyContent: 'space-between',
-        height: '100%',
     },
     textField: {
         position: 'relative',
@@ -54,32 +56,56 @@ const useStyles = makeStyles((theme) => ({
 
     '@media (max-width: 1199)': {
         header: {}
+    },
+
+    '@media (max-width: 767px)': {
+        header: {
+            height: '120px',
+            overflow: 'visible',
+        }
     }
-}));
+});
 
-export default function Header(props) {
-    const classes = useStyles();    
-    return (
-        <header className={classes.header}>
-            <Box className={classes.containerBox} display="flex" alignItems="center">
-                <Logo img={`url("client/src/components/Logo/main-logo.png");`}/>
-                {/*'url(' + photo.url + ')'*/}
-                {/*<TextField*/}
-                {/*    component='div'*/}
-                {/*    id="filled-search"*/}
-                {/*    label="Search field"*/}
-                {/*    type="search"*/}
-                {/*    className={classes.textField}*/}
-                {/*    margin="normal"*/}
-                {/*/>*/}
-                <SearchInput/>
 
-                <Badges/>
+class Header extends Component {
+    render() {
+        window.onscroll = () => {
+            if (window.innerWidth > 767) {
 
-                <AccountIcon/>
+                if (window.pageYOffset > 45) {
+                    document.querySelector('#header').style.height = '100px';
+                } else {
+                    document.querySelector('#header').style.height = '160px';
+                }
+            }
+            console.log(window.innerWidth);
+        };
+        return (
+            <header className={this.props.classes.header} id='header'>
+                <Box className={this.props.classes.containerBox} display="flex" alignItems="center">
+                    <Logo img={`url("client/src/components/Logo/main-logo.png");`}/>
+                    {/*'url(' + photo.url + ')'*/}
+                    {/*<TextField*/}
+                    {/*    component='div'*/}
+                    {/*    id="filled-search"*/}
+                    {/*    label="Search field"*/}
+                    {/*    type="search"*/}
+                    {/*    className={classes.textField}*/}
+                    {/*    margin="normal"*/}
+                    {/*/>*/}
+                    <SearchInput/>
 
-                <MenuList/>
-            </Box>
-        </header>
+                    <Badges/>
+
+                    <AccountIcon/>
+
+                    <ContactInfo/>
+
+                    <MenuList/>
+                </Box>
+            </header>
         );
     }
+}
+
+export default withStyles(styles)(Header)

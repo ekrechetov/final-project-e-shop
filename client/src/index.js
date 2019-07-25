@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import {grey, blue} from '@material-ui/core/colors/';
+import {grey, blue, orange} from '@material-ui/core/colors/';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+// import {orange} from "@material-ui/core/colors";
 
 
 
@@ -15,9 +16,13 @@ const theme = createMuiTheme({
             light: grey[50],
             dark: grey[900]
         },
+        // secondary: {
+        //     main: blue[500],
+        //     light: blue[200],
+        // }
         secondary: {
-            main: blue[500],
-            light: blue[200],
+            main: orange[500],
+            light: orange[200],
         }
     },
 });

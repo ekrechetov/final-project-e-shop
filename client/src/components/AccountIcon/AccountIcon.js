@@ -2,25 +2,31 @@ import React, {Component} from 'react';
 import AccountBox from '@material-ui/icons/AccountBox';
 import {withStyles} from '@material-ui/styles';
 import {Link} from 'react-router-dom';
+import Icon from "@material-ui/core/Icon";
+import SvgIcon from "@material-ui/core/SvgIcon";
 
 const styles = theme => ({
-    accountIconWrap: {
+    accountIconLink: {
         position: 'absolute',
-        right: '140px',
+        right: '120px',
     },
-    accountIcon: {
-        width: '32px',
-        height: '32px',
+    accountIconWrap: {
+        width: '24px',
+        height: '24px',
         cursor: 'pointer',
         color: theme.palette.primary.dark
+    },
+    '@media (max-width: 767px)': {
+        accountIconLink: {
+            right: '130px',
+        }
     }
 });
-
 class AccountIcon extends Component {
     render() {
         return (
-            <Link to="/login" className={this.props.classes.accountIconWrap}>
-                <AccountBox className={this.props.classes.accountIcon}/>
+            <Link to="/login" className={this.props.classes.accountIconLink}>
+                <SvgIcon className={this.props.classes.accountIconWrap}><AccountBox className={this.props.classes.accountIcon}/></SvgIcon>
             </Link>
         );
     }

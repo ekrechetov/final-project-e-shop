@@ -11,31 +11,27 @@ import {Link} from "react-router-dom";
 const styles = (theme) => ({
     badgeLinkWrap: {
         position: 'absolute',
-        right: '70px',
+        right: '50px',
     },
 
     badgeWrapBlock: {
         color: theme.palette.primary.dark,
-
-        // width: '42px',
-        // height: '42px'
     },
     badge: {
         top: '50%',
         right: '-1px',
         border: theme.palette.primary.dark,
-        // width: '42px',
-        // height: '42px'
     },
     badgeIcon: {
-        width: '32px',
-        height: '32px'
+        width: '24px',
+        height: '24px'
+    },
+    '@media (max-width: 767px)': {
+        badgeLinkWrap: {
+            right: '75px',
+        }
     }
 });
-
-// const secondStyles = (theme) => ({});
-
-// const StyledBadge = withStyles(styles)(Badge);
 
 class CustomizedBadges extends Component {
     componentWillMount() {

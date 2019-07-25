@@ -3,26 +3,42 @@ import {makeStyles} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
+        listItem: {
+            display: 'flex',
+            justifyContent: 'flex-end',
+            marginBottom: '10px',
+            listStyle: 'none',
+            fontWeight: 'bold'
+        },
         link: {
-            padding: '10px 20px',
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '5px',
             textDecoration: 'none',
             color: theme.palette.primary.dark,
             textAlign: 'right',
             whiteSpace: 'nowrap',
             letterSpacing: '0.02rem',
-            fontSize: '1rem',
-            '&:hover': {
-                
+            fontSize: '16px',
+            borderBottom: '0 solid transparent',
+            transition: 'all 0.2s ease',
+            '&:after': {
+                content: "''",
+                width: '100%',
+                height: '2px',
+                marginTop: '2px',
+                backgroundColor: 'transparent',
+                transition: 'all 0.2s ease'
+            },
+            '&:hover:after': {
+                backgroundColor: theme.palette.secondary.main
             }
         },
-        listItem: {
-            display: 'flex',
-            justifyContent: 'flex-end',
-            padding: '10px 20px',
-            listStyle: 'none',
-            fontSize: '14px',
-            fontWeight: 'bold'
-        }
+        '@media (max-width: 991px)': {
+            link: {
+                fontSize: '12px',
+            }
+        },
     }
 ));
 

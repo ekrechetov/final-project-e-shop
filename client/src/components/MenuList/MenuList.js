@@ -1,6 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
-// import MenuItem from '../MenuItem/MenuItem';
+import MenuItem from '../MenuItem/MenuItem';
 import burgerMenuButtonImg from './burger-menu-button.png';
 import {palette} from "@material-ui/system";
 import CategoriesList from '../Categories/CategoriesList'
@@ -8,73 +8,106 @@ import CategoriesList from '../Categories/CategoriesList'
 const useStyles = makeStyles((theme) => ({
         menu: {
             display: 'flex',
-            flexDirection: 'column',
+            justifyContent: 'center',
+            minWidth: '100%',
             position: 'absolute',
-            right: '0',
+            zIndex: '2',
+            transform: 'translate(0, 65px)'
         },
         menuList: {
-            display: 'none',
-            flexDirection: 'column',
-            // alignItems: 'flex-end',
-            zIndex: '2',
-            padding: '0',
-            position: 'absolute',
-            top: '40px',
-            right: '-20px',
-            borderRadius: '3px',
-            backgroundColor: theme.palette.primary.light
+            display: 'flex',
+            justifyContent: 'space-around',
+            width: '80%',
+            paddingTop: '10px'
         },
         burgerMenuButton: {
-            width: '32px',
-            height: '32px',
-            right: '0',
-            backgroundImage: 'url(' + burgerMenuButtonImg + ');',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center'
+            display: 'none',
         },
-
+        '@media (max-width: 767px)': {
+            menu: {
+                display: 'flex',
+                flexDirection: 'column',
+                minWidth: '0',
+                position: 'absolute',
+                right: '0',
+                transform: 'translate(0, 0)',
+            },
+            menuList: {
+                display: 'none',
+                flexDirection: 'column',
+                zIndex: '2',
+                width: '170px',
+                maxHeight: '0',
+                padding: '0',
+                position: 'absolute',
+                top: '69px',
+                right: '-20px',
+                opacity: '0',
+                borderRadius: '3px',
+                backgroundColor: 'rgba(230, 230, 230, 0.5)',
+                transition: 'all 0.5s ease',
+            },
+            burgerMenuButton: {
+                display: 'flex',
+                width: '24px',
+                height: '24px',
+                right: '0',
+                backgroundImage: 'url(' + burgerMenuButtonImg + ');',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                cursor: 'pointer'
+            },
+        }
     }
 ));
 
-// const menuListData = [
-//     {
-//         "href": "#!",
-//         "text": "Парфюмированная вода"
-//     },
-//     {
-//         "href": "#!",
-//         "text": "Туалетная вода"
-//     },
-//     {
-//         "href": "#!",
-//         "text": "Духи"
-//     },
-//     {
-//         "href": "#!",
-//         "text": "Одеколон"
-//     },
-//     {
-//         "href": "#!",
-//         "text": "Дезодоранты"
-//     }
-// ];
+const menuListData = [
+    {
+        "href": "#!",
+        "text": "Парфюмированная вода"
+    },
+    {
+        "href": "#!",
+        "text": "Туалетная вода"
+    },
+    {
+        "href": "#!",
+        "text": "Духи"
+    },
+    {
+        "href": "#!",
+        "text": "Одеколон"
+    },
+    {
+        "href": "#!",
+        "text": "Дезодоранты"
+    }
+];
 
-let toggleMenu = (event) => {
-    const target = event.target;
+let toggleMenu = () => {
     const menuList = document.querySelector('#menuList');
-    getComputedStyle(menuList).getPropertyValue('display') === 'none' ? menuList.style.display = 'flex' : menuList.style.display = 'none';
+    getComputedStyle(menuList).getPropertyValue('display') === 'none'
+        ? menuList.style.cssText = 'display: flex; max-height: 300px; opacity: 1;'
+        : menuList.style.cssText = 'display: none; max-height: 0; opacity: 0.1;';
+};
+window.addEventListener("resize", () => {
+    const menuList = document.querySelector('#menuList');
 
-}
-
+    if(window.innerWidth > 767) {
+        menuList.style.cssText = 'display: flex; max-height: 300px; opacity: 1;'
+    } else {
+        menuList.style.cssText = 'display: none; max-height: 0; opacity: 0.1;'
+    }
+});
 export default function MenuList() {
     const classes = useStyles();
     return (
-        <div className={classes.menu}>
+        <div className={classes.menu} id='menu'>
             <span className={classes.burgerMenuButton} id='burgerMenuButton' onClick={toggleMenu}/>
             <ul className={classes.menuList} id='menuList'>
-                {/* <MenuItem data={menuListData}/> */}
-                <CategoriesList />
+                <MenuItem data={menuListData}/>
+                <CategoriesList/>
             </ul>
         </div>
     );
