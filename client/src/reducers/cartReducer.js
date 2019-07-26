@@ -4,11 +4,7 @@ import {
   DECREMENT_CART_ITEM,
   DELETE_CART_ITEM,
   ADD_CART_ITEM
-<<<<<<< HEAD
-} from "../actions/types";
-=======
   } from "../actions/types";
->>>>>>> develop
 
 const initialState = [];
 
@@ -43,7 +39,7 @@ export default function (state = initialState, action) {
       const newArj = state.filter(item => {
         return (item.code != action.payload);
       });
-<<<<<<< HEAD
+      
       return newArj;
     }
     case ADD_CART_ITEM: {
@@ -53,14 +49,7 @@ export default function (state = initialState, action) {
         } 
         return item.code != action.payload.code
       })
-=======
-      return newArj;      
-    }     
-    case ADD_CART_ITEM: {
-      return [...state, action.payload]
-    }
->>>>>>> develop
-
+      
       return [...newArj, action.payload]
     }
     default: return state;
