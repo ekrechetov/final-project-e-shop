@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import CartItem from './CartItem';
-import {getLocalCart} from '../../actions/getLocalCart';
+// import {getLocalCart} from '../../actions/getLocalCart';
 import Container from '@material-ui/core/Container';
 import CloseButton from './CloseButton';
 import OrderButton from './OrderButton';
@@ -33,46 +33,49 @@ class Cart extends Component {
   // }
   
   // for testing only:
-  componentDidMount() {
-    if (localStorage.getItem('parfumanCart') == null) {
-      const testCartItems = [
-        {
-          _id:"5d2ba1fc7fd83c15485777a3",
-          userName:"ekrechetov",
-          userId:"5d2ba1fc7fd83c15485777a2",
-          img:"4_1_2.jpg",
-          brand:"Dzintars",
-          title:"Briga",
-          code:"40001",
-          category:"Одеколон",
-          price:199,
-          quantity:2,
-          availability:20
-        },
-        {
-          _id:"5d2ba5cecdbd171d3c9cee6b",
-          userName:"ekrechetov",
-          userId:"5d2ba1fc7fd83c15485777a2",
-          img:"4_2_2.jpg",
-          brand:"Clinique",
-          title:"Happy For Men",
-          code:"40002",
-          category:"Одеколон",
-          price:499,
-          quantity:3,
-          availability:20  
-        }
-      ]
-      localStorage.setItem('parfumanCart', JSON.stringify(testCartItems));
-      const localStorageCart = JSON.parse(localStorage.getItem('parfumanCart'));
-      this.props.dispatch(getLocalCart(localStorageCart));
-    }
-  }
-  // for testing only:
+  // componentDidMount() {
+  //   if (localStorage.getItem('parfumanCart') == null) {
+  //     const testCartItems = [
+  //       {
+  //         _id:"5d2ba1fc7fd83c15485777a3",
+  //         userName:"ekrechetov",
+  //         userId:"5d2ba1fc7fd83c15485777a2",
+  //         img:"4_1_2.jpg",
+  //         brand:"Dzintars",
+  //         title:"Briga",
+  //         code:"40001",
+  //         category:"Одеколон",
+  //         price:199,
+  //         quantity:2,
+  //         availability:20
+  //       },
+  //       {
+  //         _id:"5d2ba5cecdbd171d3c9cee6b",
+  //         userName:"ekrechetov",
+  //         userId:"5d2ba1fc7fd83c15485777a2",
+  //         img:"4_2_2.jpg",
+  //         brand:"Clinique",
+  //         title:"Happy For Men",
+  //         code:"40002",
+  //         category:"Одеколон",
+  //         price:499,
+  //         quantity:3,
+  //         availability:20  
+  //       }
+  //     ]
+  //     localStorage.setItem('parfumanCart', JSON.stringify(testCartItems));
+  //     const localStorageCart = JSON.parse(localStorage.getItem('parfumanCart'));
+  //     this.props.dispatch(getLocalCart(localStorageCart));
+  //   }
+  // }
   componentWillUnmount() {
     if (this.props.cartItems.length != 0) 
     localStorage.setItem('parfumanCart', JSON.stringify(this.props.cartItems));
-    else localStorage.removeItem("parfumanCart");
+    else {
+      if (localStorage.getItem('parfumanCart')) {
+        localStorage.removeItem("parfumanCart");
+      }
+    }       
   }
   render() {
     const {cartItems} = this.props;
@@ -88,13 +91,21 @@ class Cart extends Component {
             <span className='cart-title'>Корзина</span>
             <Link to="/"><CloseButton/></Link>
           </Container>          
-        </div>  
-        <Container maxWidth="md" >
+        </div>
+        <Container maxWidth="md">
+          <div className="cart-theader">
+            <div>Товар</div>
+            <div>Наименование</div>
+            <div>Количество</div>
+            <div>Цена</div>
+            <div>Сумма</div>
+            <div></div>
+          </div>  
           <ul className='cart-list'>
             {/* this.state.isLoading ? <h5>Loading...</h5>: */}
             { cartItems.map(item => (
               <li key={item._id}>
-                  <CartItem productItem={item} />        
+                <CartItem productItem={item} />        
               </li>  
               ))}
           </ul> 

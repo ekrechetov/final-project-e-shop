@@ -10,8 +10,6 @@ li {
  }
  .cart-header-bg {
   background-color: rgb(239, 239, 245);
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 .cart-header-content, .cart-footer {
   display: flex;
@@ -22,18 +20,18 @@ li {
 .cart-title {
   font-size: 26px;
 }
-
-.cart-img-container {
-  display: inline-block;
-  width: 10%;
+.cart-theader, .cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(173, 170, 170);
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.cart-theader div, .cart-item div {
+  flex-basis: 100%;
+  text-align: center;
 }
 .cart-img {
   max-width: 100%;
-}
-.cart-item {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  border-bottom: 1px solid rgb(173, 170, 170);
-  padding: 15px;
 }

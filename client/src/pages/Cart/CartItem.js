@@ -11,8 +11,8 @@ class CartItem extends Component {
         <div className="cart-img-container">
           <img className="cart-img" src={require(`../../images/img-products/${productItem.img}`)}/>
         </div>
-        <span>{productItem.category} {productItem.brand} {productItem.title} </span>
-        <span> Количество: </span>
+        <div>{productItem.category} {productItem.brand} {productItem.title} </div>
+        {/* Количество: */}
         <QntSelector qnt={productItem.quantity}
                     code={productItem.code}
         />
@@ -21,8 +21,10 @@ class CartItem extends Component {
         <div className='pop-up'>Больше {productItem.quantity} шт. нет в наличии</div>
         : null
         }
-        <span>Цена: {productItem.price} грн. </span>        
-        <span>Сумма: {productItem.price * productItem.quantity} грн.</span>        
+        {/* Цена: */}
+        <div>{productItem.price} грн.</div>
+        {/* Сумма: */}
+        <div>{productItem.price * productItem.quantity} грн.</div>        
         <div onClick={() => {dispatch({type: DELETE_CART_ITEM, payload: productItem.code})}}>Удалить</div>
         <hr />
       </div>
