@@ -20,7 +20,7 @@ import Cart from './pages/Cart/Cart';
 import ProductDetails from './pages/ProductDetails'
 import setAuthToken from './setAuthToken';
 import store from './store';
-import img from './0r7qN8U.png';
+// import img from './0r7qN8U.png';
 import withStyles from "@material-ui/core/styles/withStyles";
 
 

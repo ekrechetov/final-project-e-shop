@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
                 display: 'none',
                 flexDirection: 'column',
                 zIndex: '2',
-                width: '170px',
+                width: '190px',
                 maxHeight: '0',
                 padding: '0',
                 position: 'absolute',
@@ -85,16 +85,26 @@ const menuListData = [
     }
 ];
 
+
 let toggleMenu = () => {
     const menuList = document.querySelector('#menuList');
     getComputedStyle(menuList).getPropertyValue('display') === 'none'
         ? menuList.style.cssText = 'display: flex; max-height: 300px; opacity: 1;'
         : menuList.style.cssText = 'display: none; max-height: 0; opacity: 0.1;';
 };
+
+document.addEventListener('click', (event) => {
+    let target = event.target;
+    let menuButton = document.getElementById('burgerMenuButton');
+    let menuList = document.querySelector('#menuList');
+    target !== menuButton && !target.classList.contains('menu-list--item') && !target.classList.contains('menu-list--item--link') && window.innerWidth <= 767
+        ? menuList.style.cssText = 'display: none; max-height: 0; opacity: 0.1;' : console.log('no client');
+});
+
 window.addEventListener("resize", () => {
     const menuList = document.querySelector('#menuList');
 
-    if(window.innerWidth > 767) {
+    if (window.innerWidth > 767) {
         menuList.style.cssText = 'display: flex; max-height: 300px; opacity: 1;'
     } else {
         menuList.style.cssText = 'display: none; max-height: 0; opacity: 0.1;'
@@ -106,7 +116,7 @@ export default function MenuList() {
         <div className={classes.menu} id='menu'>
             <span className={classes.burgerMenuButton} id='burgerMenuButton' onClick={toggleMenu}/>
             <ul className={classes.menuList} id='menuList'>
-                <MenuItem data={menuListData}/>
+                {/*<MenuItem data={menuListData}/>*/}
                 <CategoriesList/>
             </ul>
         </div>

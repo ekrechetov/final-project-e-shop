@@ -69,17 +69,18 @@ const styles = (theme) => ({
 
 class Header extends Component {
     render() {
-        window.onscroll = () => {
-            if (window.innerWidth > 767) {
-
-                if (window.pageYOffset > 45) {
-                    document.querySelector('#header').style.height = '100px';
-                } else {
-                    document.querySelector('#header').style.height = '160px';
-                }
-            }
-            console.log(window.innerWidth);
-        };
+        // window.onscroll = () => {
+        //     if (window.innerWidth > 767) {
+        //         if (window.pageYOffset > 45) {
+        //             document.querySelector('#header').style.height = '100px';
+        //         } else {
+        //             document.querySelector('#header').style.height = '160px';
+        //         }
+        //     } else {
+        //         document.querySelector('#header').style.height = '100px';
+        //     }
+        //     console.log(window.innerWidth);
+        // };
         return (
             <header className={this.props.classes.header} id='header'>
                 <Box className={this.props.classes.containerBox} display="flex" alignItems="center">

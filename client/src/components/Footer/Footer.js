@@ -28,8 +28,7 @@ const useStyles = makeStyles({
         },
         footerEmail: {
             fontSize: '12px'
-        }
-
+        },
     });
 
 export default function Footer() {

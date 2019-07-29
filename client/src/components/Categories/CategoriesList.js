@@ -1,7 +1,49 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import withStyles from "@material-ui/core/styles/withStyles";
+import {Link} from "react-router-dom";
 
+const styles = (theme) => ({
+  listItem: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginBottom: '10px',
+    listStyle: 'none',
+    fontWeight: 'bold'
+  },
+  link: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '5px',
+    margin: '10px 0',
+    borderBottom: '0 solid transparent',
+    textAlign: 'right',
+    letterSpacing: '0.02rem',
+    whiteSpace: 'nowrap',
+    textDecoration: 'none',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    color: theme.palette.primary.dark,
+    transition: 'all 0.2s ease',
+    '&:after': {
+      content: "''",
+      width: '100%',
+      height: '2px',
+      marginTop: '2px',
+      backgroundColor: 'transparent',
+      transition: 'all 0.2s ease'
+    },
+    '&:hover:after': {
+      backgroundColor: theme.palette.secondary.main
+    }
+  },
+  '@media (max-width: 991px)': {
+    link: {
+      fontSize: '14px',
+    }
+  },
+});
 
 class CategoriesList extends Component {
   constructor() {
@@ -27,7 +69,14 @@ class CategoriesList extends Component {
 
 showCategory() {
     return (
-      _.uniqBy(this.state.products, 'category').map(item => (<li key={item.code} style={{ cursor: 'pointer' }}>{item.category}</li>))
+      _.uniqBy(this.state.products, 'category').map((item) => (
+          <li key={item.code} className={`${this.props.classes.listItem} ${'menu-list--item'}`}>
+            <Link to={'#!'} className={`${this.props.classes.link} ${'menu-list--item--link'}`}>
+              {item.category}
+            </Link>
+          </li>
+          )
+      )
     )
 }
 
@@ -37,5 +86,5 @@ showCategory() {
     );
   }
 }
-
-export default CategoriesList;
+export default withStyles(styles)(CategoriesList);
+// export default CategoriesList;

@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import {grey, blue, orange} from '@material-ui/core/colors/';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {deepOrange} from "@material-ui/core/colors";
 // import {orange} from "@material-ui/core/colors";
 
 
@@ -23,6 +23,8 @@ const theme = createMuiTheme({
         secondary: {
             main: orange[500],
             light: orange[200],
+            dark: orange[900],
+            contrastText: deepOrange[500]
         }
     },
 });

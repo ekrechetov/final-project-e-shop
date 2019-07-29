@@ -13,6 +13,11 @@ const useStyles = makeStyles({
         },
         socialNeetworksItemIcon: {
             fontSize: '20px'
+        },
+        '@media (max-width: 767px)': {
+            linkIcon: {
+                margin: '0 5px'
+            }
         }
     }
 );

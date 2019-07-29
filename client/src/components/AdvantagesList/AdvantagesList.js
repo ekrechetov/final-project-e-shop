@@ -25,6 +25,11 @@ const useStyles = makeStyles({
         advantagesWrap: {
             display: 'flex',
             justifyContent: 'center',
+        },
+        '@media (max-width: 767px)': {
+            advantagesWrap: {
+                flexDirection: 'column'
+            }
         }
     }
 );

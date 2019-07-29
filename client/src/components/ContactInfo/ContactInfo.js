@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPhoneSquare} from '@fortawesome/free-solid-svg-icons'
 
-const styles = theme => ({
+const styles = (theme) => ({
     contactInfoBlock: {
         display: 'flex',
         flexDirection: 'column',

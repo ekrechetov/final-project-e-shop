@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import img1 from '../../images/card-menu-1.jpg';
-import img2 from '../../images/card-menu-2.jfif';
+import img2 from '../../images/card-menu-2.jpg';
 import img3 from '../../images/card-menu-3.jpg';
 import img4 from '../../images/card-menu-4.jpg';
 import img5 from '../../images/card-menu-5.jpg'
