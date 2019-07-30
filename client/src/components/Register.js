@@ -70,7 +70,7 @@ class Register extends Component {
               value={this.state.name}
             />
             {errors.name && (
-            <div>
+            <div className= "register_error">
               {' '}
               {errors.name}
             </div>

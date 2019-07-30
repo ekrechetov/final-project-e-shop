@@ -28,7 +28,7 @@ const styles = (theme) => ({
     page: {
         width: '100%',
         // backgroundImage: 'url(' + img + ');'
-        // backgroundColor: 'red'
+        //backgroundColor: 'red'
     },
 
     containerBox: {

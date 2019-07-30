@@ -3,15 +3,33 @@ const Schema = mongoose.Schema;
 
 // установка схемы
 const productSchema = new Schema({
-  brand:  {type: String},
-  title: {type: String},
-  code: {type: String},
-  description: {type: String},
-  category: {type: String},
-  alias: {type: String},
-  img: {type: Array},
-  availability: {type: String},
-  price:{type: String}
+  brand:  {
+    type: String
+  },
+  title: {
+    type: String
+  },
+  code: {
+    type: String
+  },
+  description: {
+    type: String
+  },
+  category: {
+    type: String
+  },
+  alias: {
+    type: String
+  },
+  img: {
+    type: Array
+  },
+  availability: {
+    type: String
+  },
+  price:{
+    type: String
+  }
 });
 
 //создаем модель товара:

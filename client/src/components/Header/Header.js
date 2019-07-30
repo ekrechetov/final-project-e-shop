@@ -84,7 +84,7 @@ class Header extends Component {
         return (
             <header className={this.props.classes.header} id='header'>
                 <Box className={this.props.classes.containerBox} display="flex" alignItems="center">
-                    <Logo img={`url("client/src/components/Logo/main-logo.png");`}/>
+
                     {/*'url(' + photo.url + ')'*/}
                     {/*<TextField*/}
                     {/*    component='div'*/}
@@ -95,6 +95,7 @@ class Header extends Component {
                     {/*    margin="normal"*/}
                     {/*/>*/}
                     <SearchInput/>
+                    <Logo img={`url("client/src/components/Logo/main-logo.png");`}/>
 
                     <Badges/>
 

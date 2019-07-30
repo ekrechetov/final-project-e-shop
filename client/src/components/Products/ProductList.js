@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './ProductList.scss'
 
 class ProductList extends Component {
   constructor() {
@@ -27,11 +28,11 @@ class ProductList extends Component {
  showProducts() {
     return this.state.products.map((product)=>{
         return (    
-        <div key={product.code} className="productItem" style={{padding:'2%',margin:'2%',border:'2px solid black'}}>
-            <div className="cat" style={{color:'red'}}>{product.category}</div>
+        <div key={product.code} className="productItem" style={{padding:'2%',margin:'2%'}}>
+            <p className="name" style={{color:'#ff8f00'}}>{product.title}</p>
+            <div className="cat">{product.category}</div>
             <p className="brand">{product.brand}</p>
-            <p className="name">{product.title}</p> 
-            <p className="price">{product.price} $</p> 
+            <p className="price">{product.price} грн.</p>
         </div>
         )
 })

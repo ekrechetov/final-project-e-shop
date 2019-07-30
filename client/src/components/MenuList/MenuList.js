@@ -12,7 +12,9 @@ const useStyles = makeStyles((theme) => ({
             minWidth: '100%',
             position: 'absolute',
             zIndex: '2',
-            transform: 'translate(0, 65px)'
+            transform: 'translate(0, 65px)',
+            borderTop: '1px solid #ff8f00',
+            marginTop: '1%'
         },
         menuList: {
             display: 'flex',

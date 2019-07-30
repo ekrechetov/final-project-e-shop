@@ -133,6 +133,9 @@ export default function CardMenu() {
               className={classes.imageSrc}
               style={{
                   backgroundImage: `url(${image.url})`,
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'top'
               }}
           />
                     <span className={classes.imageBackdrop}/>
