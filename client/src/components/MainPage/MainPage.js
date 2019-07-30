@@ -13,11 +13,6 @@ import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
         mainPage: {
-            // height: '200px',
-            // backgroundImage: 'url(' + img + ');',
-            // backgroundPosition: 'center',
-            // backgroundSize: 'cover',
-            // backgroundRepeat: 'no-repeat'
             fontFamily: 'Roboto, sans-serif'
         }
     }

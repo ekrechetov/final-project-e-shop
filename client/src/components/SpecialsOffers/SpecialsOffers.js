@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import withStyles from "@material-ui/core/styles/withStyles";
-import Box from "@material-ui/core/Box";
 import specialOffersImg from '../../images/special-offers-1.jpg'
 
 const styles = (theme) => ({
@@ -10,7 +9,6 @@ const styles = (theme) => ({
         backgroundPositionY: '5%',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        // transition: 'all 800ms cubic-bezier(0.000, 1.650, 0.735, 0.085)',
         [`&:hover .fivePercent--active`]: {
             transition: 'all 700ms cubic-bezier(0.000, 1.650, 0.735, 0.085)',
             padding: '10px 10px',
@@ -30,7 +28,6 @@ const styles = (theme) => ({
         display: 'flex',
         flexDirection: 'column',
         padding: '50px 0',
-
         color: theme.palette.secondary.main
     },
     title: {
@@ -77,20 +74,16 @@ const styles = (theme) => ({
 class SpecialsOffers extends Component {
     hoverStyle = () => {
             let elem = document.querySelector('#specialOffersBlock');
+            let textElem = document.querySelector('#fivePercent');
             elem.addEventListener('mouseenter', () => {
-                let textElem = document.querySelector('#fivePercent');
                 textElem.classList.add('fivePercent--active');
-                console.log('absolutly');
             });
             elem.addEventListener('mouseleave', () => {
-                let textElem = document.querySelector('#fivePercent');
                 textElem.classList.remove('fivePercent--active');
-                console.log('hooh');
             });
         };
 
     render() {
-        console.log (this.state);
         return (
             <section className={this.props.classes.specialOffer} id='specialOffersBlock' onMouseEnter={this.hoverStyle}>
                 <div className={this.props.classes.specialOfferContainer}>

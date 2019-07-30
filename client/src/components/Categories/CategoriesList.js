@@ -22,6 +22,7 @@ const styles = (theme) => ({
     letterSpacing: '0.02rem',
     whiteSpace: 'nowrap',
     textDecoration: 'none',
+    textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
     fontSize: '16px',
     fontWeight: 'bold',
     color: theme.palette.primary.dark,

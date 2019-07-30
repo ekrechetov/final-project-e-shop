@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
                 maxHeight: '0',
                 padding: '0',
                 position: 'absolute',
-                top: '69px',
+                top: '68px',
                 right: '-20px',
                 opacity: '0',
                 borderRadius: '3px',

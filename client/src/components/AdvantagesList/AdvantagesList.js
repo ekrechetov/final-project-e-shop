@@ -6,17 +6,17 @@ import AdvantagesItem from "../AdvantagesItem/AdvantagesItem";
 const advantagesArr = [
     {
         "logo": faPaperPlane,
-        "title": "Fast Delivery",
+        "title": "Быстрая Доставка",
         "description": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese."
     },
     {
         "logo": faEye,
-        "title": "Secure Checkout",
+        "title": "Безопасный Заказ",
         "description": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese."
     },
     {
         "logo": faShareSquare,
-        "title": "Free Returns",
+        "title": "Бесплатный Возврат",
         "description": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese."
     },
 ];

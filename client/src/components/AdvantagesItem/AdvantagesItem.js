@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
 );
 
 export default function AdvantagesItem(props) {
-    console.log(props);
     const classes = useStyles();
     return (
         <div className={classes.advantagesBlock}>

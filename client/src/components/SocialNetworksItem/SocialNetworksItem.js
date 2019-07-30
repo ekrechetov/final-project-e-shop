@@ -24,7 +24,6 @@ const useStyles = makeStyles({
 
 export default function SocialNetworksItem(props) {
     const classes = useStyles();
-    console.log(props.data);
     return (
         <a href="#!" className={classes.linkIcon}>
             <FontAwesomeIcon icon={props.icon} className={classes.socialNeetworksItemIcon}/>

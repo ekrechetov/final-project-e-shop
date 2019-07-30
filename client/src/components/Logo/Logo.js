@@ -2,9 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {makeStyles} from '@material-ui/core/styles';
 import mainLogo from './main-logo.png'
-
-// const url = 'client/src/components/Logo/main-logo.png';
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
         logoWrap: {
             display: 'flex',
             alignItems: 'center',
@@ -14,7 +12,6 @@ const useStyles = makeStyles({
             width: '50px',
             height: '50px',
             backgroundImage: 'url(' + mainLogo + ');',
-            // backgroundImage: `url(${url})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
@@ -23,7 +20,9 @@ const useStyles = makeStyles({
             marginLeft: '10px',
             fontSize: '1.8rem',
             fontWeight: 'bold',
-            letterSpacing: '0.01rem'
+            letterSpacing: '0.01rem',
+            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
+            color: theme.palette.primary.dark
         },
         '@media (max-width: 767px)': {
             logoWrap: {
@@ -32,16 +31,15 @@ const useStyles = makeStyles({
             logoTitle: {
                 marginLeft: '-3px',
                 marginTop: '5px',
-                fontSize: '0.7rem'
+                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
+                fontSize: '0.8rem',
             }
         }
-    }
+    })
 );
 
 export default function Logo(props) {
-    console.log(props);
     const classes = useStyles();
-    console.log(props);
     return (
         <Link to='/' className={classes.logoWrap}>
             <span className={classes.logo} style={{backgroundImage: props.img}}>
