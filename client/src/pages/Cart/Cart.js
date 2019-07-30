@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import CartItem from './CartItem';
-// import {getLocalCart} from '../../actions/getLocalCart';
 import Container from '@material-ui/core/Container';
 import CloseButton from './CloseButton';
 import OrderButton from './OrderButton';
@@ -18,8 +17,7 @@ class Cart extends Component {
   //     cartItems: [],
   //   };
   // }
-  // componentDidMount() {
-  //   axios
+  // componentDidMount() {  //   axios
   //   .get('/cart')
   //   .then(res => {
   //     this.setState({cartItems: res.data});        
@@ -32,42 +30,7 @@ class Cart extends Component {
   //   .finally(this.setState({isLoading: false}));
   // }
   
-  // for testing only:
-  // componentDidMount() {
-  //   if (localStorage.getItem('parfumanCart') == null) {
-  //     const testCartItems = [
-  //       {
-  //         _id:"5d2ba1fc7fd83c15485777a3",
-  //         userName:"ekrechetov",
-  //         userId:"5d2ba1fc7fd83c15485777a2",
-  //         img:"4_1_2.jpg",
-  //         brand:"Dzintars",
-  //         title:"Briga",
-  //         code:"40001",
-  //         category:"Одеколон",
-  //         price:199,
-  //         quantity:2,
-  //         availability:20
-  //       },
-  //       {
-  //         _id:"5d2ba5cecdbd171d3c9cee6b",
-  //         userName:"ekrechetov",
-  //         userId:"5d2ba1fc7fd83c15485777a2",
-  //         img:"4_2_2.jpg",
-  //         brand:"Clinique",
-  //         title:"Happy For Men",
-  //         code:"40002",
-  //         category:"Одеколон",
-  //         price:499,
-  //         quantity:3,
-  //         availability:20  
-  //       }
-  //     ]
-  //     localStorage.setItem('parfumanCart', JSON.stringify(testCartItems));
-  //     const localStorageCart = JSON.parse(localStorage.getItem('parfumanCart'));
-  //     this.props.dispatch(getLocalCart(localStorageCart));
-  //   }
-  // }
+
   componentWillUnmount() {
     if (this.props.cartItems.length != 0) 
     localStorage.setItem('parfumanCart', JSON.stringify(this.props.cartItems));

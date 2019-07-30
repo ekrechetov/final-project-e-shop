@@ -15,12 +15,13 @@ class CartItem extends Component {
         {/* Количество: */}
         <QntSelector qnt={productItem.quantity}
                     code={productItem.code}
+                    availability={productItem.availability}
         />
-        {
+        {/* {
         (productItem.quantity == productItem.availability) ? 
         <div className='pop-up'>Больше {productItem.quantity} шт. нет в наличии</div>
         : null
-        }
+        } */}
         {/* Цена: */}
         <div>{productItem.price} грн.</div>
         {/* Сумма: */}

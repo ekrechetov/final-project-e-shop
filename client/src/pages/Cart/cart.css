@@ -32,6 +32,17 @@ li {
   flex-basis: 100%;
   text-align: center;
 }
+.quantity-selector {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
 .cart-img {
   max-width: 100%;
+}
+.qnt-selector-input {
+  all: unset;
+  -moz-appearance: textfield;
+  width: 3em;
+  text-align: center;
+  border-right: 2px solid #f0f0f0; 
 }
