@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
-import {BrowserRouter} from 'react-router-dom';
+import {Router, Switch as SwitchRoute, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import {Switch as Sw} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import Box from '@material-ui/core/Box';
 import {makeStyles, Switch} from '@material-ui/core';
@@ -15,14 +13,19 @@ import Register from './components/Register';
 import MainPage from "./components/MainPage/MainPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Categories from "./pages/Categories";
 import Cart from './pages/Cart/Cart';
 import ProductDetails from './pages/ProductDetails'
 import setAuthToken from './setAuthToken';
 import store from './store';
 // import img from './0r7qN8U.png';
 import withStyles from "@material-ui/core/styles/withStyles";
+import Products from './Containers/Products';
+import {createBrowserHistory} from 'history'
 
+
+
+
+const newHistory = createBrowserHistory();
 
 const styles = (theme) => ({
     page: {
@@ -39,24 +42,29 @@ const styles = (theme) => ({
 });
 
 class App extends Component {
-    render() {
+
+      render() {
         return (
             <Provider store={store}>
-                <BrowserRouter>
-                    <Box className={this.props.classes.containerBox}>
+                <Router history={newHistory}>
+                       <Box className={this.props.classes.containerBox}>
                         <Header/>
+                       
                         <Route exact path="/cart" component={Cart}/>
                         <Route exact path="/" component={MainPage}/>
                         <Route exact path="/login" component={Register}/>
-                        <Route exact path="/categories" component={Categories}/>
+                        <Route exact path='/categories' component={Products} />
+                        <Route exact path='/categories/:alias' component={Products} />
                         <Route exact path="/product/:id" component={ProductDetails}/>
+                        
                         <Footer/>
                     </Box>
-                </BrowserRouter>
+                </Router>
             </Provider>
         );
     }
 }
+
 export default withStyles(styles)(App);
 /* class App extends Component {
 render() {

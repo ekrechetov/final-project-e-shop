@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import {makeStyles} from '@material-ui/core/styles';
-import ButtonBase from '@material-ui/core/ButtonBase';
+// import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import img1 from '../../images/card-menu-1.jpg';
 import img2 from '../../images/card-menu-2.jpg';
@@ -12,26 +13,31 @@ const images = [
         url: img1,
         title: 'Парфюмированная вода',
         width: '49%',
+        alias: '/categories/parfum-voda'
     },
     {
         url: img2,
         title: 'Туалетная вода',
         width: '49%',
+        alias: '/categories/tualetnaya-voda'
     },
     {
         url: img3,
         title: 'Духи',
         width: '32%',
+        alias: '/categories/duhi'
     },
     {
         url: img4,
         title: 'Одеколон',
         width: '32%',
+        alias: '/categories/odekolon'
     },
     {
         url: img5,
         title: 'Дезодоранты',
         width: '32%',
+        alias: '/categories/dezodorant'
     },
 
 ];
@@ -120,11 +126,11 @@ export default function CardMenu() {
     return (
         <div className={classes.root}>
             {images.map(image => (
-                <ButtonBase
-                    focusRipple
+                <Link to={image.alias}
+                    focusripple="true"
                     key={image.title}
                     className={classes.image}
-                    focusVisibleClassName={classes.focusVisible}
+                    focusvisibleclassname={classes.focusVisible}
                     style={{
                         width: image.width,
                     }}
@@ -150,7 +156,7 @@ export default function CardMenu() {
                 <span className={classes.imageMarked}/>
             </Typography>
           </span>
-                </ButtonBase>
+                </Link>
             ))}
         </div>
     );

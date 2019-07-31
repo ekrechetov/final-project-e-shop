@@ -1,9 +1,7 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core';
-import MenuItem from '../MenuItem/MenuItem';
+import { makeStyles } from '@material-ui/core';
 import burgerMenuButtonImg from './burger-menu-button.png';
-import {palette} from "@material-ui/system";
-import CategoriesList from '../Categories/CategoriesList'
+import Categories from '../../Containers/Categories'
 
 const useStyles = makeStyles((theme) => ({
         menu: {
@@ -64,30 +62,6 @@ const useStyles = makeStyles((theme) => ({
     }
 ));
 
-const menuListData = [
-    {
-        "href": "#!",
-        "text": "Парфюмированная вода"
-    },
-    {
-        "href": "#!",
-        "text": "Туалетная вода"
-    },
-    {
-        "href": "#!",
-        "text": "Духи"
-    },
-    {
-        "href": "#!",
-        "text": "Одеколон"
-    },
-    {
-        "href": "#!",
-        "text": "Дезодоранты"
-    }
-];
-
-
 let toggleMenu = () => {
     const menuList = document.querySelector('#menuList');
     getComputedStyle(menuList).getPropertyValue('display') === 'none'
@@ -118,8 +92,7 @@ export default function MenuList() {
         <div className={classes.menu} id='menu'>
             <span className={classes.burgerMenuButton} id='burgerMenuButton' onClick={toggleMenu}/>
             <ul className={classes.menuList} id='menuList'>
-                {/*<MenuItem data={menuListData}/>*/}
-                <CategoriesList/>
+                <Categories />
             </ul>
         </div>
     );

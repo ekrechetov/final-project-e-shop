@@ -5,6 +5,9 @@ import quantityReducer from './quantityReducer'
 import loadProductDataReducer from './loadProductDataReducer';
 import productLoadingReducer from './productLoadingReducer';
 import cartReducer from './cartReducer';
+import categoriesReducer from './categoriesReducer'
+import productReducer from './productReducer'
+import productsPageReducer from './productsPageReducer'
 
 export default combineReducers({
   errors: errorReducer,
@@ -13,4 +16,7 @@ export default combineReducers({
   data : loadProductDataReducer,
   loading : productLoadingReducer,
   cart: cartReducer,
+  product: productReducer,
+  productsPage: productsPageReducer,
+  Categories: categoriesReducer,
 });

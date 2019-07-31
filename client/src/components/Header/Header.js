@@ -15,6 +15,11 @@ import store from "../../store";
 import Register from "../Register";
 import withStyles from "@material-ui/core/styles/withStyles";
 import ContactInfo from '../ContactInfo/ContactInfo'
+// import { fetchCategories } from '../../actions/categories';
+import {connect} from 'react-redux';
+import {fetchProducts} from '../../actions/products';
+import {fetchCategories} from '../../actions/categories';
+import {getProducts} from '../../selectors/Products';
 
 
 const styles = (theme) => ({
@@ -68,6 +73,12 @@ const styles = (theme) => ({
 
 
 class Header extends Component {
+    componentWillMount(){
+        this.props.fetchProducts();
+        this.props.fetchCategories();
+    }
+    
+
     render() {
         // window.onscroll = () => {
         //     if (window.innerWidth > 767) {
@@ -110,4 +121,15 @@ class Header extends Component {
     }
 }
 
-export default withStyles(styles)(Header)
+const mapDispatchToProps = (dispatch)=>({
+    fetchProducts: ()=>dispatch(fetchProducts()),
+    fetchCategories: ()=>dispatch(fetchCategories())
+});
+
+const mapStateToProps = (state,ownProps)=>({
+    products: getProducts(state,ownProps)
+});
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header));
+
+// export default withStyles(styles)(Header)
+
