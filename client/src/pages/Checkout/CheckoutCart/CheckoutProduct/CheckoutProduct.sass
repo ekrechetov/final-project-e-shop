@@ -1,0 +1,59 @@
+$primary-color: #444
+$secondary-color: #777
+$light-color: #e5e5e5
+
+@mixin title
+  color: $primary-color
+  font-weight: 700
+  text-align: left
+
+.checkoutProduct
+  position: relative
+  display: flex
+  align-items: center
+  padding: 20px 8px
+
+  &:not(:last-child)::before
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translateX(-50%)
+    width: 80%
+    height: 1px
+    background: $light-color
+
+
+  &-img
+    width: 100%
+    max-width: 100px
+
+    img
+      height: 100px
+
+  &-info
+    margin-left: 8px
+    text-transform: capitalize
+
+    & > :first-child
+      @include title
+    & > :last-child
+      color: $primary-color
+      font-weight: 700
+
+    & a
+      @include title
+      color: $primary-color
+      font-weight: 700
+      text-align: left
+      text-decoration: underline
+
+    *
+      color: $secondary-color
+      padding: 2px
+      box-sizing: border-box
+
+@media (max-width: 959.9px)
+  .checkoutProduct
+    &::before
+      width: 90%

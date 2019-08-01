@@ -20,25 +20,25 @@ class Cart extends Component {
   // componentDidMount() {  //   axios
   //   .get('/cart')
   //   .then(res => {
-  //     this.setState({cartItems: res.data});        
+  //     this.setState({cartItems: res.data});
   //     console.log(this.state.cartItems);
   //   })
   //   .catch(error => {
   //     this.setState({hasErrored: true});
   //     console.log(error);
-  //     })      
+  //     })
   //   .finally(this.setState({isLoading: false}));
   // }
-  
+
 
   componentWillUnmount() {
-    if (this.props.cartItems.length != 0) 
+    if (this.props.cartItems.length != 0)
     localStorage.setItem('parfumanCart', JSON.stringify(this.props.cartItems));
     else {
       if (localStorage.getItem('parfumanCart')) {
         localStorage.removeItem("parfumanCart");
       }
-    }       
+    }
   }
   render() {
     const {cartItems} = this.props;
@@ -46,14 +46,14 @@ class Cart extends Component {
     cartItems.map(item => {
       sumItems = sumItems + item.price * item.quantity;
     });
-    
-    return (      
+
+    return (
       <div>
         <div className='cart-header-bg'>
           <Container maxWidth="md" className='cart-header-content'>
             <span className='cart-title'>Корзина</span>
             <Link to="/"><CloseButton/></Link>
-          </Container>          
+          </Container>
         </div>
         <Container maxWidth="md">
           <div className="cart-theader">
@@ -63,27 +63,27 @@ class Cart extends Component {
             <div>Цена</div>
             <div>Сумма</div>
             <div></div>
-          </div>  
+          </div>
           <ul className='cart-list'>
             {/* this.state.isLoading ? <h5>Loading...</h5>: */}
             { cartItems.map(item => (
               <li key={item._id}>
-                <CartItem productItem={item} />        
-              </li>  
+                <CartItem productItem={item} />
+              </li>
               ))}
-          </ul> 
+          </ul>
         </Container>
 
         {cartItems.length != 0 ?
-        <Container maxWidth="md" className='cart-footer'>    
+        <Container maxWidth="md" className='cart-footer'>
           <span>Итого {sumItems} грн. </span>
-          <Link to="/order"> <OrderButton/></Link>
+          <Link to="/checkout"> <OrderButton/></Link>
         </Container> :
         <Container maxWidth="md">В вашей корзине товаров нет</Container>
         }
         <hr />
-      </div> 
-    )      
+      </div>
+    )
   }
 }
 const mapStoreToProps = (store) => {

@@ -3,7 +3,8 @@ import {Router, Switch as SwitchRoute, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import Box from '@material-ui/core/Box';
-import {makeStyles, Switch} from '@material-ui/core';
+import { makeStyles, Switch } from '@material-ui/core';
+import withStyles from "@material-ui/core/styles/withStyles";
 import {setCurrentUser, logoutUser} from './actions/authentication';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
@@ -18,12 +19,11 @@ import ProductDetails from './pages/ProductDetails'
 import setAuthToken from './setAuthToken';
 import store from './store';
 // import img from './0r7qN8U.png';
+import Checkout from './pages/Checkout/Checkout';
+import Profile from './pages/Profile/Profile';
 import withStyles from "@material-ui/core/styles/withStyles";
 import Products from './Containers/Products';
 import {createBrowserHistory} from 'history'
-
-
-
 
 const newHistory = createBrowserHistory();
 
@@ -34,35 +34,35 @@ const styles = (theme) => ({
         //backgroundColor: 'red'
     },
 
-    containerBox: {
-        width: '100%',
 
-        // backgroundImage: 'url(' + img + ');'
-    }
+  containerBox: {
+    width: '100%',
+
+    // backgroundImage: 'url(' + img + ');'
+  },
 });
 
 class App extends Component {
-
-      render() {
+    render() {
         return (
             <Provider store={store}>
                 <Router history={newHistory}>
                        <Box className={this.props.classes.containerBox}>
                         <Header/>
-                       
                         <Route exact path="/cart" component={Cart}/>
                         <Route exact path="/" component={MainPage}/>
                         <Route exact path="/login" component={Register}/>
                         <Route exact path='/categories' component={Products} />
                         <Route exact path='/categories/:alias' component={Products} />
                         <Route exact path="/product/:id" component={ProductDetails}/>
-                        
+                        <Route exact path="/checkout" component={Checkout} />
+                        <Route path="/profile" component={Profile} />
                         <Footer/>
                     </Box>
                 </Router>
             </Provider>
-        );
-    }
+    );
+  }
 }
 
 export default withStyles(styles)(App);
