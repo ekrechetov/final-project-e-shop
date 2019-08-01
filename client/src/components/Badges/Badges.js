@@ -35,7 +35,7 @@ const styles = (theme) => ({
 
 class CustomizedBadges extends Component {
     componentWillMount() {
-        if (localStorage.getItem('parfumanCart') != null) {
+        if (localStorage.getItem('parfumanCart') !== null) {
             const localStorageCart = JSON.parse(localStorage.getItem('parfumanCart'));
             this.props.dispatch(getLocalCart(localStorageCart));
         }

@@ -4,7 +4,6 @@ import {Provider} from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import Box from '@material-ui/core/Box';
 import { makeStyles, Switch } from '@material-ui/core';
-import withStyles from "@material-ui/core/styles/withStyles";
 import {setCurrentUser, logoutUser} from './actions/authentication';
 import Navbar from './components/Navbar';
 import Login from './components/Login';

@@ -74,7 +74,7 @@ class Cart extends Component {
           </ul>
         </Container>
 
-        {cartItems.length != 0 ?
+        {cartItems.length !== 0 ?
         <Container maxWidth="md" className='cart-footer'>
           <span>Итого {sumItems} грн. </span>
           <Link to="/checkout"> <OrderButton/></Link>

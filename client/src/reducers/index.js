@@ -18,7 +18,7 @@ export default combineReducers({
   data : loadProductDataReducer,
   loading : productLoadingReducer,
   cart: cartReducer,
-  form: formReducer
+  form: formReducer,
   product: productReducer,
   productsPage: productsPageReducer,
   Categories: categoriesReducer,

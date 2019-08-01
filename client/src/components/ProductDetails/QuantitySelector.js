@@ -66,7 +66,7 @@ function QuantitySelector(props) {
             <div className="quantity-selector">
                 <input className="quantity-selector__quantity" value={quantity || ''} onBlur = {isInputEmpty} onChange={(e) => { if (!isNaN(e.target.value)) +e.target.value > availability ? changeQuantity(+availability) : changeQuantity (+e.target.value) }}></input>
                 <div className="quantity-change-container">
-                    <div className="quantity-change-container__increment" onClick={() => quantity == availability ? handleOpen() : incrementQuantity(quantity, availability)}>+</div>
+                    <div className="quantity-change-container__increment" onClick={() => quantity === availability ? handleOpen() : incrementQuantity(quantity, availability)}>+</div>
                     <div className="quantity-change-container__decrement" onClick={() => decrementQuantity()}>-</div>
                     <Modal
                         aria-labelledby="simple-modal-title"

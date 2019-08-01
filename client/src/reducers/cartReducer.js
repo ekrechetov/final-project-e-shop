@@ -58,7 +58,7 @@ export default function (state = initialState, action) {
 
     case DELETE_CART_ITEM: {
       const newArj = state.filter(item => {
-        return (item.code != action.payload);
+        return (item.code !== action.payload);
       });
       return newArj;
     }
