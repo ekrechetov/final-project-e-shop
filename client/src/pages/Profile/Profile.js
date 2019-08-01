@@ -18,10 +18,10 @@ function Profile(props) {
   // }
   return (
     <div className='Profile'>
-      <nav>
+      <navlinks>
         <NavLink exact to={`${url}`}>Профиль</NavLink>
         <NavLink to={`${url}/orders`}>Мои Заказы</NavLink>
-      </nav>
+      </navlinks>
       <Route exact path={`${url}`} component={ProfilePage} />
       <Route exact path={`${url}/orders`} component={OrdersPage} />
     </div>
