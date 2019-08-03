@@ -16,6 +16,9 @@ const styles = (theme) => ({
 
     badgeWrapBlock: {
         color: theme.palette.primary.dark,
+        '&:hover': {
+            backgroundColor: 'transparent',
+        }
     },
     badge: {
         top: '50%',

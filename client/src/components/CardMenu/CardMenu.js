@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import {makeStyles} from '@material-ui/core/styles';
-// import ButtonBase from '@material-ui/core/ButtonBase';
+import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import img1 from '../../images/card-menu-1.jpg';
 import img2 from '../../images/card-menu-2.jpg';
@@ -93,6 +93,10 @@ const useStyles = makeStyles(theme => ({
         bottom: 0,
         backgroundSize: 'cover',
         backgroundPosition: 'center 40%',
+        // backgroundImage: 'url(' + images.url + ');',
+        // backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        // backgroundPosition: 'top'
     },
     imageBackdrop: {
         position: 'absolute',
@@ -159,5 +163,42 @@ export default function CardMenu() {
                 </Link>
             ))}
         </div>
+        // <Link to={'#!'}>
+        //     <div className={classes.root}>
+        //         {images.map(image => (
+        //             <ButtonBase
+        //                 focusRipple
+        //                 key={image.title}
+        //                 className={classes.image}
+        //                 focusVisibleClassName={classes.focusVisible}
+        //                 style={{
+        //                     width: image.width,
+        //                 }}
+        //             >
+        //                 <span
+        //                     className={classes.imageSrc}
+        //                     style={{
+        //                         backgroundImage: `url(${image.url})`,
+        //                         // backgroundSize: 'cover',
+        //                         // backgroundRepeat: 'no-repeat',
+        //                         // backgroundPosition: 'top'
+        //                     }}
+        //                 />
+        //                     <span className={classes.imageBackdrop}/>
+        //                     <span className={classes.imageButton}>
+        //                 <Typography
+        //                     component="span"
+        //                     variant="subtitle1"
+        //                     color="inherit"
+        //                     className={classes.imageTitle}
+        //                 >
+        //                     {image.title}
+        //                     <span className={classes.imageMarked}/>
+        //                 </Typography>
+        //                  </span>
+        //             </ButtonBase>
+        //         ))}
+        //     </div>
+        // </Link>
     );
 }

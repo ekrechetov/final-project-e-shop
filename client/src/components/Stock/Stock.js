@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
             width: '100% !important', // Overrides inline-style
             height: 200,
         },
+        marginTop: '20px',
         '&:hover, &$focusVisible': {
             zIndex: 1,
             '& $imageBackdrop': {
@@ -68,7 +69,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.common.black,
         opacity: 0.4,
         transition: theme.transitions.create('opacity'),
-        marginTop: '3%'
+
     },
     imageTitle: {
         position: 'relative',

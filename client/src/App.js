@@ -15,6 +15,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Cart from './pages/Cart/Cart';
 import ProductDetails from './pages/ProductDetails'
+import SignInUp from './components/SignInUp/SignInUp';
 import setAuthToken from './setAuthToken';
 import store from './store';
 // import img from './0r7qN8U.png';
@@ -36,6 +37,7 @@ const styles = (theme) => ({
 
   containerBox: {
     width: '100%',
+      fontFamily: 'Roboto, sans-serif',
 
     // backgroundImage: 'url(' + img + ');'
   },
@@ -50,7 +52,7 @@ class App extends Component {
                         <Header/>
                         <Route exact path="/cart" component={Cart}/>
                         <Route exact path="/" component={MainPage}/>
-                        <Route exact path="/login" component={Register}/>
+                        <Route exact path="/sign-up" component={SignInUp}/>
                         <Route exact path='/categories' component={Products} />
                         <Route exact path='/categories/:alias' component={Products} />
                         <Route exact path="/product/:id" component={ProductDetails}/>

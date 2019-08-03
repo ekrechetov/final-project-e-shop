@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
             outline: 'none',
             backgroundColor: 'transparent',
             // backgroundImage: 'url(' + searchIcon + ');',
-            boxShadow: 'inset 0 0 5px rgba(0,0,0,0.1), inset 0 1px 2px rgba(0,0,0,0.3)',
+            boxShadow: '0 0 4px 1px rgba(0,0,0,0.1)',
             '&::-webkit-search-cancel-button': {
                 display: 'none'
             },
@@ -29,9 +29,14 @@ const useStyles = makeStyles((theme) => ({
             '&::-ms-clear': {
                 display: 'none'
             },
-
+            '&:hover': {
+                boxShadow: '0 0 7px 2px rgba(0,0,0,0.1), inset 0 0 1px 0px rgba(0,0,0,0.2)',
+            },
             '&:focus': {
-                outline: '1px solid' + theme.palette.secondary.light
+                boxShadow: 'inset 0 0 4px 1px rgba(0,0,0,0.1), inset 0 0 2px 1px rgba(255,224,130,0.8)',
+                // boxShadow: 'inset 0 0 5px rgba(0,0,0,0.1), inset 0 1px 2px rgba(0,0,0,0.3)',
+                // theme.palette.secondary.light
+                // outline: '1px solid' + theme.palette.secondary.light
             }
         },
 

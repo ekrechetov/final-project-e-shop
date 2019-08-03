@@ -1,7 +1,81 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { loginUser } from '../actions/authentication';
+import {connect} from 'react-redux';
+import {loginUser} from '../actions/authentication';
+import withStyles from "@material-ui/core/styles/withStyles";
+
+const styles = (theme) => ({
+    login: {
+        width: '48%',
+        margin: '20px auto',
+        borderRadius: '5px',
+        border: '1px solid #f5f5f5',
+        fontSize: '1rem',
+        boxShadow: '0 0 10px rgba(0,0,0,0.5)',
+    },
+    loginTitle: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f5f5f5',
+        height: '4em',
+        color: '#ff8f00',
+        fontWeight: 'bold',
+        boxShadow: '0 0 5px rgba(0,0,0,0.5)',
+        borderTopLeftRadius: '5px',
+        borderTopRightRadius: '5px',
+        fontsize: '20px',
+    },
+    loginError: {
+        fontSize: '10px',
+        color: 'red',
+    },
+    loginForm: {
+        display: 'flex',
+        flexDirection: 'column',
+        // alignContent: 'center',
+        // justifyContent: 'space-around',
+        width: '60%',
+        height: '50vh',
+        margin: '2% auto',
+    },
+    inputContainer: {
+        display: 'flex',
+        marginTop: '10%'
+    },
+    loginInput: {
+        width: '100%',
+        height: '3em',
+        borderRadius: '5px',
+        outline: 'none',
+        paddingLeft: '10px',
+        border: '1px solid #f5f5f5',
+        boxShadow: '0 0 5px rgba(0,0,0,0.5)',
+    },
+    buttonContainer: {
+        position: 'relative',
+        bottom: '10%',
+        marginTop: 'auto'
+    },
+    loginButton: {
+        width: '100%',
+        height: '3.5em',
+        borderRadius: '5px',
+        boxShadow: '0 0 5px rgba(0,0,0,0.5)',
+        outline: 'none',
+        border: 'none',
+        backgroundColor: '#f5f5f5',
+        color: '#ff8f00',
+        fontWeight: 'bold',
+        cursor: 'pointer',
+    },
+    '@media(max-width: 767px)': {
+        login: {
+            width: '96%'
+        },
+    }
+});
+
 
 class Login extends Component {
     state = {
@@ -9,6 +83,7 @@ class Login extends Component {
         password: '',
         errors: {}
     }
+
     constructor() {
         super();
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -31,16 +106,16 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        if(this.props.auth.isAuthenticated) {
+        if (this.props.auth.isAuthenticated) {
             this.props.history.push('/');
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.auth.isAuthenticated) {
+        if (nextProps.auth.isAuthenticated) {
             this.props.history.push('/')
         }
-        if(nextProps.errors) {
+        if (nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
             });
@@ -49,37 +124,40 @@ class Login extends Component {
 
     render() {
         const {errors} = this.state;
-        return(
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={ this.handleSubmit }>
-                <div>
-                    <input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.email }
-                    />
-                    {errors.email && (<div>{errors.email}</div>)}
-                </div>
-                <div>
-                    <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.password }
-                    />
-                    {errors.password && (<div>{errors.password}</div>)}
-                </div>
-                <div>
-                    <button type="submit">
-                        Login User
-                    </button>
-                </div>
-            </form>
-        </div>
+        return (
+            <div className={this.props.classes.login}>
+                <h2 className={this.props.classes.loginTitle}>Авторизация</h2>
+                <form onSubmit={this.handleSubmit} className={this.props.classes.loginForm}>
+                    <div className={this.props.classes.inputContainer}>
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            onChange={this.handleInputChange}
+                            value={this.state.email}
+                            className={this.props.classes.loginInput}
+                        />
+                        {errors.email && (<div>{errors.email}</div>)}
+                    </div>
+                    <div className={this.props.classes.inputContainer}>
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            onChange={this.handleInputChange}
+                            value={this.state.password}
+                            className={this.props.classes.loginInput}
+
+                        />
+                        {errors.password && (<div>{errors.password}</div>)}
+                    </div>
+                    <div className={this.props.classes.buttonContainer}>
+                        <button type="submit" className={this.props.classes.loginButton}>
+                            Авторизоваться
+                        </button>
+                    </div>
+                </form>
+            </div>
         )
     }
 }
@@ -95,4 +173,5 @@ const mapStateToProps = (state) => ({
     errors: state.errors
 })
 
-export default connect(mapStateToProps, { loginUser })(Login)
+const LoginWithStyles = (withStyles(styles)(Login));
+export default connect(mapStateToProps, {loginUser})(LoginWithStyles)

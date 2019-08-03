@@ -25,7 +25,7 @@ const styles = theme => ({
 class AccountIcon extends Component {
     render() {
         return (
-            <Link to="/login" className={this.props.classes.accountIconLink}>
+            <Link to="/sign-up" className={this.props.classes.accountIconLink}>
                 <SvgIcon className={this.props.classes.accountIconWrap}><AccountBox className={this.props.classes.accountIcon}/></SvgIcon>
             </Link>
         );
