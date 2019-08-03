@@ -6,7 +6,8 @@ import CartItem from './CartItem';
 import Container from '@material-ui/core/Container';
 import CloseButton from './CloseButton';
 import OrderButton from './OrderButton';
-import './cart.css';
+import CartNav from './CartNav';
+import '../../styles/Cart/main.scss';
 
 class Cart extends Component {
   // constructor() {
@@ -50,8 +51,11 @@ class Cart extends Component {
     return (
       <div>
         <div className='cart-header-bg'>
-          <Container maxWidth="md" className='cart-header-content'>
-            <span className='cart-title'>Корзина</span>
+          <Container maxWidth="md" className='cart-header'>
+            <div>
+              <CartNav/>
+              <h2 className="cart-header-title">Корзина</h2>
+            </div>
             <Link to="/"><CloseButton/></Link>
           </Container>
         </div>
@@ -67,7 +71,7 @@ class Cart extends Component {
           <ul className='cart-list'>
             {/* this.state.isLoading ? <h5>Loading...</h5>: */}
             { cartItems.map(item => (
-              <li key={item._id}>
+              <li key={item.id} className='cart-list-item'>
                 <CartItem productItem={item} />
               </li>
               ))}
@@ -79,7 +83,7 @@ class Cart extends Component {
           <span>Итого {sumItems} грн. </span>
           <Link to="/checkout"> <OrderButton/></Link>
         </Container> :
-        <Container maxWidth="md">В вашей корзине товаров нет</Container>
+        <Container maxWidth="md" className="cart-empty">В вашей корзине товаров нет</Container>
         }
         <hr />
       </div>

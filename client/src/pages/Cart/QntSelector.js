@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {incrementCartItem, decrementCartItem, changeInputQnt} from '../../actions/changeCartItemQnt';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
         position: 'absolute',
         width: 320,
         height: 100,
-        backgroundColor: theme.palette.background.paper,
+        // backgroundColor: theme.palette.background.paper,
         border: '2px solid red',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 4),
@@ -63,7 +63,7 @@ function QntSelector(props) {
                 <input type="text"
                        onChange={(event) => isNaN(event.target.value) ? dispatch(changeInputQnt(code, 1)) : event.target.value > availability ? handleOpen() : dispatch(changeInputQnt(code, event.target.value))}
                        value={qnt}
-                       class="qnt-selector-input"/>
+                       className="qnt-selector-input"/>
                 <div className="quantity-change-container">
                     <div className="quantity-change-container__increment" onClick={() => qnt === availability ? handleOpen() :  dispatch(incrementCartItem(code))}>+</div>
                     <div className="quantity-change-container__decrement" onClick={() => dispatch(decrementCartItem(code))}>-</div>

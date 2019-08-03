@@ -16,7 +16,7 @@ function ToCartButton(props) {
     const classes = useStyles();
     return (
         <>
-            <button className="button button_primary" onClick = {() => {addCartItem({img:data.img[0], brand: data.brand, title: data.title, code: data.code, category: data.category, price: data.price, quantity: quantity, availability: data.availability})}}>  <div className="icon-container"><AddShoppingCartIcon className = {classes.fs} /></div> В КОРЗИНУ</button>
+            <button className="button button_primary" onClick = {() => {addCartItem({img:data.img[0], brand: data.brand, id: data._id, title: data.title, code: data.code, category: data.category, price: data.price, quantity: quantity, availability: data.availability})}}>  <div className="icon-container"><AddShoppingCartIcon className = {classes.fs} /></div> В КОРЗИНУ</button>
         </>
     )
 }
