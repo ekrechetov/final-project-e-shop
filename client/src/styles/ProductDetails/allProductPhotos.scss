@@ -12,6 +12,7 @@
         background-size: contain;;
         background-repeat: no-repeat;
         background-position: center;
+        cursor: pointer;
         &_active {
             border-bottom: 1px solid #000;
         }

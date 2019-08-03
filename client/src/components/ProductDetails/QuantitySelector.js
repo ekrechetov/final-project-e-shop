@@ -59,14 +59,22 @@ function QuantitySelector(props) {
         setOpen(false);
     };
 
-    const { quantity, availability, incrementQuantity, decrementQuantity, changeQuantity } = props
+    const { quantity, availability, cart, code, incrementQuantity, decrementQuantity, changeQuantity } = props
+    let currentAvailability = availability
+
+    cart.forEach(element => {
+        if(element.code === code) {
+            currentAvailability -= element.quantity;
+        }
+    });
+
 
     return (
         <>
             <div className="quantity-selector">
-                <input className="quantity-selector__quantity" value={quantity || ''} onBlur = {isInputEmpty} onChange={(e) => { if (!isNaN(e.target.value)) +e.target.value > availability ? changeQuantity(+availability) : changeQuantity (+e.target.value) }}></input>
+                <input className="quantity-selector__quantity" value={quantity || ''} onBlur = {isInputEmpty} onChange={(e) => { if (!isNaN(e.target.value)) +e.target.value > currentAvailability ? handleOpen() : changeQuantity (+e.target.value) }}></input>
                 <div className="quantity-change-container">
-                    <div className="quantity-change-container__increment" onClick={() => quantity === availability ? handleOpen() : incrementQuantity(quantity, availability)}>+</div>
+                    <div className="quantity-change-container__increment" onClick={() => quantity == currentAvailability ? handleOpen() : incrementQuantity(quantity, currentAvailability)}>+</div>
                     <div className="quantity-change-container__decrement" onClick={() => decrementQuantity()}>-</div>
                     <Modal
                         aria-labelledby="simple-modal-title"
@@ -76,7 +84,7 @@ function QuantitySelector(props) {
                     >
                         <div style={modalStyle} className={classes.paper}>
                             <p id="simple-modal-description">
-                                Это максимальное количество товара в наличии
+                                Максимальное количество товара в наличии : {currentAvailability}
                             </p>
                             <button className={classes.button} onClick={handleClose}>ЗАКРЫТЬ</button>
                         </div>
@@ -95,13 +103,15 @@ function QuantitySelector(props) {
 const mapStoreToProps = (store) => {
     return {
         quantity: store.quantity.quantity,
-        availability: store.data.availability
+        availability: store.data.availability,
+        code: store.data.code,
+        cart: store.cart,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        incrementQuantity: (quantity, availability) => dispatch(incrementQuantity(quantity, availability)),
+        incrementQuantity: (quantity, currentAvailability) => dispatch(incrementQuantity(quantity, currentAvailability)),
         decrementQuantity: () => dispatch(decrementQuantity()),
         changeQuantity: (quantity) => dispatch(changeQuantity(quantity))
     }

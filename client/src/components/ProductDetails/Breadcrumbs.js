@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
+import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
@@ -14,13 +14,13 @@ const useStyles = makeStyles(theme => ({
   },
   fs: {
     fontSize: 14,
+    color: 'grey'
   },
+  fs1: {
+    fontSize: 14,
+    color: 'black'
+  }
 }));
-
-function handleClick(event) {
-  event.preventDefault();
-  alert('You clicked a breadcrumb.');
-}
 
   function SimpleBreadcrumbs(props) {
   const classes = useStyles();
@@ -29,13 +29,13 @@ function handleClick(event) {
     <div className={classes.root}>
       <Paper elevation={0}>
         <Breadcrumbs aria-label="Breadcrumb">
-          <Link className={classes.fs} color="inherit" href="/">
+          <Link to = {'/'} className={classes.fs}>
             Главная
           </Link>
-          <Link className={classes.fs} color="inherit" href="/getting-started/installation/" onClick={handleClick}>
+          <Link to = {`/categories/${data.alias}`}className={classes.fs}>
             {data.category}
           </Link>
-          <Typography className={classes.fs} color="textPrimary">{data.title}</Typography>
+          <Typography className={classes.fs1}>{data.title}</Typography>
         </Breadcrumbs>
       </Paper>
       <br />

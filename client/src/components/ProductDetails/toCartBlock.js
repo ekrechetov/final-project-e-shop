@@ -5,8 +5,16 @@ import { connect } from 'react-redux'
 
 class ToCartBlock extends Component {
     render() {
-        const {availability, quantity} = this.props
-        if (availability > 0 && quantity <= availability) {
+        const {availability, cart, code} = this.props
+        let currentAvailability = availability
+
+        cart.forEach(element => {
+            if(element.code === code) {
+                currentAvailability -= element.quantity;
+            }
+        });
+
+        if (currentAvailability > 0) {
             return (
                 <div className="to-cart-container">
                     <QuantitySelector />
@@ -14,17 +22,10 @@ class ToCartBlock extends Component {
                     <div className="to-cart-container__availibility">В НАЛИЧИИ</div>
                 </div>
             )
-        } else if (quantity > availability) {
-            return (
-                <div className="to-cart-container">
-                    <QuantitySelector />
-                    <div className="to-cart-container__availibility_out-of-stock">НЕДОСТУПНО</div>
-                </div>
-            )
         }
         return (
             <div className="to-cart-container">
-                <div className="to-cart-container__availibility_out-of-stock">НЕТ В НАЛИЧИИ</div>
+                <div className="to-cart-container__availibility_out-of-stock">ТОВАР ЗАКОНЧИЛСЯ</div>
             </div>
         )
     }
@@ -32,7 +33,9 @@ class ToCartBlock extends Component {
 const mapStoreToProps = (store) => {
     return {
         availability: store.data.availability,
-        quantity: store.quantity.quantity
+        code: store.data.code,
+        quantity: store.quantity.quantity,
+        cart: store.cart
     }
 }
 export default connect(mapStoreToProps)(ToCartBlock)

@@ -16,6 +16,7 @@
         line-height: calcFluidSize(30, 60, 320, 768);
         font-family: "Dosis",sans-serif;
         font-size: 15px;
+        cursor: pointer;
         &:focus {
             outline: none;
         }
