@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         //     backgroundRepeat: 'no-repeat',
         // },
         logoTitle: {
-            marginLeft: '50%',
+            // marginLeft: '50%',
             fontSize: '2.8rem',
             fontWeight: 'bold',
             letterSpacing: '0.2rem',
@@ -26,13 +26,16 @@ const useStyles = makeStyles((theme) => ({
         },
         '@media (max-width: 767px)': {
             logoWrap: {
-                flexDirection: 'column'
+                // flexDirection: 'column'
+                position: 'absolute',
+                top: '-31px',
             },
             logoTitle: {
-                marginLeft: '-3px',
+                // marginLeft: '-3px',
                 marginTop: '5px',
                 textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
-                fontSize: '0.8rem',
+                letterSpacing: '0.1rem',
+                fontSize: '1.1rem',
             }
         }
     })

@@ -8,10 +8,9 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex',
             justifyContent: 'center',
             minWidth: '100%',
-            position: 'absolute',
             zIndex: '2',
-            transform: 'translate(0, 65px)',
-            borderTop: '1px solid #ff8f00',
+            // transform: 'translate(0, 25px)',
+            borderTop: '1px solid' + theme.palette.secondary.main,
             marginTop: '1%'
         },
         menuList: {
@@ -28,9 +27,11 @@ const useStyles = makeStyles((theme) => ({
                 display: 'flex',
                 flexDirection: 'column',
                 minWidth: '0',
+                marginTop: '0',
                 position: 'absolute',
-                right: '0',
-                transform: 'translate(0, 0)',
+                right: '20px',
+                // transform: 'translate(0, 0)',
+                borderTop: '0'
             },
             menuList: {
                 display: 'none',
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
                 maxHeight: '0',
                 padding: '0',
                 position: 'absolute',
-                top: '68px',
+                top: '62px',
                 right: '-20px',
                 opacity: '0',
                 borderRadius: '3px',

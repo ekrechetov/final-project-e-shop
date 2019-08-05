@@ -9,16 +9,16 @@ const styles = (theme) => ({
     contactInfoBlock: {
         display: 'flex',
         flexDirection: 'column',
-        position: 'absolute',
-        right: '0',
+        // position: 'absolute',
+        // right: '0',
         zIndex: '3'
     },
     contactIconButton: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '32px',
-        height: '32px',
+        width: '24px',
+        height: '24px',
         cursor: 'pointer',
         color: theme.palette.primary.dark
     },

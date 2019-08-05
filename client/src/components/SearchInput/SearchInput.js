@@ -8,10 +8,8 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex',
             alignItems: 'center',
             maxWidth: '250px',
-            margin: '0 160px 0 20px',
             position: 'relative'
         },
-
         searchInput: {
             boxSizing: 'border-box',
             width: '100%',
@@ -39,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
                 // outline: '1px solid' + theme.palette.secondary.light
             }
         },
-
         searchSubmit: {
             position: 'absolute',
             right: '5px',
@@ -57,7 +54,12 @@ const useStyles = makeStyles((theme) => ({
             '&:hover': {
                 opacity: '0.5'
             }
+        },
+    '@media (max-width: 767px)': {
+        searchForm: {
+            marginRight: '70px'
         }
+    }
     }))
 ;
 

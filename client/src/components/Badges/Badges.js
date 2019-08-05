@@ -10,8 +10,8 @@ import {Link} from "react-router-dom";
 
 const styles = (theme) => ({
     badgeLinkWrap: {
-        position: 'absolute',
-        right: '50px',
+        // position: 'absolute',
+        // right: '50px',
     },
 
     badgeWrapBlock: {
@@ -31,7 +31,7 @@ const styles = (theme) => ({
     },
     '@media (max-width: 767px)': {
         badgeLinkWrap: {
-            right: '75px',
+            // right: '75px',
         }
     }
 });

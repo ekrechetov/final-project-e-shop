@@ -20,64 +20,76 @@ import {connect} from 'react-redux';
 import {fetchProducts} from '../../actions/products';
 import {fetchCategories} from '../../actions/categories';
 import {getProducts} from '../../selectors/Products';
+import {flexbox} from "@material-ui/system";
 
 
 const styles = (theme) => ({
     header: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
         padding: '30px 20px 5px 20px',
         boxSizing: 'border-box',
         width: '100%',
-        height: '160px',
+        height: '140px',
         backgroundColor: theme.palette.primary.main,
-        overflow: 'hidden',
         fontFamily: 'Roboto, sans-serif',
         transition: 'all 0.3s ease'
     },
     containerBox: {
-        position: 'relative',
         display: 'flex',
+        justifyContent: 'space-between',
         width: '100%',
-    },
-    textField: {
         position: 'relative',
-        right: '100px',
-        '&:hover': {},
+    },
+    optionIconWrap: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '140px',
+        height: '30px',
+        position: 'relative'
+    },
+    // textField: {
+    //     position: 'relative',
+    //     right: '100px',
+    //     '&:hover': {},
+    //
+    //     '&:focused': {
+    //         backgroundColor: '#fff',
+    //         borderColor: 'rgba(52, 173, 1, 1)',
+    //     },
+    // },
+    // accountIcon: {
+    //     position: 'relative',
+    //     right: '65px',
+    //     cursor: 'pointer',
+    //     color: theme.palette.primary.dark
+    // },
 
-        '&:focused': {
-            backgroundColor: '#fff',
-            borderColor: 'rgba(52, 173, 1, 1)',
-        },
-    },
-    accountIcon: {
-        position: 'relative',
-        right: '65px',
-        cursor: 'pointer',
-        color: theme.palette.primary.dark
-    },
-
-    icon: {
-        backgroundColor: 'blue'
-    },
-
-    '@media (max-width: 1199)': {
-        header: {}
-    },
+    // icon: {
+    //     backgroundColor: 'blue'
+    // },
 
     '@media (max-width: 767px)': {
         header: {
-            height: '120px',
+            height: '100px',
+            padding: '5px 20px',
             overflow: 'visible',
+        },
+        optionIconWrap: {
+            right: '60px',
         }
     }
 });
 
 
 class Header extends Component {
-    componentWillMount(){
+    componentWillMount() {
         this.props.fetchProducts();
         this.props.fetchCategories();
     }
-    
+
 
     render() {
         // window.onscroll = () => {
@@ -107,27 +119,25 @@ class Header extends Component {
                     {/*/>*/}
                     <SearchInput/>
                     <Logo img={`url("client/src/components/Logo/main-logo.png");`}/>
-
-                    <Badges/>
-
-                    <AccountIcon/>
-
-                    <ContactInfo/>
-
-                    <MenuList/>
+                    <div className={this.props.classes.optionIconWrap}>
+                        <AccountIcon/>
+                        <Badges/>
+                        <ContactInfo/>
+                    </div>
                 </Box>
+                <MenuList/>
             </header>
         );
     }
 }
 
-const mapDispatchToProps = (dispatch)=>({
-    fetchProducts: ()=>dispatch(fetchProducts()),
-    fetchCategories: ()=>dispatch(fetchCategories())
+const mapDispatchToProps = (dispatch) => ({
+    fetchProducts: () => dispatch(fetchProducts()),
+    fetchCategories: () => dispatch(fetchCategories())
 });
 
-const mapStateToProps = (state,ownProps)=>({
-    products: getProducts(state,ownProps)
+const mapStateToProps = (state, ownProps) => ({
+    products: getProducts(state, ownProps)
 });
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header));
 

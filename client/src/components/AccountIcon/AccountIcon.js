@@ -7,8 +7,8 @@ import SvgIcon from "@material-ui/core/SvgIcon";
 
 const styles = theme => ({
     accountIconLink: {
-        position: 'absolute',
-        right: '120px',
+        // position: 'absolute',
+        // right: '120px',
     },
     accountIconWrap: {
         width: '24px',
@@ -18,7 +18,7 @@ const styles = theme => ({
     },
     '@media (max-width: 767px)': {
         accountIconLink: {
-            right: '130px',
+            // right: '130px',
         }
     }
 });
