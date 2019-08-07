@@ -7,6 +7,7 @@ import { makeStyles, Switch } from '@material-ui/core';
 import {setCurrentUser, logoutUser} from './actions/authentication';
 import Account from './components/Account';
 import Login from './components/Login';
+import Home from './components/Home';
 import Register from './components/Register';
 // import Home from './components/Home';
 import Slider from "./components/Slider/Slider";

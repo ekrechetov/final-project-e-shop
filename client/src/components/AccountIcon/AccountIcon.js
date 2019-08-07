@@ -33,3 +33,19 @@ class AccountIcon extends Component {
 }
 
 export default withStyles(styles)(AccountIcon);
+// import React from 'react';
+// import { withStyles } from '@material-ui/styles';
+//
+// const styles = {
+//     root: {
+//         backgroundColor: 'red',
+//     },
+// };
+//
+// class MyComponent extends React.Component {
+//     render () {
+//         return <div className={this.props.classes.root} />;
+//     }
+// }
+//
+// export default withStyles(styles)(MyComponent);

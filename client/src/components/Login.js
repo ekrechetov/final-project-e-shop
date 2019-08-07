@@ -83,7 +83,6 @@ class Login extends Component {
         password: '',
         errors: {}
     }
-
     constructor() {
         super();
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -166,12 +165,12 @@ Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
-}
+};
 
 const mapStateToProps = (state) => ({
     auth: state.auth,
     errors: state.errors
-})
+});
 
 const LoginWithStyles = (withStyles(styles)(Login));
 export default connect(mapStateToProps, {loginUser})(LoginWithStyles)

@@ -15,12 +15,8 @@ class SignInUp extends Component {
     render() {
         return (
             <div className={this.props.classes.signInUp}>
-                <Register>
-
-                </Register>
-                <Login>
-
-                </Login>
+                <Register/>
+                <Login/>
             </div>
         );
     }
