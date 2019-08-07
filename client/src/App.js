@@ -5,17 +5,17 @@ import jwt_decode from 'jwt-decode';
 import Box from '@material-ui/core/Box';
 import { makeStyles, Switch } from '@material-ui/core';
 import {setCurrentUser, logoutUser} from './actions/authentication';
-import Navbar from './components/Navbar';
+import Account from './components/Account';
 import Login from './components/Login';
-import Home from './components/Home';
-import Slider from "./components/Slider/Slider";
 import Register from './components/Register';
+// import Home from './components/Home';
+import Slider from "./components/Slider/Slider";
 import MainPage from "./components/MainPage/MainPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Cart from './pages/Cart/Cart';
 import ProductDetails from './pages/ProductDetails'
-import SignInUp from './components/SignInUp/SignInUp';
+// import SignInUp from './components/SignInUp/SignInUp';
 import setAuthToken from './setAuthToken';
 import store from './store';
 // import img from './0r7qN8U.png';
@@ -52,7 +52,10 @@ class App extends Component {
                         <Header/>
                         <Route exact path="/cart" component={Cart}/>
                         <Route exact path="/" component={MainPage}/>
-                        <Route exact path="/sign-up" component={SignInUp}/>
+                        {/* <Route exact path="/sign-up" component={SignInUp}/> */}
+                        <Route exact path="/account" component={Account}/>
+                        <Route exact path="/login" component={Login}/>
+                        <Route exact path="/register" component={Register}/>
                         <Route exact path='/categories' component={Products} />
                         <Route exact path='/categories/:alias' component={Products} />
                         <Route exact path="/product/:id" component={ProductDetails}/>

@@ -51,7 +51,7 @@ class CustomizedBadges extends Component {
             qntInCart = qntInCart + item.quantity;
         });
         return (
-            <Link to={'/cart'} className={this.props.classes.badgeLinkWrap}>
+            <Link to={'/cart'} className={this.props.classes.badgeLinkWrap} title="Корзина">
             <IconButton aria-label="Cart" className={this.props.classes.badgeWrapBlock}>
                 <Badge badgeContent={qntInCart} className={this.props.classes.badge}>
                     <ShoppingCartIcon className={this.props.classes.badgeIcon}/>

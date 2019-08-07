@@ -70,7 +70,7 @@ class ContactInfo extends Component {
     render() {
         return (
             <article className={this.props.classes.contactInfoBlock}>
-                <span className={this.props.classes.contactIconButton} onClick={this.toggleMenu}>
+                <span className={this.props.classes.contactIconButton} onClick={this.toggleMenu} title="Контакты">
                     <FontAwesomeIcon icon={faPhoneSquare} size="1x" className={this.props.classes.contactIcon}/>
                 </span>
                 <div className={this.props.classes.contactInfo} id='contactInfo'>
