@@ -1,8 +1,3 @@
-// const express = require('express');
-// const router = express.Router();
-// const mongoose = require('mongoose');
-// const User = require('./dbmodels/user');
-
 const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
@@ -24,9 +19,8 @@ router.get('/find/:id', function (req, res) {
             console.log(data)
             res.send(data)
         })
-    // find('products', {_id : "5d1dff5f5605794c0deeb9b4"})
-    // .then(res => console.log(res))
-})
+    })
+
 router.post('/add-product', function (req, res) {
     const newProduct = new Product({
         brand: req.body.brand,
@@ -146,14 +140,7 @@ router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) =
     });
 });
 
-//get
-// router.get("/users", (req,res)=>{
-//     User.find({})
-//     .then(user=>{
-//         res.send(user);
-//     });
-// });
-//get
+
 router.get("/categories/", (req,res)=>{
   Product.find({})
     .then(product=>{
@@ -175,13 +162,6 @@ router.post("/addprod", (req,res)=>{
     });
 });
 
-//post
-// router.post("/register", (req,res)=>{
-//     User.create(req.body)
-//     .then(user=>{
-//         res.send(user);
-//     });
-// });
 
 //put
 router.put("/users/:id", (req, res) => {
@@ -202,5 +182,52 @@ router.delete("/users/:id", (req, res) => {
         });
 });
 
+
+router.post("/checkout", async (req, res) => {
+    const { user_id, order, address, card } = req.body.data
+
+    const newOrder = new Order({
+        address,
+        card,
+        order,
+        user_id,
+    })
+    await newOrder.save()
+
+    console.log(newOrder);
+    res.status(200).json({
+      message: 'Thank you for your order!'
+    })
+})
+
+router.post("/user_customize", (req, res) => {
+    const { data, user_id } = req.body
+    console.log(data, user_id);
+
+    User.findById(user_id, async (err, doc) => {
+        const newpassword = await bcrypt.compare(data.prevpassword, doc.password)
+        if(newpassword){
+            bcrypt.genSalt(10, (err, salt) => {
+                if (err) console.error('There was an error', err);
+                else {
+                    bcrypt.hash(data.newpassword, salt, (err, hash) => {
+                        if (err) console.error('There was an error', err);
+                        else {
+                            doc.password = hash;
+                            doc.save()
+                            res.status(200).json({
+                                user_customize: 'success'
+                            })
+                        }
+                    });
+                }
+            });
+        }else{
+            res.status(200).json({
+                user_customize: 'fail'
+            })
+        }
+    })
+})
 
 module.exports = router;

@@ -1,18 +1,11 @@
+import axios from 'axios'
 import { EMPTY_CART } from './types';
 
 export const submitCheckout = (data,onSuccess, onFail) => async dispatch =>{
-
-  const { address, order, card } = data
-  const postData = {
-    user_id: await localStorage.getItem('USER_ID'),
-    address,
-    card,
-    order
-  }
-
   try {
-    //POST REQUEST
-    await onSuccess('Thank your for order')
+    await axios.post('/checkout', { data })
+    .then(() => onSuccess('Thank your for order'))
+    .then(() => dispatch({ type: EMPTY_CART }))
   } catch (err) {
     await onFail(`Couldn't connect to the server ${err}`)
   }

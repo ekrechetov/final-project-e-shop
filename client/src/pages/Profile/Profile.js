@@ -13,9 +13,11 @@ function Profile(props) {
   //   props.fetchMember()
   // }, [props])
 
-  // if(!props.isAuthenticated && !props.token){
-  //   props.history.push('/register')
-  // }
+  useEffect(() => {
+    if(!props.isAuthenticated){
+      props.history.push('/register')
+    }
+  })
   return (
     <div className='Profile'>
       <navlinks>
@@ -29,8 +31,7 @@ function Profile(props) {
 }
 
 const mapStateToProps = state => ({
-  // isAuthenticated: state.auth.isAuthenticated,
-  // token: state.auth.token/
+  isAuthenticated: state.auth.isAuthenticated,
 })
 const mapDispatchToProps = dispatch => ({
   // fetchMember: () => dispatch(fetchMember())

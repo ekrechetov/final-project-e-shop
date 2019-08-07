@@ -4,7 +4,8 @@ import {
   DECREMENT_CART_ITEM,
   CHANGE_INPUT_QNT,
   DELETE_CART_ITEM,
-  ADD_CART_ITEM
+  ADD_CART_ITEM,
+  EMPTY_CART
   } from "../actions/types";
 
 const initialState = [];
@@ -23,6 +24,8 @@ export default function (state = initialState, action) {
         }
         else return item;
       });
+
+      localStorage.setItem('parfumanCart', JSON.stringify(newArj))
       return newArj;
     }
 
@@ -34,12 +37,14 @@ export default function (state = initialState, action) {
         }
         else return item;
       });
+
+      localStorage.setItem('parfumanCart', JSON.stringify(newArj))
       return newArj;
     }
 
-    case CHANGE_INPUT_QNT: {      
+    case CHANGE_INPUT_QNT: {
       const newArj = state.map(item => {
-        if (item.code === action.payload.code) {          
+        if (item.code === action.payload.code) {
           if (+action.payload.quantity < 1) {
             return {...item, quantity: 0};
           }
@@ -53,6 +58,8 @@ export default function (state = initialState, action) {
         }
         else {return item;}
       });
+
+      localStorage.setItem('parfumanCart', JSON.stringify(newArj))
       return newArj;
     }
 
@@ -60,18 +67,24 @@ export default function (state = initialState, action) {
       const newArj = state.filter(item => {
         return (item.code !== action.payload);
       });
+
+      localStorage.setItem('parfumanCart', JSON.stringify(newArj))
       return newArj;
     }
     case ADD_CART_ITEM: {
       const newArj = state.filter(item => {
         if(item.code === action.payload.code) {
           action.payload.quantity += item.quantity
-        } 
+        }
         return item.code != action.payload.code
       })
-      
+
+      localStorage.setItem('parfumanCart', JSON.stringify([...newArj, action.payload]))
       return [...newArj, action.payload]
     }
+    case EMPTY_CART:
+      localStorage.removeItem('parfumanCart')
+      return []
     default: return state;
   }
 }

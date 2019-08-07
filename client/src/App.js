@@ -25,6 +25,8 @@ import Profile from './pages/Profile/Profile';
 import withStyles from "@material-ui/core/styles/withStyles";
 import Products from './Containers/Products';
 import {createBrowserHistory} from 'history'
+import Toaster from './pages/Toaster/Toaster';
+
 
 const newHistory = createBrowserHistory();
 
@@ -49,7 +51,8 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <Router history={newHistory}>
-                       <Box className={this.props.classes.containerBox}>
+                        <Toaster />
+                        <Box className={this.props.classes.containerBox}>
                         <Header/>
                         <Route exact path="/cart" component={Cart}/>
                         <Route exact path="/" component={MainPage}/>
