@@ -94,7 +94,6 @@ class Login extends Component {
         password: '',
         errors: {}
     }
-
     constructor() {
         super();
         this.handleInputChange = this.handleInputChange.bind(this);

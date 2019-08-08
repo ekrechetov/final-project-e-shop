@@ -61,7 +61,6 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <Router history={newHistory}>
-
                         <Toaster />
                         <Box className={this.props.classes.containerBox}>
                         <Header/>
