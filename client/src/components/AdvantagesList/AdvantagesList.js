@@ -4,20 +4,23 @@ import {faPaperPlane, faEye, faShareSquare} from '@fortawesome/free-regular-svg-
 import AdvantagesItem from "../AdvantagesItem/AdvantagesItem";
 
 const advantagesArr = [
-    {   "key": 1,
+    {
+        "key": 1,
         "logo": faPaperPlane,
         "title": "Быстрая Доставка",
-        "description": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese."
+        "description": "Отправления и доставка товара в любой день в любое время, в кратчайшие сроки!"
     },
-    {    "key": 2,
+    {
+        "key": 2,
         "logo": faEye,
         "title": "Безопасный Заказ",
-        "description": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese."
+        "description": "Отправка-получение товара по принципу «с рук в руки», оплачивай товар после получения!"
     },
-    {   "key": 3,
+    {
+        "key": 3,
         "logo": faShareSquare,
         "title": "Бесплатный Возврат",
-        "description": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese."
+        "description": "Полный, 100% возврат средств при несоответствии товара вашим ожиданиям!"
     },
 ];
 
@@ -40,7 +43,8 @@ export default function AdvantagesList(props) {
     return (
         <div className={classes.advantagesWrap}>
             {advantagesArr.map((elem) => {
-                return <AdvantagesItem logo={elem.logo} title={elem.title} key={elem.key} description={elem.description}/>
+                return <AdvantagesItem logo={elem.logo} title={elem.title} key={elem.key}
+                                       description={elem.description}/>
             })}
         </div>
     );

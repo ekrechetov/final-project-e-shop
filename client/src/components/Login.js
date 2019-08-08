@@ -6,6 +6,9 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = (theme) => ({
     login: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
         width: '48%',
         margin: '20px auto',
         borderRadius: '5px',
@@ -17,14 +20,15 @@ const styles = (theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f5f5f5',
-        height: '4em',
-        color: '#ff8f00',
-        fontWeight: 'bold',
-        boxShadow: '0 0 5px rgba(0,0,0,0.5)',
         borderTopLeftRadius: '5px',
         borderTopRightRadius: '5px',
-        fontsize: '20px',
+        backgroundColor: '#f5f5f5',
+        width: '100%',
+        height: '4em',
+        fontSize: '20px',
+        fontWeight: 'bold',
+        color: '#ff8f00',
+        boxShadow: '0 0 5px rgba(0,0,0,0.5)',
     },
     loginError: {
         fontSize: '10px',
@@ -35,17 +39,23 @@ const styles = (theme) => ({
         flexDirection: 'column',
         // alignContent: 'center',
         // justifyContent: 'space-around',
-        width: '60%',
-        height: '50vh',
+        width: '51%',
+        // height: '50vh',
         margin: '2% auto',
+    },
+    inputsWrap: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        marginBottom: '2vw'
     },
     inputContainer: {
         display: 'flex',
-        marginTop: '10%'
+        marginTop: '2vw'
     },
     loginInput: {
         width: '100%',
-        height: '3em',
+        height: '35px',
         borderRadius: '5px',
         outline: 'none',
         paddingLeft: '10px',
@@ -53,9 +63,10 @@ const styles = (theme) => ({
         boxShadow: '0 0 5px rgba(0,0,0,0.5)',
     },
     buttonContainer: {
+        width: '100%',
         position: 'relative',
-        bottom: '10%',
-        marginTop: 'auto'
+        // bottom: '10%',
+        // marginTop: 'auto'
     },
     loginButton: {
         width: '100%',
@@ -127,28 +138,30 @@ class Login extends Component {
             <div className={this.props.classes.login}>
                 <h2 className={this.props.classes.loginTitle}>Авторизация</h2>
                 <form onSubmit={this.handleSubmit} className={this.props.classes.loginForm}>
-                    <div className={this.props.classes.inputContainer}>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            name="email"
-                            onChange={this.handleInputChange}
-                            value={this.state.email}
-                            className={this.props.classes.loginInput}
-                        />
-                        {errors.email && (<div>{errors.email}</div>)}
-                    </div>
-                    <div className={this.props.classes.inputContainer}>
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            onChange={this.handleInputChange}
-                            value={this.state.password}
-                            className={this.props.classes.loginInput}
+                    <div className={this.props.classes.inputsWrap}>
+                        <div className={this.props.classes.inputContainer}>
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                name="email"
+                                onChange={this.handleInputChange}
+                                value={this.state.email}
+                                className={this.props.classes.loginInput}
+                            />
+                            {errors.email && (<div>{errors.email}</div>)}
+                        </div>
+                        <div className={this.props.classes.inputContainer}>
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                name="password"
+                                onChange={this.handleInputChange}
+                                value={this.state.password}
+                                className={this.props.classes.loginInput}
 
-                        />
-                        {errors.password && (<div>{errors.password}</div>)}
+                            />
+                            {errors.password && (<div>{errors.password}</div>)}
+                        </div>
                     </div>
                     <div className={this.props.classes.buttonContainer}>
                         <button type="submit" className={this.props.classes.loginButton}>
