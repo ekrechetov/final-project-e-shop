@@ -61,11 +61,11 @@ function QntSelector(props) {
         <>
             <div className="quantity-selector">
                 <input type="text"
-                       onChange={(event) => isNaN(event.target.value) ? dispatch(changeInputQnt(code, 1)) : event.target.value > availability ? handleOpen() : dispatch(changeInputQnt(code, event.target.value))}
+                       onChange={(event) => isNaN(event.target.value) ? dispatch(changeInputQnt(code, 1)) : +event.target.value > availability ? handleOpen() : dispatch(changeInputQnt(code, event.target.value))}
                        value={qnt}
                        className="qnt-selector-input"/>
                 <div className="quantity-change-container">
-                    <div className="quantity-change-container__increment" onClick={() => qnt === availability ? handleOpen() :  dispatch(incrementCartItem(code))}>+</div>
+                    <div className="quantity-change-container__increment" onClick={() => qnt == availability ? handleOpen() :  dispatch(incrementCartItem(code))}>+</div>
                     <div className="quantity-change-container__decrement" onClick={() => dispatch(decrementCartItem(code))}>-</div>
                     <Modal
                         aria-labelledby="simple-modal-title"

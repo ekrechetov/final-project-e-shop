@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import stockImg from '../../images/stock-img.jpg';
+import {Link} from "react-router-dom";
 const images = [
     {
         url: stockImg,
@@ -103,6 +104,7 @@ export default function Stock(props) {
                         width: image.width,
                     }}
                 >
+          <Link to = {'/product/5d322b5b5cdb8129545bae44'}>
           <span
               className={classes.imageSrc}
               style={{
@@ -121,6 +123,7 @@ export default function Stock(props) {
                 <span className={classes.imageMarked}/>
             </Typography>
           </span>
+          </Link>
                 </ButtonBase>
             ))}
         </div>
