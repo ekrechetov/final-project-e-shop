@@ -8,6 +8,7 @@ const validateRegisterInput = require('./validation/register');
 const validateLoginInput = require('./validation/login');
 
 const User = require('./dbmodels/user');
+const Order = require('./dbmodels/order');
 const Product = require('./dbmodels/product')
 const Order = require('./dbmodels/order');
 
@@ -184,7 +185,6 @@ router.delete("/users/:id", (req, res) => {
         });
 });
 
-
 router.post("/checkout", async (req, res) => {
     const { user_id, order, address, card } = req.body.data
 
@@ -229,6 +229,69 @@ router.post("/user_customize", (req, res) => {
                 user_customize: 'fail'
             })
         }
+    })
+})
+
+
+router.post("/checkout", async (req, res) => {
+    const { user_id, order, address, card } = req.body.data
+
+    const newOrder = new Order({
+        address,
+        card,
+        order,
+        user_id
+    })
+    await newOrder.save()
+
+    console.log(newOrder);
+    res.status(200).json({
+      message: 'Thank you for your order!'
+    })
+})
+
+router.post("/user_customize", (req, res) => {
+    const { data, user_id } = req.body
+    console.log(data, user_id);
+
+    User.findById(user_id, async (err, doc) => {
+        const newpassword = await bcrypt.compare(data.prevpassword, doc.password)
+        if(newpassword){
+            bcrypt.genSalt(10, (err, salt) => {
+                if (err) console.error('There was an error', err);
+                else {
+                    bcrypt.hash(data.newpassword, salt, (err, hash) => {
+                        if (err) console.error('There was an error', err);
+                        else {
+                            doc.password = hash;
+                            doc.save()
+                            res.status(200).json({
+                                user_customize: 'success'
+                            })
+                        }
+                    });
+                }
+            });
+        }else{
+            res.status(200).json({
+                user_customize: 'fail'
+            })
+        }
+    })
+})
+
+
+router.post("/user_orders", async (req, res) => {
+    const { user_id } = req.body
+    const orders = []
+    const userOrders = await Order.find({
+      "user_id": user_id
+    });
+
+    userOrders.forEach(item => orders.push(item.order))
+
+    res.status(200).json({
+      orders
     })
 })
 

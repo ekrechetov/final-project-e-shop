@@ -5,10 +5,10 @@ import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import { createTextMask } from 'redux-form-input-masks'
 import { validate } from '../../../validation/checkout'
-import { emptyCart, submitCheckout } from '../../../actions/cart'
+import { submitCheckout } from '../../../actions/cart'
 import { Button } from '@material-ui/core';
 import CustomTextField from './../CustomTextField/CustomTextField'
-import Toaster, { notify } from './../../Toaster/Toaster';
+import { notify } from './../../Toaster/Toaster';
 
 const phoneMask = createTextMask({ pattern: '9 (99) 999 99 99' })
 const cardMask = createTextMask({ pattern: '9999 9999 9999 9999' })
@@ -16,33 +16,29 @@ const expMask = createTextMask({ pattern: '99/99' })
 
 function Shipping (props) {
 
-  const { handleSubmit, valid, cart, submitCheckout, emptyCart } = props
+  const { handleSubmit, valid, cart, submitCheckout, user_id } = props
   const submitBtn = createRef()
 
   const submit = async (data) => {
     submitBtn.current.disabled = true
 
-    const onSuccess = (message) => {
-      setTimeout(() => emptyCart(), 3000)
-      notify('success', message)
-    }
-    const onFail = (message) => {
-      notify('error', message)
-    }
+    const onSuccess = (message) => notify('success', message)
+    const onFail = (message) => notify('error', message)
 
     const { cardnumber, exp, cvv, ...rest } = data
     const dataToGo = {
+      user_id: user_id,
       address: {...rest},
       card: { cardnumber, exp, cvv },
       order: cart,
     }
 
     await submitCheckout(dataToGo, onSuccess, onFail)
+
   }
 
   return (
     <div className='CheckoutForm'>
-      <Toaster />
       <form onSubmit={handleSubmit(submit)}>
         <h2 className='CheckoutForm-title'>Адрес доставки</h2>
         <div className='CheckoutForm-content'>
@@ -71,11 +67,11 @@ function Shipping (props) {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart
+  cart: state.cart,
+  user_id: state.auth.user.id
 })
 const mapDispatchToProps = dispatch => ({
   submitCheckout: (data, onSuccess, onFail) => dispatch(submitCheckout(data, onSuccess, onFail)),
-  emptyCart: () => dispatch(emptyCart())
 })
 
 export default compose(

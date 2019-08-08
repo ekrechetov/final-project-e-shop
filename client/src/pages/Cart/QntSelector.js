@@ -65,7 +65,7 @@ function QntSelector(props) {
                        value={qnt}
                        className="qnt-selector-input"/>
                 <div className="quantity-change-container">
-                    <div className="quantity-change-container__increment" onClick={() => qnt == availability ? handleOpen() :  dispatch(incrementCartItem(code))}>+</div>
+                    <div className="quantity-change-container__increment" onClick={() => qnt === availability ? handleOpen() :  dispatch(incrementCartItem(code))}>+</div>
                     <div className="quantity-change-container__decrement" onClick={() => dispatch(decrementCartItem(code))}>-</div>
                     <Modal
                         aria-labelledby="simple-modal-title"

@@ -7,7 +7,10 @@ import { makeStyles, Switch } from '@material-ui/core';
 import {setCurrentUser, logoutUser} from './actions/authentication';
 import Account from './components/Account';
 import Login from './components/Login';
+<<<<<<< HEAD
 import Home from './components/Home';
+=======
+>>>>>>> 5abd8f87b6ebfc70539fc23e9f02d28ad431bfdf
 import Register from './components/Register';
 // import Home from './components/Home';
 import Slider from "./components/Slider/Slider";
@@ -26,7 +29,10 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Products from './Containers/Products';
 import {createBrowserHistory} from 'history'
 import Toaster from './pages/Toaster/Toaster';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5abd8f87b6ebfc70539fc23e9f02d28ad431bfdf
 
 const newHistory = createBrowserHistory();
 
@@ -51,6 +57,7 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <Router history={newHistory}>
+<<<<<<< HEAD
                         <Toaster />
                         <Box className={this.props.classes.containerBox}>
                         <Header/>
@@ -66,6 +73,23 @@ class App extends Component {
                         <Route exact path="/checkout" component={Checkout} />
                         <Route path="/profile" component={Profile} />
                         <Footer/>
+=======
+                      <Toaster />
+                      <Box className={this.props.classes.containerBox}>
+                      <Header/>
+                      <Route exact path="/cart" component={Cart}/>
+                      <Route exact path="/" component={MainPage}/>
+                      {/* <Route exact path="/sign-up" component={SignInUp}/> */}
+                      <Route exact path="/account" component={Account}/>
+                      <Route exact path="/login" component={Login}/>
+                      <Route exact path="/register" component={Register}/>
+                      <Route exact path='/categories' component={Products} />
+                      <Route exact path='/categories/:alias' component={Products} />
+                      <Route exact path="/product/:id" component={ProductDetails}/>
+                      <Route exact path="/checkout" component={Checkout} />
+                      <Route path="/profile" component={Profile} />
+                      <Footer/>
+>>>>>>> 5abd8f87b6ebfc70539fc23e9f02d28ad431bfdf
                     </Box>
                 </Router>
             </Provider>

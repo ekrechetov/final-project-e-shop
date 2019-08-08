@@ -25,18 +25,33 @@ class Account extends Component {
     const { isAuthenticated, user } = this.props.auth;
     const authLinks = (
       <div>
-        <h3>Личный кабинет</h3>        
+        <h3>Личный кабинет</h3>
         <img src={user.avatar} alt={user.name} title={user.name} />
         <h4>{user.name}</h4>
         <Link to="/profile">Мой профиль</Link>
         <br/>
         <Link to="/profile/orders">Мои заказы</Link>
         <br/>
-        <a href="true" onClick={this.onLogout.bind(this)}>  
+        <a href="true" onClick={this.onLogout.bind(this)}>
             Выйти
         </a>
       </div>
     );
+
+    const guestLinks = (
+      <ul>
+        <li>
+          <Link to="/profile">Личный кабинет</Link>
+        </li>
+        <li>
+          <Link to="/register">Регистрация</Link>
+        </li>
+        <li>
+          <Link to="/login">Вход</Link>
+        </li>
+      </ul>
+    );
+
     // const guestLinks = (
     //   <ul>
     //     <li>
@@ -56,10 +71,11 @@ class Account extends Component {
               <Login/>
           </div>
       );
+
     return (
-      <div>  
+      <div>
         {isAuthenticated ? authLinks : guestLinks}
-      </div>    
+      </div>
     );
   }
 }
