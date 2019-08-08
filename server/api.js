@@ -10,7 +10,6 @@ const validateLoginInput = require('./validation/login');
 const User = require('./dbmodels/user');
 const Order = require('./dbmodels/order');
 const Product = require('./dbmodels/product')
-const Order = require('./dbmodels/order');
 
 
 router.get('/find/:id', function (req, res) {

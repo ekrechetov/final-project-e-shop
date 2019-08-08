@@ -19,11 +19,3 @@ export const FETCH_PRODUCT_START = 'FETCH_PRODUCT_START';
 export const FETCH_PRODUCT_SUCCESS = 'FETCH_PRODUCT_SUCCESS';
 export const FETCH_PRODUCT_FAIL = 'FETCH_PRODUCT_FAIL';
 export const CHANGE_USER_PASSWORD = 'CHANGE_USER_PASSWORD';
-<<<<<<< HEAD
-export const FETCH_USERS_ORDERS = 'FETCH_USERS_ORDERS'
-export const START = '_START';
-export const SUCCESS = '_SUCCESS';
-export const FAIL = '_FAIL';
-=======
-
->>>>>>> 5abd8f87b6ebfc70539fc23e9f02d28ad431bfdf
