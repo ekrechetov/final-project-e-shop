@@ -1,10 +1,19 @@
-import { SET_CURRENT_USER, CHANGE_USER_PASSWORD } from '../actions/types';
+import {
+    SET_CURRENT_USER,
+    CHANGE_USER_PASSWORD,
+    FETCH_USERS_ORDERS,
+    START,
+    SUCCESS,
+    FAIL
+} from '../actions/types';
 import isEmpty from '../validation/is-empty';
 
 const initialState = {
     isAuthenticated: false,
+    isPasswordChanged: false,
+    isFetching: false,
     user: {},
-    isPasswordChanged: false
+    orders: []
 }
 
 export default function(state = initialState, action ) {
@@ -20,6 +29,22 @@ export default function(state = initialState, action ) {
             return {
                 ...state,
                 isPasswordChanged: isSuccess
+            }
+        case FETCH_USERS_ORDERS + START:
+            return {
+                ...state,
+                isFetching: true
+            }
+        case FETCH_USERS_ORDERS + SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                orders: action.payload
+            }
+        case FETCH_USERS_ORDERS + FAIL:
+            return {
+                ...state,
+                isFetching: false,
             }
         default:
             return state;

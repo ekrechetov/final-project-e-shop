@@ -1,4 +1,4 @@
-import React, { createRef } from 'react'
+import React from 'react'
 import './CheckoutForm.sass'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
@@ -16,12 +16,17 @@ const expMask = createTextMask({ pattern: '99/99' })
 
 function Shipping (props) {
 
-  const { handleSubmit, valid, cart, submitCheckout, user_id } = props
-  const submitBtn = createRef()
+  const {
+    handleSubmit,
+    invalid,
+    submitting,
+    pristine,
+    cart,
+    submitCheckout,
+    user_id
+  } = props
 
   const submit = async (data) => {
-    submitBtn.current.disabled = true
-
     const onSuccess = (message) => notify('success', message)
     const onFail = (message) => notify('error', message)
 
@@ -56,11 +61,12 @@ function Shipping (props) {
           <Field name='cvv' type='tel' variant='outlined' label='Секретный код' component={CustomTextField} className='cvv' inputProps={{ maxLength: 4 }} />
         </div>
         <Button
-          ref={submitBtn}
           type='submit'
+          variant='contained'
           className='submit'
-          disabled={!valid}
-          >Оформить Заказ</Button>
+          disabled={invalid || submitting || pristine}
+          children='Оформить Заказ'
+          />
       </form>
     </div>
   )

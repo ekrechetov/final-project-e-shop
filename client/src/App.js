@@ -7,8 +7,8 @@ import { makeStyles, Switch } from '@material-ui/core';
 import {setCurrentUser, logoutUser} from './actions/authentication';
 import Account from './components/Account';
 import Login from './components/Login';
+import Home from './components/Home';
 import Register from './components/Register';
-// import Home from './components/Home';
 import Slider from "./components/Slider/Slider";
 import MainPage from "./components/MainPage/MainPage";
 import Header from "./components/Header/Header";
@@ -25,7 +25,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Products from './Containers/Products';
 import {createBrowserHistory} from 'history'
 import Toaster from './pages/Toaster/Toaster';
-
 const newHistory = createBrowserHistory();
 
 const styles = (theme) => ({
@@ -76,7 +75,6 @@ class App extends Component {
                         <Route exact path="/checkout" component={Checkout} />
                         <Route path="/profile" component={Profile} />
                         <Footer/>
-
                     </Box>
                 </Router>
             </Provider>

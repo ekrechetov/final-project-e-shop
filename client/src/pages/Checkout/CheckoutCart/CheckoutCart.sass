@@ -4,10 +4,13 @@ $light-color: #e5e5e5
 $total: #551a8b
 
 .checkoutCartMain
+  max-height: 800px
+  overflow-y: scroll
   width: 100%
-  min-height: 320px
-  box-sizing: border-box
   max-width: 100%
+  min-height: 320px
+  padding-top: 50px
+  box-sizing: border-box
   background: #fff
   border: 1px solid $light-color
 
@@ -37,6 +40,9 @@ $total: #551a8b
       width: 0
 
   .checkoutSummary
+    position: absolute
+    top: 0
+    z-index: 1
     display: flex
     justify-content: space-between
     width: 100%
@@ -45,7 +51,6 @@ $total: #551a8b
     background: rgb(240, 240, 240)
     font-size: 20px
     font-weight: 700
-
     & > span
       color: $total
 

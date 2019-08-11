@@ -8,7 +8,7 @@ function CheckoutCart(props) {
 
   const [expand, setExpand] = useState(false)
   const total = props.cart.reduce((acc, curr) =>  acc + (curr.price * curr.quantity), 0)
-  const mapCart = props.cart.length && props.cart.map((product, i) => <CheckoutProduct key={i} info={product}/>)
+  const mapCart = props.cart.length && props.cart.map((item, i) => <CheckoutProduct key={i} currency={'грн.'} info={item}/>)
 
   return (
     <div className='checkoutCartMain'>
@@ -16,14 +16,15 @@ function CheckoutCart(props) {
         <div className='checkoutSummary'>
           Итог <span>{total} грн.</span>
         </div>
-        <div className='expandCheckoutCart' onClick={() => setExpand(!expand)}>
-          {expand ? <ExpandLess/> : <ExpandMore />}
-        </div>
+        <div
+          className='expandCheckoutCart'
+          onClick={() => setExpand(!expand)}
+          children={expand ? <ExpandLess/> : <ExpandMore />} />
       </div>
 
-      <div className={`checkoutCartMainContent ${expand ? 'expand' : ''}`}>
-        {mapCart}
-      </div>
+      <div
+        className={`checkoutCartMainContent ${expand ? 'expand' : ''}`}
+        children={mapCart}  />
     </div>
   )
 }

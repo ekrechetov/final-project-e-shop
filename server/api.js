@@ -11,7 +11,6 @@ const User = require('./dbmodels/user');
 const Order = require('./dbmodels/order');
 const Product = require('./dbmodels/product')
 
-
 router.get('/find/:id', function (req, res) {
     console.log(req.params.id)
     Product.findOne({
@@ -305,7 +304,6 @@ router.post("/checkout", async (req, res) => {
     })
     await newOrder.save()
 
-    console.log(newOrder);
     res.status(200).json({
       message: 'Thank you for your order!'
     })
@@ -313,16 +311,15 @@ router.post("/checkout", async (req, res) => {
 
 router.post("/user_customize", (req, res) => {
     const { data, user_id } = req.body
-    console.log(data, user_id);
 
     User.findById(user_id, async (err, doc) => {
         const newpassword = await bcrypt.compare(data.prevpassword, doc.password)
         if(newpassword){
             bcrypt.genSalt(10, (err, salt) => {
-                if (err) console.error('There was an error', err);
+                if (err) return
                 else {
                     bcrypt.hash(data.newpassword, salt, (err, hash) => {
-                        if (err) console.error('There was an error', err);
+                        if (err) return
                         else {
                             doc.password = hash;
                             doc.save()

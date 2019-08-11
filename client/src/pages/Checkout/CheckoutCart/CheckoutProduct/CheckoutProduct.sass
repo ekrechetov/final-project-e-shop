@@ -5,13 +5,9 @@ $light-color: #e5e5e5
 @mixin title
   color: $primary-color
   font-weight: 700
-  text-align: left
 
 .checkoutProduct
   position: relative
-  display: flex
-  justify-content: space-between
-  align-items: center
   padding: 20px 8px
 
   &:not(:last-child)::before
@@ -24,30 +20,27 @@ $light-color: #e5e5e5
     height: 1px
     background: $light-color
 
-
   &-img
-    width: 100%
-    max-width: 100px
-
+    flex: 1
+    height: 100px
+    padding: 8px
+    margin-bottom: 10px
     img
-      height: 100px
+      height: inherit
 
   &-info
     margin-left: 8px
-    text-transform: capitalize
+    flex: 1
 
-    & > :first-child
+    & > div:first-child, & > div:last-child
       @include title
-    & > :last-child
-      color: $primary-color
-      font-weight: 700
+    & > div:first-child
+      font-size: 1.1rem
 
     & a
       @include title
-      color: $primary-color
-      font-weight: 700
-      text-align: left
       text-decoration: underline
+      font-size: 1.1rem
 
     *
       color: $secondary-color

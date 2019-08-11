@@ -33,8 +33,9 @@ class Cart extends Component {
 
 
   componentWillUnmount() {
-    if (this.props.cartItems.length != 0)
+    if (this.props.cartItems.length != 0) {
       localStorage.setItem('parfumanCart', JSON.stringify(this.props.cartItems));
+    }
     else {
       if (localStorage.getItem('parfumanCart')) {
         localStorage.removeItem("parfumanCart");
