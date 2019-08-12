@@ -28,7 +28,7 @@ const styles = (theme) => ({
     contactInfo: {
         display: 'flex',
         flexWrap: 'wrap',
-        maxWidth: '120px',
+        maxWidth: '140px',
         'max-height': '0px',
         position: 'absolute',
         top: '45px',
@@ -38,7 +38,7 @@ const styles = (theme) => ({
         borderRadius: '5px',
         borderColor: theme.palette.primary.dark,
         backgroundColor: theme.palette.primary.light,
-        fontSize: '10px',
+        fontSize: '12px',
         color: theme.palette.primary.dark,
         transition: 'all 0.3s ease',
         boxShadow: '0 0 4px 0 rgba(0, 0, 0, 0.4)'

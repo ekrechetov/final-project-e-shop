@@ -4,6 +4,8 @@ import {display, flexbox} from '@material-ui/system';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import MenuList from '../MenuList/MenuList'
+import SocialNetworksList from "../SocialNetworksList/SocialNetworksList";
+import Logo from "../Logo/Logo";
 
 
 const useStyles = makeStyles({
@@ -15,7 +17,7 @@ const useStyles = makeStyles({
             padding: '10px 20px',
             fontFamily: 'Roboto, sans-serif',
             backgroundColor: '#f5f5f5',
-            flexDirection: 'column'
+            // flexDirection: 'column'
 
         },
         footerSignWrap: {
@@ -38,6 +40,8 @@ export default function Footer() {
     const classes = useStyles();
     return (
         <footer className={classes.footer}>
+            <Logo footer={true}/>
+            <SocialNetworksList/>
             <p className={classes.footerSignWrap}>
                 <span className={classes.footerYear}>© 2019</span>
                 <span className={classes.footerPhone}>0-800-777-00-00</span>

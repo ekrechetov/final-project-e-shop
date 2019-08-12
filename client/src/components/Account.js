@@ -2,7 +2,18 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import withStyles from "@material-ui/core/styles/withStyles";
 import { logoutUser } from '../actions/authentication';
+import Register from "./Register";
+import Login from "./Login";
+
+const styles = (theme) => ({
+    signInUp: {
+        // display: 'flex',
+        // flexWrap: 'wrap',
+        // justifyContent: 'center'
+    }
+});
 
 class Account extends Component {
   onLogout(e) {
@@ -26,19 +37,25 @@ class Account extends Component {
         </a>
       </div>
     );
-    const guestLinks = (
-      <ul>
-        <li>
-          Личный кабинет
-        </li>
-        <li>
-          <Link to="/register">Регистрация</Link>
-        </li>
-        <li>
-          <Link to="/login">Вход</Link>
-        </li>
-      </ul>
-    );
+    // const guestLinks = (
+    //   <ul>
+    //     <li>
+    //       Личный кабинет
+    //     </li>
+    //     <li>
+    //       <Link to="/register">Регистрация</Link>
+    //     </li>
+    //     <li>
+    //       <Link to="/login">Вход</Link>
+    //     </li>
+    //   </ul>
+    // );
+      const guestLinks = (
+          <div className={this.props.classes.signInUp}>
+              {/*<Register/>*/}
+              <Login/>
+          </div>
+      );
     return (
       <div>
         {isAuthenticated ? authLinks : guestLinks}
@@ -55,4 +72,5 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logoutUser })(withRouter(Account));
+const StyledAccount = withStyles(styles)(Account);
+export default connect(mapStateToProps, { logoutUser })(withRouter(StyledAccount));

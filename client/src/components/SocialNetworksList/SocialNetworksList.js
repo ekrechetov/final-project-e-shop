@@ -8,7 +8,6 @@ const useStyles = makeStyles({
             display: 'flex',
             justifyContent: 'center',
             padding: '0 20px',
-            marginLeft: 'auto'
         },
     }
 );

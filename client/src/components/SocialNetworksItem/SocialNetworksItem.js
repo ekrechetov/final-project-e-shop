@@ -2,7 +2,7 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
         linkIcon: {
             display: 'flex',
             justifyContent: 'center',
@@ -12,14 +12,15 @@ const useStyles = makeStyles({
             margin: '0 15px'
         },
         socialNeetworksItemIcon: {
-            fontSize: '20px'
+            fontSize: '20px',
+            color: theme.palette.secondary.main
         },
         '@media (max-width: 767px)': {
             linkIcon: {
                 margin: '0 5px'
             }
         }
-    }
+    })
 );
 
 export default function SocialNetworksItem(props) {
