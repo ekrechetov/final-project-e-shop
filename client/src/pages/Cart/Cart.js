@@ -61,22 +61,27 @@ class Cart extends Component {
           </Container>
         </div>
         <Container maxWidth="md">
-          <div className="cart-theader">
-            <div>Товар</div>
-            <div>Наименование</div>
-            <div>Количество</div>
-            <div>Цена</div>
-            <div>Сумма</div>
-            <div></div>
-          </div>
-          <ul className='cart-list'>
-            {/* this.state.isLoading ? <h5>Loading...</h5>: */}
-            { cartItems.map(item => (
-              <li key={item.id} className='cart-list-item'>
-                <CartItem productItem={item} />
-              </li>
-              ))}
-          </ul>
+          <table>
+            <thead>
+              {/* <tr> */}
+                <th className="hide-on-mobile">Фото</th>
+                <th>Товар</th>
+                <th>Кол-во</th>
+                <th>Цена</th>
+                <th>Сумма</th>
+                <th></th>
+              {/* </tr> */}
+            </thead>
+
+            <tbody>
+              {/* this.state.isLoading ? <h5>Loading...</h5>: */}
+              { cartItems.map(item => (
+                // <tr >
+                  <CartItem key={item.id} productItem={item} />
+                // </tr>
+                ))}
+            </tbody>
+          </table>
         </Container>
 
         {cartItems.length !== 0 ?
@@ -86,7 +91,6 @@ class Cart extends Component {
         </Container> :
         <Container maxWidth="md" className="cart-empty">В вашей корзине товаров нет</Container>
         }
-        <hr />
       </div>
     )
   }

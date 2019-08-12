@@ -19,31 +19,44 @@ a {
     }
   }
 }
-.cart-theader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgb(173, 170, 170);
-  font-family: Roboto, sans-serif;
+
+table {
+  display: grid;
+  border-collapse: collapse;
+  min-width: 100%;
+  grid-template-columns: 
+    minmax(18%, 1.74fr)
+    minmax(25%, 1.74fr)
+    minmax(17%, 1.50fr)
+    minmax(13%, 1.34fr)
+    minmax(14%, 1.34fr)
+    minmax(13%, 1.34fr);
+    thead {
+      display: contents;
+        th {
+          padding: 15px 5px 15px 5px ;
+          text-align: center;
+          border-bottom: 1px solid rgb(197, 197, 197);
+        }      
+    }
+}
+tbody,
+tr {
+  display: contents;
+}
+th,
+td {
+  padding: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+th {
   padding-bottom: 15px;
   padding-top: 15px;
+  font-weight: normal;
+  font-size: 1.1rem;  
+}
 
-  & div {
-    flex-basis: 100%;
-    text-align: center;
-  }
-}
-.cart-theader div:nth-child(3) {  
-  flex-shrink: 1.1;
-}
-.cart-list {
-  margin-left: 0;
-  padding-left: 0;
-
-  &-item {
-    list-style-type: none;
-  } 
-}
 .cart-footer {
   display: flex;
   justify-content: space-between;
@@ -57,4 +70,36 @@ a {
   color: green;
   font-family: Roboto, sans-serif;
   font-size: 16px;
-}  
+}
+
+@media(max-width: 479px) {
+  table {    
+    grid-template-columns: 
+    minmax(38%, 1fr)
+    minmax(15%, 1fr)
+    minmax(18%, 1fr)
+    minmax(19%, 1fr)
+    minmax(9%, 1fr);
+    th {
+      font-size: 14px;
+    }  
+    td {
+      font-size: 14px;
+    }
+    .hide-on-mobile {
+      display: none;
+    }   
+  }
+}
+
+@media(max-width: 320px) {  
+  table {    
+
+    th {
+      font-size: 12px;
+    }  
+    td {
+      font-size: 12px;
+    }  
+  }
+}
