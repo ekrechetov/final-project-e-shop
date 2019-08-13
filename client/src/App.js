@@ -56,24 +56,36 @@ if(localStorage.jwtToken) {
 }
 
 class App extends Component {
+    componentDidMount() {
+        const header = document.getElementById('header');
+        const footer = document.getElementById('footer');
+        const container = document.getElementById('insideContainerBox');
+        let getScreenHeight = (header) => {
+            container.style.minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight + 'px';
+        };
+        getScreenHeight(header);
+        window.addEventListener('resize', () => {
+            getScreenHeight(header);
+        });
+    }
     render() {
         return (
             <Provider store={store}>
                 <Router history={newHistory}>
-                        <Toaster />
-                        <Box className={this.props.classes.containerBox}>
+                    <Toaster/>
+                    <Box className={this.props.classes.containerBox}>
                         <Header/>
-                        <Route exact path="/cart" component={Cart}/>
-                        <Route exact path="/" component={MainPage}/>
-                        {/* <Route exact path="/sign-up" component={SignInUp}/> */}
-                        <Route exact path="/account" component={Account}/>
-                        {/*<Route exact path="/login" component={Login}/>*/}
-                        <Route exact path="/register" component={Register}/>
-                        <Route exact path='/categories' component={Products} />
-                        <Route exact path='/categories/:alias' component={Products} />
-                        <Route exact path="/product/:id" component={ProductDetails}/>
-                        <Route exact path="/checkout" component={Checkout} />
-                        <Route path="/profile" component={Profile} />
+                        <Box className={this.props.classes.insideContainerBox} id='insideContainerBox'>
+                            <Route exact path="/" component={MainPage}/>
+                            <Route exact path="/cart" component={Cart}/>
+                            <Route exact path="/account" component={Account}/>
+                            <Route exact path="/register" component={Register}/>
+                            <Route exact path='/categories' component={Products}/>
+                            <Route exact path='/categories/:alias' component={Products}/>
+                            <Route exact path="/product/:id" component={ProductDetails}/>
+                            <Route exact path="/checkout" component={Checkout}/>
+                            <Route path="/profile" component={Profile}/>
+                        </Box>
                         <Footer/>
                     </Box>
                 </Router>

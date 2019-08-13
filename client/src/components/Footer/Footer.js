@@ -39,7 +39,7 @@ const useStyles = makeStyles({
 export default function Footer() {
     const classes = useStyles();
     return (
-        <footer className={classes.footer}>
+        <footer className={classes.footer} id='footer'>
             <Logo footer={true}/>
             <SocialNetworksList/>
             <p className={classes.footerSignWrap}>

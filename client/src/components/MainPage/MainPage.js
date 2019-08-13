@@ -23,9 +23,9 @@ export default function MainPage(props) {
         <Container className={classes.mainPage} maxWidth="xl">
             <Slider />
             <CardMenu/>
-            <Stock/>
             <AdvantagesList/>
             <SpecialsOffers/>
+            <Stock/>
         </Container>
     );
 }
