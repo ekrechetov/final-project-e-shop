@@ -11,7 +11,6 @@ class ProductDetailsMain extends Component {
         mainImgSrc: this.props.img[0],
     }
     render() {
-        const {img} = this.props
         return (
             <div className="main">
                 <div className="background"></div>

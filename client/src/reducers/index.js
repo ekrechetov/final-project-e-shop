@@ -9,6 +9,7 @@ import { reducer as formReducer } from 'redux-form'
 import categoriesReducer from './categoriesReducer'
 import productReducer from './productReducer'
 import productsPageReducer from './productsPageReducer'
+import searchReducer from './searchReducer';
 
 
 export default combineReducers({
@@ -22,5 +23,5 @@ export default combineReducers({
   product: productReducer,
   productsPage: productsPageReducer,
   Categories: categoriesReducer,
-
+  searchInput: searchReducer
 });
