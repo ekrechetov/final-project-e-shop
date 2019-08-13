@@ -79,10 +79,6 @@ const styles = (theme) => ({
 
 
 class SearchInput extends Component {
-    // state = {
-    //     inputVal: '',
-    //     visible: false
-    // }
     render() {
         const {inputVal, displayResult,changeInputValue,changeDisplayResult} = this.props
         return (

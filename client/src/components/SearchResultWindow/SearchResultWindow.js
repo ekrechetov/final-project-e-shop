@@ -13,12 +13,15 @@ function SearchResultWindow(props) {
     let match = false
      return (
         productsArr.map((elem,i)=> {
-            if (elem.title.toUpperCase().includes(inputVal.toUpperCase())) {
+            if (elem.title.toUpperCase().includes(inputVal.toUpperCase()) || elem.category.toUpperCase().indexOf(inputVal.toUpperCase()) === 0) {
             match = true
                 return <Link key={elem._id} onMouseDown={event => event.preventDefault()}  to={`/product/${elem._id}`}>
                         <div className="search-window">
                             <div className="search-window__img" style = {{backgroundImage: `url(${require(`../../images/img-products/${elem.img[0]}`)})`}}></div>
+                            <div className="search-window__info-container">
                             <div className="search-window__title">{elem.title}</div>
+                            <div className="search-window__category">{elem.category}</div>
+                            </div>
                             <div className="search-window__price">&#8372;{elem.price}</div>
                         </div>
                     </Link>
