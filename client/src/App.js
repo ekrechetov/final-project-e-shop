@@ -54,6 +54,7 @@ if(localStorage.jwtToken) {
     window.location.href = '/login'
   }
 }
+
 class App extends Component {
   componentDidMount() {
     const header = document.getElementById('header');

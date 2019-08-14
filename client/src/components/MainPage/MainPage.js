@@ -9,10 +9,12 @@ import SpecialsOffers from '../SpecialsOffers/SpecialsOffers';
 import AdvantagesList from '../AdvantagesList/AdvantagesList';
 import Slider from "../Slider/Slider";
 import {Link} from "react-router-dom";
+import { spacing } from '@material-ui/system';
 
 
 const useStyles = makeStyles({
         mainPage: {
+            padding: '0 20px',
             fontFamily: 'Roboto, sans-serif'
         }
     }
