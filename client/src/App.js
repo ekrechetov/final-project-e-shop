@@ -54,19 +54,18 @@ if(localStorage.jwtToken) {
     window.location.href = '/login'
   }
 }
-
 class App extends Component {
-    componentDidMount() {
-        const header = document.getElementById('header');
-        const footer = document.getElementById('footer');
-        const container = document.getElementById('insideContainerBox');
-        let getScreenHeight = (header) => {
-            container.style.minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight + 'px';
-        };
-        getScreenHeight(header);
-        window.addEventListener('resize', () => {
-            getScreenHeight(header);
-        });
+  componentDidMount() {
+    const header = document.getElementById('header');
+    const footer = document.getElementById('footer');
+    const container = document.getElementById('insideContainerBox');
+    let getScreenHeight = (header) => {
+      container.style.minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight + 'px';
+    };
+    getScreenHeight(header);
+    window.addEventListener('resize', () => {
+      getScreenHeight(header);
+    });
     }
     render() {
         return (

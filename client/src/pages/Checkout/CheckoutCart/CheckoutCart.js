@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import './CheckoutCart.sass'
 import { connect } from 'react-redux'
+import { useMediaQuery } from '@material-ui/core'
 import { ExpandLess, ExpandMore } from '@material-ui/icons'
 import CheckoutProduct from './CheckoutProduct/CheckoutProduct'
 
 function CheckoutCart(props) {
+
+  const match = useMediaQuery('(max-width: 959.5px)')
 
   const [expand, setExpand] = useState(false)
   const total = props.cart.reduce((acc, curr) =>  acc + (curr.price * curr.quantity), 0)
@@ -12,14 +15,11 @@ function CheckoutCart(props) {
 
   return (
     <div className='checkoutCartMain'>
-      <div className='checkoutCartHeader'>
+      <div className='checkoutCartHeader' onClick={match ? () => setExpand(!expand) : null}>
         <div className='checkoutSummary'>
           Итог <span>{total} грн.</span>
         </div>
-        <div
-          className='expandCheckoutCart'
-          onClick={() => setExpand(!expand)}
-          children={expand ? <ExpandLess/> : <ExpandMore />} />
+        <div className='expandCheckoutCart' children={expand ? <ExpandLess/> : <ExpandMore />} />
       </div>
 
       <div

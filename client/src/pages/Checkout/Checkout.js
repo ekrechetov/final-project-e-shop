@@ -3,12 +3,14 @@ import './Checkout.sass';
 import { connect } from 'react-redux';
 import CheckoutForm from './CheckoutForm/CheckoutForm';
 import CheckoutCart from './CheckoutCart/CheckoutCart';
+import { fetchUserAddresses } from '../../actions/authentication';
 
 function Checkout(props) {
   useEffect(() => {
     if (!props.cart.length) {
       props.history.push('/');
     }
+    props.fetchUserAddresses(props.user_id)
   });
 
   return (
@@ -24,6 +26,10 @@ function Checkout(props) {
 
 const mapStateToProps = state => ({
   cart: state.cart,
+  user_id: state.auth.user.id
 });
+const mapDispatchToProps = dispatch => ({
+  fetchUserAddresses: (user_id) => dispatch(fetchUserAddresses(user_id))
+})
 
-export default connect(mapStateToProps, null)(Checkout);
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

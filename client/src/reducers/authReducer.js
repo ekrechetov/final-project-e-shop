@@ -1,6 +1,7 @@
 import {
     SET_CURRENT_USER,
     CHANGE_USER_PASSWORD,
+    CHANGE_USER_ADDRESSES,
     FETCH_USERS_ORDERS,
     START,
     SUCCESS,
@@ -12,6 +13,14 @@ const initialState = {
     isAuthenticated: false,
     isPasswordChanged: false,
     isFetching: false,
+    addresses: {
+        firstname: '',
+        lastname: '',
+        address: '',
+        city: '',
+        email: '',
+        phone: ''
+    },
     user: {},
     orders: []
 }
@@ -29,6 +38,12 @@ export default function(state = initialState, action ) {
             return {
                 ...state,
                 isPasswordChanged: isSuccess
+            }
+        case CHANGE_USER_ADDRESSES:
+            const { addresses } = action.payload
+            return {
+                ...state,
+                addresses: { ...addresses}
             }
         case FETCH_USERS_ORDERS + START:
             return {

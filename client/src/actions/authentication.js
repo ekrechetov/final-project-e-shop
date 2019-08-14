@@ -7,7 +7,8 @@ import {
   START,
   FAIL,
   SUCCESS,
-  CHANGE_USER_PASSWORD
+  CHANGE_USER_PASSWORD,
+  CHANGE_USER_ADDRESSES
 } from './types';
 
 import setAuthToken from '../setAuthToken';
@@ -55,10 +56,22 @@ export const logoutUser = history => (dispatch) => {
 };
 
 
+export const changeAddresses = (data, user_id) => async dispatch => {
+  const res = await axios.post('user_customize', { data, user_id })
+  console.log(res)
+  const isSuccess = res.data.user_customize === 'success'
+  dispatch({ type: CHANGE_USER_ADDRESSES, payload: {isSuccess, addresses: data.addresses }})
+}
+
 export const changeUserPassword = (data, user_id) => async dispatch => {
   const res = await axios.post('user_customize', { data, user_id })
   const isSuccess = res.data.user_customize === 'success'
   dispatch({ type: CHANGE_USER_PASSWORD, payload: isSuccess })
+}
+
+export const fetchUserAddresses = (user_id) => async dispatch => {
+  const res = await axios.post('/user_addresses', { user_id })
+  dispatch({ type: CHANGE_USER_ADDRESSES, payload: { addresses: res.data.addresses } })
 }
 
 export const fetchUsersOrders = (user_id) => async dispatch => {

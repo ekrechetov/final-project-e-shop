@@ -63,6 +63,7 @@ function Shipping (props) {
         <Button
           type='submit'
           variant='contained'
+          color='secondary'
           className='submit'
           disabled={invalid || submitting || pristine}
           children='Оформить Заказ'
@@ -73,6 +74,7 @@ function Shipping (props) {
 }
 
 const mapStateToProps = state => ({
+  initialValues: state.auth.addresses,
   cart: state.cart,
   user_id: state.auth.user.id
 })

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import OrdersPage from './OrdersPage/OrdersPage'
 import ProfilePage from './ProfilePage/ProfilePage'
 import { withStyles } from '@material-ui/styles'
-import { fetchUsersOrders } from '../../actions/authentication'
+import { fetchUsersOrders, fetchUserAddresses } from '../../actions/authentication'
 import { Tab, Tabs } from '@material-ui/core'
 
 const styles = theme => ({
@@ -56,6 +56,7 @@ class Profile extends Component {
 
   componentDidMount(){
     this.props.fetchOrders(this.props.user_id)
+    this.props.fetchAddresses(this.props.user_id)
 
     if(!this.props.isAuthenticated){
       this.props.history.push('/register')
@@ -90,7 +91,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchOrders: (user_id) => dispatch(fetchUsersOrders(user_id))
+  fetchOrders: (user_id) => dispatch(fetchUsersOrders(user_id)),
+  fetchAddresses: (user_id) => dispatch(fetchUserAddresses(user_id)),
 })
 
 export default compose(

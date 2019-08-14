@@ -204,83 +204,52 @@ router.post("/user_customize", (req, res) => {
     const { data, user_id } = req.body
     console.log(data, user_id);
 
-    User.findById(user_id, async (err, doc) => {
-        const newpassword = await bcrypt.compare(data.prevpassword, doc.password)
-        if(newpassword){
-            bcrypt.genSalt(10, (err, salt) => {
-                if (err) console.error('There was an error', err);
-                else {
+    if(data.prevpassword && data.newpassword){
+        User.findById(user_id, async (err, doc) => {
+            const newpassword = await bcrypt.compare(data.prevpassword, doc.password)
+            if(newpassword){
+                bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(data.newpassword, salt, (err, hash) => {
-                        if (err) console.error('There was an error', err);
-                        else {
-                            doc.password = hash;
-                            doc.save()
-                            res.status(200).json({
-                                user_customize: 'success'
-                            })
-                        }
+                        doc.password = hash
+                        doc.save()
+                        res.status(200).json({
+                            user_customize: 'success'
+                        })
                     });
-                }
-            });
-        }else{
+                });
+            }else{
+                res.status(200).json({
+                    user_customize: 'fail'
+                })
+            }
+        })
+    }
+
+    if(data.addresses){
+        User.findById(user_id, async(err, doc) => {
+            doc.addresses = {...doc.addresses, ...data.addresses}
+            doc.save()
             res.status(200).json({
-                user_customize: 'fail'
+                user_customize: 'success'
             })
-        }
-    })
+        })
+    }
 })
 
+router.post("/user_addresses", async (req, res) => {
+    const { user_id } = req.body
+    const user = await User.findById({ '_id': user_id });
 
-router.post("/checkout", async (req, res) => {
-    const { user_id, order, address, card } = req.body.data
-
-    const newOrder = new Order({
-        address,
-        card,
-        order,
-        user_id
-    })
-    await newOrder.save()
-
-    console.log(newOrder);
     res.status(200).json({
-      message: 'Thank you for your order!'
+        addresses: user.addresses
     })
 })
-
-router.post("/user_customize", (req, res) => {
-    const { data, user_id } = req.body
-    console.log(data, user_id);
-
-    User.findById(user_id, async (err, doc) => {
-        const newpassword = await bcrypt.compare(data.prevpassword, doc.password)
-        if(newpassword){
-            bcrypt.genSalt(10, (err, salt) => {
-                if (err) console.error('There was an error', err);
-                else {
-                    bcrypt.hash(data.newpassword, salt, (err, hash) => {
-                        if (err) console.error('There was an error', err);
-                        else {
-                            doc.password = hash;
-                            doc.save()
-                            res.status(200).json({
-                                user_customize: 'success'
-                            })
-                        }
-                    });
-                }
-            });
-        }else{
-            res.status(200).json({
-                user_customize: 'fail'
-            })
-        }
-    })
-})
-
 
 router.post("/user_orders", async (req, res) => {
+    console.log(req.body)
     const { user_id } = req.body
+    const user = await User.findById({ '_id': user_id });
+    console.log(user)
     const orders = []
     const userOrders = await Order.find({
       "user_id": user_id
@@ -290,51 +259,6 @@ router.post("/user_orders", async (req, res) => {
 
     res.status(200).json({
       orders
-    })
-})
-
-router.post("/checkout", async (req, res) => {
-    const { user_id, order, address, card } = req.body.data
-
-    const newOrder = new Order({
-        address,
-        card,
-        order,
-        user_id,
-    })
-    await newOrder.save()
-
-    res.status(200).json({
-      message: 'Thank you for your order!'
-    })
-})
-
-router.post("/user_customize", (req, res) => {
-    const { data, user_id } = req.body
-
-    User.findById(user_id, async (err, doc) => {
-        const newpassword = await bcrypt.compare(data.prevpassword, doc.password)
-        if(newpassword){
-            bcrypt.genSalt(10, (err, salt) => {
-                if (err) return
-                else {
-                    bcrypt.hash(data.newpassword, salt, (err, hash) => {
-                        if (err) return
-                        else {
-                            doc.password = hash;
-                            doc.save()
-                            res.status(200).json({
-                                user_customize: 'success'
-                            })
-                        }
-                    });
-                }
-            });
-        }else{
-            res.status(200).json({
-                user_customize: 'fail'
-            })
-        }
     })
 })
 

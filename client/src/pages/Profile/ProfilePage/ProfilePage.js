@@ -1,75 +1,43 @@
-import React, { Component} from 'react'
+import React, { useEffect } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
-import { Button } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
-import CustomTextField from './../../Checkout/CustomTextField/CustomTextField'
-import { changeUserPassword } from './../../../actions/authentication'
-import { notify } from './../../Toaster/Toaster'
-import { profile as validate } from '../../../validation/profile'
+import ProfileAddress from '../ProfileAddress/ProfileAddress'
+import ProfilePassword from '../ProfilePassword/ProfilePassword'
+import { fetchUserAddresses } from '../../../actions/authentication'
 
 const styles = theme => ({
+  profilePage: {
+    maxWidth: 600,
+    margin: 'auto',
+  },
+  passwordFrom: {
+    padding: 40
+  },
+  addressessForm: {
+    padding: 40
+  },
   greeting: {
-    textAlign: 'center',
-    fontWeight: 'normal',
-    fontSize: 22,
     margin: '20px 0',
     color: '#444'
   },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    '& .textField': {
-      margin: 10,
-      maxWidth: 300,
-      width: '100%',
-      '&.newpassword': {
-        marginBottom: 40
-      }
-    }
-  },
 })
 
-class ProfilePage extends Component {
-  constructor(props){
-    super(props)
-  }
-  render() {
-    const {
-      changePassword,
-      user_id,
-      fullname,
-      handleSubmit,
-      invalid,
-      classes
-    } = this.props
+function ProfilePage(props) {
+  const { fullname, classes } = props
 
-    const submit = async (data) => {
-      await this.props.changePassword(data,this. props.user_id)
-      if(this.props.isPasswordChanged){
-        notify('success', 'Пароль успешно изменен')
-      }else{
-        notify('error', 'Предыдущий пароль не совподает')
-      }
-    }
-
-    return (
-      <div className='profilePage'>
-        <h1 className={classes.greeting}>Здравствуйте, {fullname}</h1>
-        <form onSubmit={handleSubmit(submit)} className={classes.form}>
-          <Field name='prevpassword' label='Предыдущий Пароль' component={CustomTextField} />
-          <Field name='newpassword' label='Новый Пароль' component={CustomTextField} />
-          <Button
-            type='submit'
-            variant="contained"
-            disabled={invalid}
-            children='Изменить Пароль' />
-        </form>
+  return (
+    <div className={classes.profilePage}>
+      <Typography variant='h5' align='center' className={classes.greeting}>Здравствуйте, {fullname}</Typography>
+      <div className={classes.passwordFrom}>
+        <ProfilePassword />
       </div>
-    );
-  }
+      <div className={classes.addressessForm}>
+        <ProfileAddress />
+      </div>
+    </div>
+  );
 }
 
 const mapStateToProps = state => ({
@@ -77,14 +45,10 @@ const mapStateToProps = state => ({
   user_id: state.auth.user.id,
   isPasswordChanged: state.auth.isPasswordChanged
 })
-const mapDispathcToProps = dispatch => ({
-  changePassword: (data, user_id) => dispatch(changeUserPassword(data, user_id))
+const mapDispathToProps = dispacth => ({
 })
+
 export default compose(
   withStyles(styles),
-  connect(mapStateToProps, mapDispathcToProps),
-  reduxForm({
-    form: 'profile',
-    validate
-  })
+  connect(mapStateToProps, mapDispathToProps),
 )(ProfilePage)
