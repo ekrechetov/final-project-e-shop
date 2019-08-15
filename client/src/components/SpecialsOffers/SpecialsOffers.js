@@ -6,9 +6,10 @@ import specialOffersImg from '../../images/special-offers-1.jpg';
 const styles = (theme) => ({
     specialOffer: {
         width: '100%',
+        height: '500px',
         position: 'relative',
         backgroundImage: 'url(' + specialOffersImg + ');',
-        backgroundPositionY: '5%',
+        backgroundPositionY: '5.5%',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         [`&:hover .fivePercent--active`]: {
@@ -22,19 +23,22 @@ const styles = (theme) => ({
     },
     specialOfferContainer: {
         display: 'flex',
-        maxHeight: '270px',
+        padding: '0 100px',
+        position: 'relative',
+        top: '220px',
         alignItems: 'center',
-        padding: '110px 100px'
     },
     description: {
         display: 'flex',
         flexDirection: 'column',
         padding: '50px 0',
+        position: 'absolute',
         color: theme.palette.secondary.main
     },
     title: {
         fontSize: '2.6rem',
-        marginBottom: '25px'
+        // marginBottom: '25px'
+        transform: 'translateY(-25px)'
     },
     descriptionText: {
         display: 'flex',
@@ -54,8 +58,8 @@ const styles = (theme) => ({
         display: 'flex',
         padding: '15px 20px',
         position: 'absolute',
-        bottom: '44%',
-        left: '25%',
+        top: '-30px',
+        left: '370px',
         borderRadius: '4px',
         backgroundColor: theme.palette.secondary.contrastText
     },
@@ -69,38 +73,56 @@ const styles = (theme) => ({
 
     },
     '@media (max-width: 1199px)': {
-        specialOffersLink: {
-            bottom: '3%',
-            left: '100px',
+        specialOffer: {
+            height: '450px'
         }
     },
     '@media (max-width: 767px)': {
         specialOffer: {
             backgroundPositionX: '35%',
             [`&:hover .fivePercent--active`]: {
-                fontSize: '3.1rem'
+                marginLeft: '0',
+                padding: '0 0',
+                fontSize: '3rem',
             }
         },
         specialOfferContainer: {
-            maxHeight: '245px',
+            // maxHeight: '245px',
+            top: '200px',
             padding: '50px',
         },
         title: {
-            fontSize: '2.25rem',
+            fontSize: '2.2rem',
         },
         descriptionText: {
-            fontSize: '1.3rem',
+            fontSize: '1.2rem',
         },
         fivePercentText: {
-            fontSize: '2.25rem',
+            fontSize: '3rem',
+            color: theme.palette.secondary.contrastText,
+            fontWeight: 'bold'
         },
         specialOffersLink: {
             padding: '15px 20px',
-            bottom: '2%',
-            left: '50px',
+            top: '22px',
+            left: '230px',
         },
         specialOffersLinkButton: {
             fontSize: '1rem'
+        }
+    },
+    '@media (max-width: 560px)': {
+        title: {
+            fontSize: '2.1rem',
+        },
+        specialOffersLink: {
+            top: '49px',
+            left: '180px',
+        }
+    },
+    '@media (max-width: 420px)': {
+        specialOffersLink: {
+            top: '41px'
         }
     }
 });

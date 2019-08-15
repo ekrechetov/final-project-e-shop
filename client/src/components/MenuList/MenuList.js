@@ -39,14 +39,15 @@ const useStyles = makeStyles((theme) => ({
                 zIndex: '2',
                 width: '190px',
                 maxHeight: '0',
-                padding: '0',
+                padding: '10px 0 0 0',
                 position: 'absolute',
                 top: '62px',
                 right: '-20px',
                 opacity: '0',
                 borderRadius: '3px',
-                backgroundColor: 'rgba(230, 230, 230, 0.5)',
+                backgroundColor: theme.palette.primary.main,
                 transition: 'all 0.5s ease',
+                boxShadow: '0 0 3px 1px rgba(0, 0, 0, 0.1)'
             },
             burgerMenuButton: {
                 display: 'flex',
