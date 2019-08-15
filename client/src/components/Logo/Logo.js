@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Logo(props) {
     const classes = useStyles();
-    console.log(props);
     return (
         <Link to='/' className={classes.logoWrap}
               style={props.footer ? {position: 'relative', top: '0'} : null}
