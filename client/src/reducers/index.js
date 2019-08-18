@@ -10,6 +10,7 @@ import categoriesReducer from './categoriesReducer'
 import productReducer from './productReducer'
 import productsPageReducer from './productsPageReducer'
 import searchReducer from './searchReducer';
+import filter from "./filter"
 
 
 export default combineReducers({
@@ -23,5 +24,6 @@ export default combineReducers({
   product: productReducer,
   productsPage: productsPageReducer,
   Categories: categoriesReducer,
-  searchInput: searchReducer
+  searchInput: searchReducer,
+  filter
 });

@@ -4,6 +4,7 @@ import { PRODUCT_LOADING} from "../actions/types";
     switch (action.type) {
       case PRODUCT_LOADING:
         return action.payload
-    }
+    
+      }
     return state
   }

@@ -10,30 +10,8 @@ import CartNav from './CartNav';
 import '../../styles/Cart/main.scss';
 
 class Cart extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     isLoading: false,
-  //     hasErrored: false,
-  //     cartItems: [],
-  //   };
-  // }
-  // componentDidMount() {  //   axios
-  //   .get('/cart')
-  //   .then(res => {
-  //     this.setState({cartItems: res.data});
-  //     console.log(this.state.cartItems);
-  //   })
-  //   .catch(error => {
-  //     this.setState({hasErrored: true});
-  //     console.log(error);
-  //     })
-  //   .finally(this.setState({isLoading: false}));
-  // }
-
-
   componentWillUnmount() {
-    if (this.props.cartItems.length != 0) {
+    if (this.props.cartItems.length !== 0) {
       localStorage.setItem('parfumanCart', JSON.stringify(this.props.cartItems));
     }
     else {
@@ -44,7 +22,7 @@ class Cart extends Component {
   }
   render() {
     const {cartItems} = this.props;
-    let sumItems = 0; // суммарная стоимость одного товара
+    let sumItems = 0; 
     cartItems.map(item => {
       sumItems = sumItems + item.price * item.quantity;
     });
@@ -63,22 +41,17 @@ class Cart extends Component {
         <Container maxWidth="md">
           <table>
             <thead>
-              {/* <tr> */}
                 <th className="hide-on-mobile">Фото</th>
                 <th>Товар</th>
                 <th>Кол-во</th>
                 <th>Цена</th>
                 <th>Сумма</th>
                 <th></th>
-              {/* </tr> */}
             </thead>
 
             <tbody>
-              {/* this.state.isLoading ? <h5>Loading...</h5>: */}
               { cartItems.map(item => (
-                // <tr >
                   <CartItem key={item.id} productItem={item} />
-                // </tr>
                 ))}
             </tbody>
           </table>

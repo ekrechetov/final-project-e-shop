@@ -11,7 +11,6 @@ const BootstrapButton = withStyles({
     border: '1px solid',
     lineHeight: 1.5,
     backgroundColor: 'transparent',
-    // backgroundColor: '#007bff',
     borderColor: 'gray',
     fontFamily: [
       '-apple-system',

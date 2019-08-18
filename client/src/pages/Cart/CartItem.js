@@ -10,15 +10,12 @@ class CartItem extends Component {
     return (
       <tr className="cart-item">
 
-        {/* Foto: */}
         <td className="hide-on-mobile">
           <Link to={`/product/${productItem.id}`} style={{backgroundImage: `url(${require(`../../images/img-products/${productItem.img}`)})`}} className="cart-item-link"></Link>
         </td>
 
-        {/* Product name: */}
         <td>{productItem.category} {productItem.brand} {productItem.title} </td>
         
-        {/* Quantity: */}
         <td className="cart-item-qnt">
           <QntSelector qnt={productItem.quantity}
                        code={productItem.code}
@@ -26,10 +23,8 @@ class CartItem extends Component {
           />
         </td>
 
-        {/* Price: */}
         <td>{productItem.price} грн.</td>
 
-        {/* Amount: */}
         <td>{productItem.price * productItem.quantity} грн.</td>        
         <td
           className="cart-item-delete"

@@ -48,9 +48,6 @@ export default function (state = initialState, action) {
           if (+action.payload.quantity < 1) {
             return {...item, quantity: 0};
           }
-          // if (+action.payload.quantity > +item.availability) {
-          //   return {...item, quantity: +item.availability};
-          // }
           if (+action.payload.quantity <= +item.availability) {
             return { ...item, quantity: +action.payload.quantity};
           }
@@ -76,7 +73,7 @@ export default function (state = initialState, action) {
         if(item.code === action.payload.code) {
           action.payload.quantity += item.quantity
         }
-        return item.code != action.payload.code
+        return item.code !== action.payload.code
       })
 
       localStorage.setItem('parfumanCart', JSON.stringify([...newArj, action.payload]))

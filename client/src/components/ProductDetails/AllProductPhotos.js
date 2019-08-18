@@ -6,7 +6,7 @@ class AllProductPhotos extends Component {
         const { img } = this.props
         return (
             img.map(item => {
-                return (<div style={{backgroundImage:`url(${require(`../../images/img-products/${item}`)})`}} data-url={item} alt="product-img" className={this.props.active === item ? "all-photos-block__image all-photos-block__image_active" : "all-photos-block__image"} onClick={this.props.change}></div>)
+                return (<div key={item} style={{backgroundImage:`url(${require(`../../images/img-products/${item}`)})`}} data-url={item} alt="product-img" className={this.props.active === item ? "all-photos-block__image all-photos-block__image_active" : "all-photos-block__image"} onClick={this.props.change}></div>)
             })
         )
     }

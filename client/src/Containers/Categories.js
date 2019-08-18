@@ -4,13 +4,11 @@ import {getCategories} from '../selectors/Products';
 import {Link, withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 import {makeStyles} from '@material-ui/core';
-import {palette} from "@material-ui/system";
 
 const useStyles = makeStyles((theme) => ({
         listItem: {
             display: 'flex',
             justifyContent: 'flex-end',
-            // marginBottom: '10px',
             listStyle: 'none',
             fontWeight: 'bold'
         },
@@ -58,7 +56,7 @@ const Categories = (props) => {
     const renderCategory = (item) => {
         return (
             <li key={item._id} className={classes.listItem}>
-                <Link to={`/categories/${item.alias}`} className={classes.link}>{item.category}</Link>
+                <Link onClick={()=>{props.setFilter({filter:()=>true,brand:false})}} to={`/categories/${item.alias}`} className={classes.link}>{item.category}</Link>
             </li>
         );
     };
@@ -66,7 +64,7 @@ const Categories = (props) => {
     const renderAllCategory = () => {
         return (
             <li key={320099887} className={classes.listItem}>
-                <Link to="/categories" className={classes.link}> Каталог</Link>
+                <Link onClick={()=>{props.setFilter({filter:()=>true,brand:false})}} to="/categories" className={classes.link}> Каталог</Link>
             </li>
         );
     };
@@ -84,5 +82,8 @@ const Categories = (props) => {
 const mapStateToProps = (state) => ({
     Categories: getCategories(state),
 });
+const mapDispatchToProps = (dispatch)=>({
+    setFilter: filter=>dispatch({type:"SET_FILTER",payload:filter})
+});
 
-export default compose(withRouter, connect(mapStateToProps))(Categories);
+export default compose(withRouter, connect(mapStateToProps,mapDispatchToProps))(Categories);

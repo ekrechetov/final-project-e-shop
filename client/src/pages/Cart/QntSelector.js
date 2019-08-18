@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
         position: 'absolute',
         width: 320,
         height: 100,
-        // backgroundColor: theme.palette.background.paper,
         border: '2px solid red',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 4),
@@ -55,7 +54,6 @@ function QntSelector(props) {
     };    
     
     const { qnt, code, availability, dispatch } = props;
-    // console.log(qnt, availability);
 
     return (
         <>

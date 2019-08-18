@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import withStyles from "@material-ui/core/styles/withStyles";
 import {logoutUser} from '../actions/authentication';
-import Register from "./Register";
 import Login from "./Login";
 
 const styles = (theme) => ({

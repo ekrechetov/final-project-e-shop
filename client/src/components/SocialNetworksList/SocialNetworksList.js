@@ -29,10 +29,11 @@ const socialNetworksListData = [
 
 export default function SocialNetworksList() {
     const classes = useStyles();
+    let key=0;
     return (
         <div className={classes.list}>
             {socialNetworksListData.map((elem) => {
-                return <SocialNetworksItem icon={elem.icon}/>
+                return <SocialNetworksItem  key={key++} icon={elem.icon}/>
             })}
         </div>
     );
