@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {Link, withRouter} from 'react-router-dom';
 import {registerUser} from '../actions/authentication';
 import withStyles from "@material-ui/core/styles/withStyles";
+import RegisterClose from "./RegisterClose";
 // import './Register.scss';
 
 // const styles = (theme) => ({
@@ -92,22 +93,31 @@ const styles = (theme) => ({
     register: {
         display: 'flex',
         flexDirection: 'column',
-        width: '35%',
+        width: '50%',
         borderRadius: '5px',
         boxShadow: '0 0 10px 2px rgba(0, 0, 0, 0.2)',
     },
-    registerTitle: {
+    registerBox: {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         width: '100%',
         boxSizing: 'border-box',
+        alignItems: 'center',
         padding: '20px 0',
         borderRadius: '5px 5px 0 0 ',
         backgroundColor: theme.palette.primary.main,
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
         color: theme.palette.secondary.main,
         boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
+    },
+    registerTitle: {
+        width: '90%',
+        textAlign: 'center',
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+    },
+    registerClose: {
+        justifyContent: 'center',
+        width: '10%',
     },
     registerError: {},
     registerForm: {
@@ -260,7 +270,10 @@ class Register extends Component {
         return (
             <div className={this.props.classes.registerWrap}>
                 <div className={this.props.classes.register}>
-                    <h2 className={this.props.classes.registerTitle}>Регистрация</h2>
+                    <div className={this.props.classes.registerBox}>
+                        <h2 className={this.props.classes.registerTitle}>Регистрация</h2>
+                        <Link to="/" className={this.props.classes.registerClose}> <RegisterClose/></Link>
+                    </div>
                     <form onSubmit={this.handleSubmit} className={this.props.classes.registerForm}>
                         <div className={this.props.classes.inputsWrap}>
                             <div className={this.props.classes.inputContainer}>

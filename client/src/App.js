@@ -15,6 +15,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Cart from './pages/Cart/Cart';
 import ProductDetails from './pages/ProductDetails'
+import ScrollUpButton from "react-scroll-up-button";
 // import SignInUp from './components/SignInUp/SignInUp';
 import setAuthToken from './setAuthToken';
 import store from './store';
@@ -73,6 +74,7 @@ class App extends Component {
                 <Router history={newHistory}>
                     <Toaster/>
                     <Box className={this.props.classes.containerBox}>
+                        <ScrollUpButton style={{width: 35, height: 35, backgroundColor: '#ff8f00', borderRadius: '50%', padding: 5}} ToggledStyle={{right: 20, bottom: 60}} />
                         <Header/>
                         <Box className={this.props.classes.insideContainerBox} id='insideContainerBox'>
                             <Route exact path="/" component={MainPage}/>

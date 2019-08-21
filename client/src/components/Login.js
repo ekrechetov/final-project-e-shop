@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {loginUser} from '../actions/authentication';
 import withStyles from "@material-ui/core/styles/withStyles";
+import RegisterClose from "./RegisterClose";
 
 // const styles = (theme) => ({
 //     login: {
@@ -96,18 +97,26 @@ const styles = (theme) => ({
         borderRadius: '5px',
         boxShadow: '0 0 10px 2px rgba(0, 0, 0, 0.2)',
     },
-    loginTitle: {
+    loginBox: {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         width: '100%',
         boxSizing: 'border-box',
+        alignItems: 'center',
         padding: '20px 0',
         borderRadius: '5px 5px 0 0 ',
         backgroundColor: theme.palette.primary.main,
+        color: theme.palette.secondary.main,
+        boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
+    },
+    loginTitle: {
+        textAlign: 'center',
+        width: '90%',
+        boxSizing: 'border-box',
         fontSize: '1.5rem',
         fontWeight: 'bold',
         color: theme.palette.secondary.main,
-        boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
+
     },
     loginError: {},
     loginForm: {
@@ -254,7 +263,10 @@ class Login extends Component {
         return (
             <div className={this.props.classes.loginWrap}>
                 <div className={this.props.classes.login}>
-                    <h2 className={this.props.classes.loginTitle}>Авторизация</h2>
+                    <div className={this.props.classes.loginBox}>
+                        <h2 className={this.props.classes.loginTitle}>Авторизация</h2>
+                        <Link to="/"><RegisterClose/></Link>
+                    </div>
                     <form onSubmit={this.handleSubmit} className={this.props.classes.loginForm}>
                         <div className={this.props.classes.inputsWrap}>
                             <div className={this.props.classes.inputContainer}>
