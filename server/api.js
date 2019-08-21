@@ -4,22 +4,22 @@ const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const fs = require('fs');
+const pug = require('pug');
+const checkoutMailer = require('./checkoutMailer');
+
 const validateRegisterInput = require('./validation/register');
 const validateLoginInput = require('./validation/login');
 
 const User = require('./dbmodels/user');
 const Order = require('./dbmodels/order');
-const Product = require('./dbmodels/product')
+const Product = require('./dbmodels/product');
+
+require('dotenv').config();
 
 router.get('/find/:id', function (req, res) {
-    console.log(req.params.id)
-    Product.findOne({
-        _id: req.params.id
-    })
-        .then(data => {
-            console.log(data)
-            res.send(data)
-        })
+    Product.findOne({ _id: req.params.id })
+        .then(data => { res.send(data) })
     })
 
 router.post('/add-product', function (req, res) {
@@ -35,9 +35,7 @@ router.post('/add-product', function (req, res) {
     });
     newProduct
         .save()
-        .then(product => {
-            res.json(product)
-        });
+        .then(product => { res.json(product) });
 })
 
 router.post('/register', function (req, res) {
@@ -47,9 +45,9 @@ router.post('/register', function (req, res) {
     if (!isValid) {
         return res.status(400).json(errors);
     }
-    User.findOne({
-        email: req.body.email
-    }).then(user => {
+
+    User.findOne({ email: req.body.email })
+    .then(user => {
         if (user) {
             return res.status(400).json({
                 email: 'Email already exists'
@@ -77,9 +75,7 @@ router.post('/register', function (req, res) {
                             newUser.password = hash;
                             newUser
                                 .save()
-                                .then(user => {
-                                    res.json(user)
-                                });
+                                .then(user => { res.json(user) });
                         }
                     });
                 }
@@ -141,46 +137,34 @@ router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) =
     });
 });
 
-
 router.get("/categories/", (req,res)=>{
   Product.find({})
-    .then(product=>{
-        res.send(product);
-    });
+    .then(product => res.send(product) );
 });
 router.get("/categories/:alias", (req,res)=>{
     Product.find({ alias: req.params.alias })
-    .then(product=>{
-        res.send(product);
-    });
+    .then(product => res.send(product) );
 });
 
 // post prod
 router.post("/addprod", (req,res)=>{
     Product.create(req.body)
-    .then(product=>{
-        res.send(product);
-    });
+    .then(product => res.send(product) );
 });
-
 
 //put
 router.put("/users/:id", (req, res) => {
     User.findByIdAndUpdate({ _id: req.params.id }, req.body)
         .then(() => {
             User.findOne({ _id: req.params.id })
-                .then(user => {
-                    res.send(user);
-                });
+                .then(user => res.send(user) );
         });
 });
 
 //delete
 router.delete("/users/:id", (req, res) => {
     User.deleteOne({ _id: req.params.id })
-        .then(user => {
-            res.send(user);
-        });
+        .then(user => res.send(user) );
 });
 
 router.post("/checkout", async (req, res) => {
@@ -192,10 +176,34 @@ router.post("/checkout", async (req, res) => {
         address,
         card,
         order,
-        user_id,
+        user_id: user_id || 'anonymous',
     })
     await newOrder.save()
 
+    fs.readFile('./checkoutMailer/index.pug', 'utf8', (err, data) => {
+        if (err) throw err
+        const fn = pug.compile(data)
+
+        // Set pug context
+        const html = fn({
+            fullname: `${newOrder.address.firstname} ${newOrder.address.lastname}`,
+            address: newOrder.address.address,
+            city: newOrder.address.city,
+            email: newOrder.address.email,
+            phone: newOrder.address.phone,
+            orderTotal: order
+        })
+
+        const message = {
+          to: newOrder.address.email, //orderer email
+          subject: 'Поздравляем! Вам заказ был успешно обработан!',
+          text: `Поздравляем! Вам заказ был успешно обработан!`,
+          attachments: checkoutMailer.templateMedia,
+          html: html
+        }
+
+        checkoutMailer.mailer(message)
+    });
     res.status(200).json({
       message: 'Спасибо за Ваш заказ!'
     })
@@ -246,9 +254,7 @@ router.post("/user_addresses", async (req, res) => {
 })
 
 router.post("/user_orders", async (req, res) => {
-    console.log(req.body)
     const { user_id } = req.body
-    const user = await User.findById({ '_id': user_id });
     const orders = []
     const userOrders = await Order.find({
       "user_id": user_id
