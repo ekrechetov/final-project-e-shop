@@ -186,6 +186,8 @@ router.delete("/users/:id", (req, res) => {
 router.post("/checkout", async (req, res) => {
     const { user_id, order, address, card } = req.body.data
 
+    console.log('order',order)
+
     const newOrder = new Order({
         address,
         card,
@@ -194,15 +196,13 @@ router.post("/checkout", async (req, res) => {
     })
     await newOrder.save()
 
-    console.log(newOrder);
     res.status(200).json({
-      message: 'Thank you for your order!'
+      message: 'Спасибо за Ваш заказ!'
     })
 })
 
 router.post("/user_customize", (req, res) => {
     const { data, user_id } = req.body
-    console.log(data, user_id);
 
     if(data.prevpassword && data.newpassword){
         User.findById(user_id, async (err, doc) => {
@@ -249,7 +249,6 @@ router.post("/user_orders", async (req, res) => {
     console.log(req.body)
     const { user_id } = req.body
     const user = await User.findById({ '_id': user_id });
-    console.log(user)
     const orders = []
     const userOrders = await Order.find({
       "user_id": user_id
