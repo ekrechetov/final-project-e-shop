@@ -6,7 +6,7 @@ import { Card, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles(() => ({
   orderBlock: {
-    maxWidth: 400,
+    maxWidth: 800,
     padding: '5px 10px',
     margin: 'auto',
     marginBottom: 40

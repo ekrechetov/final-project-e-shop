@@ -9,7 +9,7 @@ import { fetchUserAddresses } from '../../../actions/authentication'
 
 const styles = theme => ({
   profilePage: {
-    maxWidth: 600,
+    maxWidth: 800,
     margin: 'auto',
   },
   passwordFrom: {
@@ -30,11 +30,11 @@ function ProfilePage(props) {
   return (
     <div className={classes.profilePage}>
       <Typography variant='h5' align='center' className={classes.greeting}>Здравствуйте, {fullname}</Typography>
-      <div className={classes.passwordFrom}>
-        <ProfilePassword />
-      </div>
       <div className={classes.addressessForm}>
         <ProfileAddress />
+      </div>
+      <div className={classes.passwordFrom}>
+        <ProfilePassword />
       </div>
     </div>
   );

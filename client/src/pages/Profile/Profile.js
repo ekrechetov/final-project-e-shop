@@ -75,8 +75,8 @@ class Profile extends Component {
     return (
       <div className={classes.profile}>
         <AntTabs value={history.location.pathname} onChange={(evt, value) => history.push(value)}>
-          <AntTab value={url} label='Profile' />
-          <AntTab value={`${url}/orders`} label='Orders' />
+          <AntTab value={url} label='Мой профиль' />
+          <AntTab value={`${url}/orders`} label='Мои заказы' />
         </AntTabs>
         <Route exact path={url} component={ProfilePage} />
         <Route exact path={`${url}/orders`} component={OrdersPage} />
