@@ -1,5 +1,7 @@
 import {
     SET_CURRENT_USER,
+    // GET_LOCAL_CART,
+    GET_DB_CART,
     CHANGE_USER_PASSWORD,
     CHANGE_USER_ADDRESSES,
     FETCH_USERS_ORDERS,
@@ -13,6 +15,7 @@ const initialState = {
     isAuthenticated: false,
     isPasswordChanged: false,
     isFetching: false,
+    isCartDbGeted: false,
     addresses: {
         firstname: '',
         lastname: '',
@@ -25,7 +28,7 @@ const initialState = {
     orders: []
 }
 
-export default function(state = initialState, action ) {
+export default function(state = initialState, action) {
     switch(action.type) {
         case SET_CURRENT_USER:
             return {
@@ -61,6 +64,13 @@ export default function(state = initialState, action ) {
                 ...state,
                 isFetching: false,
             }
+ 
+        case GET_DB_CART:
+            return {
+                ...state,
+                isCartGeted: true,
+            }
+
         default:
             return state;
     }

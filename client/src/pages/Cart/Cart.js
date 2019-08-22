@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import CartItem from './CartItem';
@@ -41,12 +40,14 @@ class Cart extends Component {
         <Container maxWidth="md">
           <table>
             <thead>
+              <tr>
                 <th className="hide-on-mobile">Фото</th>
                 <th>Товар</th>
                 <th>Кол-во</th>
                 <th>Цена</th>
                 <th>Сумма</th>
                 <th></th>
+              </tr>
             </thead>
 
             <tbody>
@@ -57,7 +58,7 @@ class Cart extends Component {
           </table>
         </Container>
 
-        {cartItems.length !== 0 ?
+        {cartItems.length != 0 ?
         <Container maxWidth="md" className='cart-footer'>
           <span>Итого {sumItems} грн. </span>
           <Link to="/checkout"> <OrderButton/></Link>

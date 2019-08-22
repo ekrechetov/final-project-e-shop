@@ -1,5 +1,6 @@
 import {
-  GET_LOCAL_STORAGE_CART,
+  GET_LOCAL_CART,
+  GET_DB_CART,
   INCREMENT_CART_ITEM,
   DECREMENT_CART_ITEM,
   CHANGE_INPUT_QNT,
@@ -12,7 +13,8 @@ const initialState = [];
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_LOCAL_STORAGE_CART:
+
+    case GET_LOCAL_CART:
       return action.payload;
 
     case INCREMENT_CART_ITEM: {
@@ -25,7 +27,7 @@ export default function (state = initialState, action) {
         else return item;
       });
 
-      localStorage.setItem('parfumanCart', JSON.stringify(newArj))
+      // localStorage.setItem('parfumanCart', JSON.stringify(newArj))
       return newArj;
     }
 
@@ -38,7 +40,7 @@ export default function (state = initialState, action) {
         else return item;
       });
 
-      localStorage.setItem('parfumanCart', JSON.stringify(newArj))
+      // localStorage.setItem('parfumanCart', JSON.stringify(newArj))
       return newArj;
     }
 
@@ -56,7 +58,7 @@ export default function (state = initialState, action) {
         else {return item;}
       });
 
-      localStorage.setItem('parfumanCart', JSON.stringify(newArj))
+      // localStorage.setItem('parfumanCart', JSON.stringify(newArj))
       return newArj;
     }
 
@@ -65,7 +67,7 @@ export default function (state = initialState, action) {
         return (item.code !== action.payload);
       });
 
-      localStorage.setItem('parfumanCart', JSON.stringify(newArj))
+      // localStorage.setItem('parfumanCart', JSON.stringify(newArj))
       return newArj;
     }
     case ADD_CART_ITEM: {
@@ -76,12 +78,17 @@ export default function (state = initialState, action) {
         return item.code !== action.payload.code
       })
 
-      localStorage.setItem('parfumanCart', JSON.stringify([...newArj, action.payload]))
+      // localStorage.setItem('parfumanCart', JSON.stringify([...newArj, action.payload]))
       return [...newArj, action.payload]
     }
     case EMPTY_CART:
       localStorage.removeItem('parfumanCart')
       return []
+    
+    case GET_DB_CART: {     
+      return action.payload;
+    }  
+    
     default: return state;
   }
 }

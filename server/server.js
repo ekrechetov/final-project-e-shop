@@ -62,16 +62,6 @@ app.use('/', require('./api'));
 //   res.json(User)
 // });
 
-//test get products from cart collection:
-app.get('/cart', (req, res) => {
-  Cart.find({userName: 'ekrechetov'}, function(err, result){     
-  if(err) return console.log(err);   
-  console.log("Cart products are finded");
-  console.log(result);
-  res.send(result);
-  });  
-});
-
 app.listen(PORT, (req, res) => {
   console.log(`Server is listening on port: ${PORT}`)
 })

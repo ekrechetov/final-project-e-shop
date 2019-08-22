@@ -59,7 +59,7 @@ function QntSelector(props) {
         <>
             <div className="qnt-selector">
                 <input type="text"
-                       onChange={(event) => isNaN(event.target.value) ? dispatch(changeInputQnt(code, 1)) : +event.target.value > availability ? handleOpen() : dispatch(changeInputQnt(code, event.target.value))}
+                       onChange={(event) => (isNaN(event.target.value) || event.target.value == 0) ? dispatch(changeInputQnt(code, 1)) : +event.target.value > availability ? handleOpen() : dispatch(changeInputQnt(code, event.target.value))}
                        value={qnt}
                        className="qnt-selector-input"/>
                 <div className="qnt-change-container">

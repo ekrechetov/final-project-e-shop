@@ -5,6 +5,8 @@ import {grey, blue, orange} from '@material-ui/core/colors/';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {deepOrange} from "@material-ui/core/colors";
+import {Provider} from 'react-redux';
+import store from './store';
 // import {orange} from "@material-ui/core/colors";
 
 
@@ -31,7 +33,9 @@ const theme = createMuiTheme({
 });
 ReactDOM.render(
     <MuiThemeProvider theme={theme}>
-        <App/>
+        <Provider store={store}>
+            <App/>
+        </Provider>
     </MuiThemeProvider>,
     document.getElementById('root')
 );

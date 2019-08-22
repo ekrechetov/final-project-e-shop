@@ -12,6 +12,7 @@ const BootstrapButton = withStyles({
     lineHeight: 1.5,
     backgroundColor: 'transparent',
     borderColor: 'gray',
+    color: 'black',
     fontFamily: [
       '-apple-system',
       'BlinkMacSystemFont',

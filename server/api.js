@@ -14,6 +14,7 @@ const validateLoginInput = require('./validation/login');
 const User = require('./dbmodels/user');
 const Order = require('./dbmodels/order');
 const Product = require('./dbmodels/product');
+const Cart = require('./dbmodels/cart');
 
 require('dotenv').config();
 
@@ -266,5 +267,44 @@ router.post("/user_orders", async (req, res) => {
       orders
     })
 })
+
+//get user cart:
+router.get('/cart/:userId', (req, res) => {
+    Cart.findOne({userId: req.params.userId}, function(err, result){     
+    if(err) return console.log(err);   
+    console.log("Cart is finded");
+    // console.log(req.params);
+    res.send(result);
+    });  
+});
+
+//put cart:
+router.put("/user_cart", (req, res) => {
+    Cart.updateOne(
+        {userId: req.body.currentUserId},
+        {cartProducts: req.body.cartItems},
+        function(err, result) {     
+            if(err) return console.log(err);
+            res.send(result);
+            // console.log(req.body);
+        } 
+    );
+});
+//post cart:
+// router.post("/user_cart", (req, res) => {
+//     console.log(req.params);
+//     console.log(req.body);
+//     Cart.updateOne(
+//         {userId: req.body.currentUserId},
+//         {cartProducts: req.body.cartItems},
+//         function(err, result) {     
+//             if(err) return console.log(err);
+//             res.send(result);
+//             // console.log(req);
+//         } 
+//     );
+// });
+
+
 
 module.exports = router;

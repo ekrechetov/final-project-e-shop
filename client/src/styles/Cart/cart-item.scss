@@ -33,7 +33,7 @@
   .cart-item {
 
     &-delete {
-      color: transparent;
+      font-size: 0;
       background-image: url("./delete.png");
       background-size: 25%;
       background-repeat: no-repeat;
