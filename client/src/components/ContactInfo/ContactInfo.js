@@ -9,8 +9,6 @@ const styles = (theme) => ({
     contactInfoBlock: {
         display: 'flex',
         flexDirection: 'column',
-        // position: 'absolute',
-        // right: '0',
         zIndex: '3'
     },
     contactIconButton: {
@@ -28,7 +26,7 @@ const styles = (theme) => ({
     contactInfo: {
         display: 'flex',
         flexWrap: 'wrap',
-        maxWidth: '140px',
+        maxWidth: '180px',
         'max-height': '0px',
         position: 'absolute',
         top: '45px',
@@ -68,10 +66,17 @@ class ContactInfo extends Component {
                 : contacts.style.cssText = 'max-height: 0; padding: 0; opacity: 0.1';
         };
     render() {
+        document.addEventListener('click', (event) => {
+            const contacts = document.querySelector('#contactInfo');
+            const target = event.target;
+            if((target.parentElement.getAttribute('id') !== 'contactIcon') && (target.tagName !== 'svg' && target.getAttribute('id') !== 'contactIcon')) {
+                contacts.style.cssText = 'max-height: 0; padding: 0; opacity: 0.1';
+            }
+        });
         return (
             <article className={this.props.classes.contactInfoBlock}>
                 <span className={this.props.classes.contactIconButton} onClick={this.toggleMenu} title="Контакты">
-                    <FontAwesomeIcon icon={faPhoneSquare} size="1x" className={this.props.classes.contactIcon}/>
+                    <FontAwesomeIcon icon={faPhoneSquare} size="1x" className={this.props.classes.contactIcon} id='contactIcon'/>
                 </span>
                 <div className={this.props.classes.contactInfo} id='contactInfo'>
                     <a href="tel:380800908070" className={this.props.classes.phone}>0-800-90-80-70</a>

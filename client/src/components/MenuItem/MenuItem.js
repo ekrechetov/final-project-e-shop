@@ -13,13 +13,13 @@ const useStyles = makeStyles((theme) => ({
         link: {
             display: 'flex',
             flexDirection: 'column',
-            padding: '5px',
+            padding: '5px 10px 5px 10%',
             textDecoration: 'none',
             color: theme.palette.primary.dark,
             textAlign: 'right',
             whiteSpace: 'nowrap',
             letterSpacing: '0.02rem',
-            fontSize: '16px',
+            fontSize: '1rem',
             borderBottom: '0 solid transparent',
             transition: 'all 0.2s ease',
             '&:after': {
@@ -36,9 +36,14 @@ const useStyles = makeStyles((theme) => ({
         },
         '@media (max-width: 991px)': {
             link: {
-                fontSize: '12px',
+                fontSize: '0.9rem',
             }
         },
+        '@media (max-width: 767px)': {
+            link: {
+                fontSize: '1rem',
+            }
+        }
     }
 ));
 

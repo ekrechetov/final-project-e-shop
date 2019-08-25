@@ -38,13 +38,17 @@ const useStyles = makeStyles((theme) => ({
         },
         '@media (max-width: 991px)': {
             link: {
-                fontSize: '12px',
+                fontSize: '0.8rem',
             }
         },
         '@media (max-width: 767px)': {
             listItem: {
-                marginBottom: '10px',
+                marginBottom: '20px',
             },
+            link: {
+                padding: '5px 10px 5px 10%',
+                fontSize: '1rem',
+            }
         }
     }
 ));
@@ -55,16 +59,18 @@ const Categories = (props) => {
     const {Categories} = props;
     const renderCategory = (item) => {
         return (
-            <li key={item._id} className={classes.listItem}>
-                <Link onClick={()=>{props.setFilter({filter:()=>true,brand:false})}} to={`/categories/${item.alias}`} className={classes.link}>{item.category}</Link>
+            <li key={item._id} className={`${classes.listItem} ${'menu-list--item'}`}>
+                <Link onClick={()=>{props.setFilter({filter:()=>true,brand:false})}}
+                      to={`/categories/${item.alias}`}
+                      className={`${classes.link} ${'menu-list--item--link'}`}>{item.category}</Link>
             </li>
         );
     };
 
     const renderAllCategory = () => {
         return (
-            <li key={320099887} className={classes.listItem}>
-                <Link onClick={()=>{props.setFilter({filter:()=>true,brand:false})}} to="/categories" className={classes.link}> Каталог</Link>
+            <li key={320099887} className={`${classes.listItem} ${'menu-list--item'}`}>
+                <Link onClick={()=>{props.setFilter({filter:()=>true,brand:false})}} to="/categories" className={`${classes.link} ${'menu-list--item--link'}`}>Каталог</Link>
             </li>
         );
     };

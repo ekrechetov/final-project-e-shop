@@ -1,28 +1,128 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import * as R from 'ramda';
+import withStyles from "@material-ui/core/styles/withStyles";
 import {fetchProducts} from '../actions/products';
 import {fetchCategories} from '../actions/categories';
 import {getProducts} from '../selectors/Products';
-import {Link} from 'react-router-dom';
-import withStyles from "@material-ui/core/styles/withStyles";
-import * as R from 'ramda';
+import arrowDown from './arrow-down.png';
+import arrowUp from './arrow-up.png';
+import checkMark from './check-mark.png';
 
 const styles = (theme) => ({
-    productsItemsContainer: {
-        // display: 'flex',
-        // justifyContent: 'center',
-
-        
+    productsContainer: {
+        display: 'flex',
+        width: '100%',
+        color: theme.palette.primary.dark
     },
-    productsItemsInsideContainer: {
+    filtersContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '250px'
+    },
+    priceSortWrap: {
+        display: 'flex',
+        flexDirection: 'column',
+        marginTop: '10px',
+        overflow: 'hidden',
+        borderRadius: '2px',
+        backgroundColor: theme.palette.primary.main,
+        transition: 'all 0.3s ease'
+    },
+    priceSortTitle: {
+        maxWidth: '100%',
+        padding: '10px',
+        margin: '7px 0 10px 0',
+        backgroundPosition: '85% center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'auto',
+        fontWeight: '500',
+        cursor: 'pointer'
+    },
+    priceSortList: {
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: '100%',
+        padding: '0 10px 10px 10px',
+    },
+    priceSortButton: {
+        display: 'flex',
+        cursor: 'pointer',
+        padding: '5px 5px 5px 0'
+    },
+    formBrandsListContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        marginTop: '10px',
+        overflow: 'hidden',
+        borderRadius: '2px',
+        backgroundColor: theme.palette.primary.main,
+        transition: 'all 0.3s ease'
+    },
+    'activeBlock': {
+        overflow: 'visible',
+        backgroundColor: 'blue'
+    },
+
+    formBrandTitle: {
+        maxWidth: '100%',
+        padding: '10px',
+        margin: '7px 0 10px 0',
+        backgroundPosition: '85% center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'auto',
+        fontWeight: '500',
+        cursor: 'pointer'
+    },
+    formBrandsList: {
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: '100%',
+        height: '605px',
+        padding: '0 10px 10px 10px',
+        overflow: 'auto',
+    },
+    checkboxLabel: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '5px 0',
+        position: 'relative',
+        cursor: 'pointer'
+    },
+
+    checkboxInput: {
+        marginLeft: '15px',
+        outline: '0',
+        '&:after': {
+            content: '""',
+            display: 'flex',
+            width: '15px',
+            height: '15px',
+            position: 'absolute',
+            right: '0',
+            borderRadius: '2px',
+            backgroundColor: theme.palette.primary.light,
+            boxShadow: '0 0 2px rgba(0, 0, 0, 0.4)',
+            cursor: 'pointer'
+        },
+        '&:checked:after': {
+            backgroundImage: 'url(' + checkMark + ')',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+        }
+    },
+    productsItemsContainer: {
         display: 'flex',
         flexWrap: 'wrap',
-        maxWidth: '100%',
+        width: '85%',
     },
     productItemWrap: {
         display: 'flex',
         flexWrap: 'wrap',
-        width: '19.8%',
+        width: '23%',
+        maxHeight: '335px',
         padding: '0.7% 1.5% 7% 1.5%',
         margin: '1%',
         border: '1px solid orange',
@@ -40,8 +140,7 @@ const styles = (theme) => ({
         width: '100%',
     },
 
-    descriptionText: {
-    },
+    descriptionText: {},
     productCategory: {
         width: '48%',
         fontSize: '0.7rem',
@@ -59,7 +158,7 @@ const styles = (theme) => ({
         height: '150px',
         margin: '15px 0',
         objectFit: 'contain',
-        
+
     },
     productTitle: {
         width: '100%',
@@ -90,13 +189,13 @@ const styles = (theme) => ({
 
     '@media (max-width: 1199px)': {
         productItemWrap: {
-            width: '28%',
+            width: '31.3%',
             paddingBottom: '100px'
         },
     },
     '@media (max-width: 767px)': {
         productItemWrap: {
-            width: '44.5%',
+            width: '48%',
             paddingBottom: '100px'
         },
     },
@@ -114,10 +213,11 @@ class Products extends Component {
         this.props.fetchProducts();
         this.props.fetchCategories();
     }
+
     constructor(props) {
         super(props)
-        this.state = {priceAsc:false,priceDsc:false}
-      }
+        this.state = {priceAsc: false, priceDsc: false}
+    }
 
     renderProduct = (product) => {
         return (
@@ -140,56 +240,103 @@ class Products extends Component {
     };
 
 
-    renderBrand = (product) =>{
-        return(
-            <label style={{marginRight:"15px"}} 
+    renderBrand = (product) => {
+        return (
+            <label className={this.props.classes.checkboxLabel}
                    key={product._id}>{product.brand}
-                <input style={{marginLeft:"3px"}}
-                    type='checkbox' 
-                    checked={this.props.filter.brand===product.brand}
-                    value={product.brand} 
-                    name={product.brand} 
-                    onChange={this.handleBrandChange.bind(this)}/>
+                <input className={this.props.classes.checkboxInput}
+                       type='checkbox'
+                       checked={this.props.filter.brand === product.brand}
+                       value={product.brand}
+                       name={product.brand}
+                       onChange={this.handleBrandChange.bind(this)}/>
             </label>
         )
     }
 
     handleBrandChange = (e) => {
-        if(e.target.checked){
-             this.props.setFilter((function(brand){return {filter:(item)=>item.brand===brand,brand}})(e.target.value))
-         }
-         else this.props.setFilter({filter:()=>true,brand:false})
-       }
-       sortByPriceAsc() {
-        this.setState({priceDesc:false,priceAsc:true})
-      }
-          
-      sortByPriceDesc() {
-        this.setState({priceAsc:false,priceDesc:true})
-      }
-      
-      noSort() {
-        this.setState({priceAsc:false,priceDesc:false})
-      }   
+        if (e.target.checked) {
+            this.props.setFilter((function (brand) {
+                return {filter: (item) => item.brand === brand, brand}
+            })(e.target.value))
+        } else this.props.setFilter({filter: () => true, brand: false})
+    }
+
+    sortByPriceAsc() {
+        this.setState({priceDesc: false, priceAsc: true})
+    }
+
+    sortByPriceDesc() {
+        this.setState({priceAsc: false, priceDesc: true})
+    }
+
+    noSort() {
+        this.setState({priceAsc: false, priceDesc: false})
+    }
+
+    toggleBrandsList(upHeight, downHeight, containerId, titleId) {
+        console.log(titleId);
+        const title = document.getElementById(titleId);
+        const block = document.getElementById(containerId);
+        block.classList.toggle('activeBlock');
+        if (block.classList.contains('activeBlock')) {
+            block.style.height = upHeight;
+            title.style.backgroundImage = 'url(' + arrowUp + ')';
+        } else {
+            block.style.height = downHeight;
+            title.style.backgroundImage = 'url(' + arrowDown + ')';
+        }
+    }
 
     render() {
-        const {products,filter} = this.props;
+        const {products, filter} = this.props;
+        const uniqProducts = R.uniqBy(R.prop('brand'), products);
+        const sort = R.sortBy(R.prop('brand'));
+        const sortedProducts = sort(uniqProducts);
+
         return (
-            <div>
-            <button onClick={this.sortByPriceAsc.bind(this)}>ВЕРХ</button>
-            <button onClick={this.sortByPriceDesc.bind(this)}>ВНИЗ</button>
-            <button onClick={this.noSort.bind(this)}>СБРОС</button>
-            <h1 style={{fontWeight:"900"}}>Brands</h1>
-            <form>
-                {R.uniqBy(R.prop('brand'), products).map((product)=>this.renderBrand(product))}
-            </form>
-            <div className={this.props.classes.productsItemsContainer}>
-                <div className={this.props.classes.productsItemsInsideContainer}>
-                    {(this.state.priceAsc ? products.slice().sort((a, b) => (a.price - b.price)):
-                      this.state.priceDesc ? products.slice().sort((a, b) => (b.price - a.price)): products)
-                      .filter(filter.filter).map((product) => this.renderProduct(product))}
+            <div className={this.props.classes.productsContainer}>
+                <div className={this.props.classes.filtersContainer}>
+                    <div className={this.props.classes.priceSortWrap}
+                         id='form-price-container'
+                         style={{height: '50px'}}>
+                        <h5 className={this.props.classes.priceSortTitle}
+                            id='form-price-title'
+                            onClick={this.toggleBrandsList.bind(null, '150px', '50px', 'form-price-container', 'form-price-title')}
+                            style={{backgroundImage: 'url(' + arrowDown + ')'}}>Цена</h5>
+                        <ul className={this.props.classes.priceSortList} id='price-button-list'>
+                            <li className={`${this.props.classes.priceSortUp} ${'priceSortButton'} ${this.props.classes.priceSortButton}`}
+                                onClick={this.sortByPriceAsc.bind(this)}>Цены по возрастанию
+                            </li>
+                            <li
+                                className={`${this.props.classes.priceSortDown} ${'priceSortButton'} ${this.props.classes.priceSortButton}`}
+                                onClick={this.sortByPriceDesc.bind(this)}>Цены по убыванию
+                            </li>
+                            <li
+                                className={`${this.props.classes.priceSortClear} ${'priceSortButton'} ${this.props.classes.priceSortButton}`}
+                                onClick={this.noSort.bind(this)}>Сброс фильтра
+                            </li>
+                        </ul>
+                    </div>
+                    <div className={this.props.classes.formBrandsListContainer}
+                         id='form-brand-container'
+                         style={{height: '50px'}}>
+                        <h5 className={this.props.classes.formBrandTitle}
+                            id='form-brand-title'
+                            onClick={this.toggleBrandsList.bind(null, '605px', '50px', 'form-brand-container', 'form-brand-title')}
+                            style={{backgroundImage: 'url(' + arrowDown + ')'}}>Бренды</h5>
+                        <form className={this.props.classes.formBrandsList} id='brand-form'>
+                            {/*{R.sortBy(R.prop('brand'), products).map((product) => this.renderBrand(product))}*/}
+                            {R.uniqBy(R.prop('brand'), sortedProducts).map((product) => this.renderBrand(product))}
+                            {/*{R.pipe(console.log('lsdjf'), R.uniqBy(R.prop('brand'), products)).map((product) => this.renderBrand(product))}*/}
+                        </form>
+                    </div>
                 </div>
-            </div>
+                <div className={this.props.classes.productsItemsContainer}>
+                    {(this.state.priceAsc ? products.slice().sort((a, b) => (a.price - b.price)) :
+                        this.state.priceDesc ? products.slice().sort((a, b) => (b.price - a.price)) : products)
+                        .filter(filter.filter).map((product) => this.renderProduct(product))}
+                </div>
             </div>
         )
     };
@@ -198,12 +345,12 @@ class Products extends Component {
 const mapDispatchToProps = (dispatch) => ({
     fetchProducts: () => dispatch(fetchProducts()),
     fetchCategories: () => dispatch(fetchCategories()),
-    setFilter: filter=>dispatch({type:"SET_FILTER",payload:filter})
+    setFilter: filter => dispatch({type: "SET_FILTER", payload: filter})
 });
 
 const mapStateToProps = (state, ownProps) => ({
     products: getProducts(state, ownProps),
-    filter:state.filter
+    filter: state.filter
 
 });
 
