@@ -167,6 +167,7 @@ class App extends Component {
         <Router history={newHistory}>
             <Toaster/>
             <Box className={this.props.classes.containerBox}>
+                <ScrollUpButton style={{width: 35, height: 35, backgroundColor: 'rgba(255, 152, 0, .5)', borderRadius: '10%', padding: 5}} ToggledStyle={{right: 50, bottom: 60}} />
                 <Header/>
                 <Box className={this.props.classes.insideContainerBox} id='insideContainerBox'>
                   <Route exact path="/" component={MainPage}/>

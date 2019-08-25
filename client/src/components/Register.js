@@ -88,13 +88,14 @@ const styles = (theme) => ({
     registerWrap: {
         display: 'flex',
         justifyContent: 'center',
-        padding: '50px 0'
+        padding: '50px 0',
+        fontFamily: "'Montserrat', sans-serif"
     },
     register: {
         display: 'flex',
         flexDirection: 'column',
-        width: '50%',
-        borderRadius: '5px',
+        width: '40%',
+        borderRadius: '4px',
         boxShadow: '0 0 10px 2px rgba(0, 0, 0, 0.2)',
     },
     registerBox: {
@@ -104,8 +105,8 @@ const styles = (theme) => ({
         boxSizing: 'border-box',
         alignItems: 'center',
         padding: '20px 0',
-        borderRadius: '5px 5px 0 0 ',
-        backgroundColor: theme.palette.primary.main,
+        borderRadius: '4px 4px 0 0 ',
+        backgroundColor: theme.palette.primary.light,
         color: theme.palette.secondary.main,
         boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
     },
@@ -113,7 +114,7 @@ const styles = (theme) => ({
         width: '90%',
         textAlign: 'center',
         fontSize: '1.5rem',
-        fontWeight: 'bold',
+        fontWeight: '500',
     },
     registerClose: {
         justifyContent: 'center',
@@ -126,7 +127,9 @@ const styles = (theme) => ({
         justifyContent: 'center',
         boxSizing: 'border-box',
         width: '100%',
-        padding: '25px 45px'
+        padding: '25px 45px',
+        color: theme.palette.secondary.main,
+        fontSize: '.6rem'
     },
     inputsWrap: {
         display: 'flex',
@@ -136,19 +139,22 @@ const styles = (theme) => ({
     },
     inputContainer: {
         display: 'flex',
+        flexDirection: 'column',
         boxSizing: 'border-box',
         width: '100%',
         padding: '10px 0',
-        borderRadius: '5px'
+        borderRadius: '4px'
     },
     registerInput: {
         width: '100%',
         padding: '10px 20px',
         border: '1px solid' + theme.palette.primary.contrastText,
         outline: '0',
-        borderRadius: '5px',
+        borderRadius: '4px',
         backgroundColor: 'transparent',
-        boxShadow: '0 0 1px 0 rgba(0, 0, 0, 0.05)'
+        boxShadow: '0 0 1px 0 rgba(0, 0, 0, 0.05)',
+        fontSize: '.8rem',
+        fontWeight: '300',
 
     },
     linkContainer: {
@@ -159,21 +165,38 @@ const styles = (theme) => ({
         marginTop: '20px'
     },
     registerButton: {
-        padding: '10px 15px',
+        padding: '10px',
         marginRight: '10px',
-        borderRadius: '5px',
-        border: '1px solid' + theme.palette.primary.contrastText,
-        backgroundColor: theme.palette.primary.main,
+        borderRadius: '4px',
+        border: '1px solid' + theme.palette.secondary.main,
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.primary.light,
         fontSize: '1rem',
-        color: theme.palette.secondary.main,
-        boxShadow: '0 0 3px 0 rgba(0, 0, 0, 0.2)',
         cursor: 'pointer',
+        transition: 'transform .2s linear',
+        '&:hover': {
+            transform: 'translateY(-5px)',
+        },
+        '&:focus': {
+            outline: 'none',
+        },
     },
     toLoginAccount: {
-        textAlign: 'right',
-        fontSize: '0.8rem',
-        color: theme.palette.secondary.main,
+        padding: '10px',
+        borderRadius: '4px',
+        border: '1px solid' + theme.palette.secondary.main,
+        fontSize: '1rem',
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.primary.light,
         cursor: 'pointer',
+        transition: 'transform .2s linear',
+        '&:hover': {
+            transform: 'translateY(-5px)',
+            color: theme.palette.primary.light,
+        },
+        '&:focus': {
+            outline: 'none',
+        },
     },
     '@media(max-width: 1199px)': {
         register: {
@@ -287,7 +310,7 @@ class Register extends Component {
                                 />
                                 {errors.name && (
                                     <div className={this.props.classes.registerError}>
-                                        {' '}
+                                        {'* '}
                                         {errors.name}
                                     </div>
                                 )}
@@ -301,7 +324,7 @@ class Register extends Component {
                                     value={this.state.email}
                                     className={this.props.classes.registerInput}
                                 />
-                                {errors.email && (<div>{errors.email}</div>)}
+                                {errors.email && (<div>{'* '}{errors.email}</div>)}
                             </div>
                             <div className={this.props.classes.inputContainer}>
                                 <input
@@ -312,7 +335,7 @@ class Register extends Component {
                                     value={this.state.password}
                                     className={this.props.classes.registerInput}
                                 />
-                                {errors.password && (<div>{errors.password}</div>)}
+                                {errors.password && (<div>{'* '}{errors.password}</div>)}
                             </div>
                             <div className={this.props.classes.inputContainer}>
                                 <input
@@ -323,7 +346,7 @@ class Register extends Component {
                                     value={this.state.password_confirm}
                                     className={this.props.classes.registerInput}
                                 />
-                                {errors.password_confirm && (<div>{errors.password_confirm}</div>)}
+                                {errors.password_confirm && (<div>{'* '}{errors.password_confirm}</div>)}
                             </div>
                         </div>
                         <div className={this.props.classes.linkContainer}>

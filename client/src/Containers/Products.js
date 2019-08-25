@@ -26,7 +26,12 @@ const styles = (theme) => ({
         padding: '0.7% 1.5% 7% 1.5%',
         margin: '1%',
         border: '1px solid orange',
-        position: 'relative'
+        borderRadius: '4px',
+        transition: 'transform .2s linear',
+        position: 'relative',
+        '&:hover': {
+            transform: 'translateY(-10px)',
+        },
     },
     productItem: {
         display: 'flex',
@@ -67,7 +72,11 @@ const styles = (theme) => ({
         bottom: '10%',
         borderRadius: '4px',
         backgroundColor: theme.palette.secondary.main,
-        color: theme.palette.primary.light
+        color: theme.palette.primary.light,
+        transition: 'transform .2s linear',
+        '&:hover': {
+            backgroundColor: theme.palette.secondary.light,
+        },
     },
     productPrice: {
         display: 'flex',

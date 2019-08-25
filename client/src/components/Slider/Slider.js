@@ -6,17 +6,17 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import Slide_1 from './../../images/img-slider/9.jpg';
 import Slide_2 from './../../images/img-slider/2.jpg';
-import Slide_3 from './../../images/img-slider/3.jpg';
+import Slide_3 from './../../images/img-slider/7.jpg';
 import Slide_4 from './../../images/img-slider/4.jpg';
 import Slide_5 from './../../images/img-slider/10.jpg';
-import Slide_6 from './../../images/img-slider/6.jpg';
+import Slide_6 from './../../images/img-slider/8.jpg';
 
 const Slider = () => {
     return (
-        <MDBContainer>
+        <MDBContainer fluid className="p-0">
             <MDBCarousel
                 activeItem={1}
-                length={5}
+                length={6}
                 showControls={true}
                 showIndicators={true}
                 className="z-depth-1 mt-3"
@@ -85,6 +85,19 @@ const Slider = () => {
                         </MDBView>
                         <MDBCarouselCaption>
                             <h3 className="h3-responsive">Сопротивление бесполезно.</h3>
+                        </MDBCarouselCaption>
+                    </MDBCarouselItem>
+                    <MDBCarouselItem itemId="6">
+                        <MDBView>
+                            <img
+                                className="d-block w-100"
+                                src={Slide_3}
+                                alt="First slide"
+                            />
+                            <MDBMask overlay="black-light" />
+                        </MDBView>
+                        <MDBCarouselCaption>
+                            <h3 className="h3-responsive">Все оттенки твоих желаний</h3>
                         </MDBCarouselCaption>
                     </MDBCarouselItem>
                 </MDBCarouselInner>
