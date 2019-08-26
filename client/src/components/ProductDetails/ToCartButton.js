@@ -63,7 +63,7 @@ const mapStoreToProps = (store) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-   addCartItem : (id) => dispatch(addCartItem(id))
+   addCartItem : (data) => dispatch(addCartItem(data))
   }
 }
 

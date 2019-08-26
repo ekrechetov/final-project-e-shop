@@ -25,8 +25,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    &_red{
+        color: red
+    }
 }
 .toast-text {
+    margin-left: 10px;
     color: black;
     font-style: italic;
     font-weight: 700;

@@ -2,12 +2,6 @@
    background-color: rgb(246, 246, 246);
 }
 
-.background {
-    background-image: url(http://epicwallpaperz.com/wallpaper-hd/dark-wallpaper-mobile-On-wallpaper-hd.jpg);
-    height: calcFluidSize(150, 200, 320, 768);
-    background-size: cover;
-}
-
 .product-container {
     width: 100%;
     max-width: 1200px;
@@ -23,7 +17,6 @@
     width: 80%;
     height: calcFluidSize(190, 515, 320, 768);
     margin: 0 auto;
-    border: 2px solid rgb(240, 240, 240);
     background-size: contain;;
     background-repeat: no-repeat;
     background-position: center;
@@ -93,7 +86,6 @@
                 margin: 0;
                 font-size: calcFluidSize(12, 15, 769, 1200);
                 padding:  calcFluidSize(10, 12, 769, 1200) calcFluidSize(15, 18, 769, 1200);
-                margin-left: 5%;
             }
         }
     }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
 import Breadcrumbs from './Breadcrumbs'
-import ToCartBlock from './toCartBlock'
 import AllProductPhotos from './AllProductPhotos'
 import ProductInfo from './ProductInfo'
 import {connect} from 'react-redux'
@@ -13,7 +11,6 @@ class ProductDetailsMain extends Component {
     render() {
         return (
             <div className="main">
-                <div className="background"></div>
                 <div className="product-container">
                     <div className="photos-block">
                         <div className="photos-block__primary-img" alt = "product-img" style = {{backgroundImage: `url(${require(`../../images/img-products/${this.state.mainImgSrc}`)})`}}></div>
@@ -24,13 +21,9 @@ class ProductDetailsMain extends Component {
                     <div className="info-block">
                         <Breadcrumbs />
                         <ProductInfo />
-                        <ToCartBlock/>
                     </div>
                 </div>
             </div>
-
-
-
         )
     }
 
