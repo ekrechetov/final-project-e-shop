@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchProducts } from '../actions/products';
-import { fetchCategories } from '../actions/categories';
-import { getProducts } from '../selectors/Products';
-import { Link } from 'react-router-dom';
-import withStyles from "@material-ui/core/styles/withStyles";
-import * as R from 'ramda';
-import { addCartItem } from '../actions/addCartItem';
-import { toast } from 'react-toastify';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { CheckCircle } from '@material-ui/icons'
+import * as R from 'ramda';
+import withStyles from "@material-ui/core/styles/withStyles";
+import {CheckCircle} from '@material-ui/icons'
+import {fetchProducts} from '../actions/products';
+import {fetchCategories} from '../actions/categories';
+import {getProducts} from '../selectors/Products';
+import {addCartItem} from '../actions/addCartItem';
 import arrowDown from './arrow-down.png';
 import arrowUp from './arrow-up.png';
 import checkMark from './check-mark.png';
+import preloaderImg from './preloader.svg'
 
 const styles = (theme) => ({
     productsContainer: {
@@ -130,7 +131,7 @@ const styles = (theme) => ({
         padding: '0.7% 1.5% 7% 1.5%',
         margin: '1%',
         border: '1px solid orange',
-        borderRadius: '4px',
+        borderRadius: '3px',
         transition: 'transform .2s linear',
         position: 'relative',
         '&:hover': {
@@ -187,7 +188,7 @@ const styles = (theme) => ({
         position: 'absolute',
         bottom: '10%',
         borderRadius: '4px',
-        cursor: 'pointer',
+        // cursor: 'pointer',
         backgroundColor: theme.palette.secondary.main,
         color: theme.palette.primary.light,
         opacity: '0.3',
@@ -231,17 +232,25 @@ class Products extends Component {
     }
 
     constructor(props) {
-        super(props)
-        this.state = {priceAsc: false, priceDsc: false}
+        super(props);
+        this.state = {
+            priceAsc: false,
+            priceDsc: false,
+            imageLoad: false
+        }
+    }
+
+    handleImageLoaded() {
+        this.setState({imageLoad: true});
     }
 
     renderProduct = (product) => {
         let notify = () => toast(
             <div className="toast-wrapper">
-                <CheckCircle />
+                <CheckCircle/>
                 <div className="toast-text">
                     Товар добавлен в корзину
-              </div>
+                </div>
             </div>,
             {
                 autoClose: 2200,
@@ -250,7 +259,7 @@ class Products extends Component {
             });
         toast.configure()
 
-        let currentAvailability = product.availability
+        let currentAvailability = product.availability;
         this.props.cart.forEach(element => {
             if (element.code === product.code) {
                 currentAvailability -= element.quantity;
@@ -258,42 +267,49 @@ class Products extends Component {
         });
         return (
             <div key={product._id}
-                className={this.props.classes.productItemWrap}>
+                 className={this.props.classes.productItemWrap}>
                 <Link to={`/product/${product._id}`}>
                     <div className={this.props.classes.productItem}>
                         <p className={`${this.props.classes.productCategory} ${this.props.classes.descriptionText}`}>{product.category}</p>
                         <p className={`${this.props.classes.productBrand} ${this.props.classes.descriptionText}`}>{product.brand}</p>
-                        <img className={this.props.classes.image}
-                            src={`${require('../images/img-products/' + product.img[0])}`} alt="product-img" />
+                        {this.state.imageLoad ? <img className={this.props.classes.image}
+                                                     src={`${require('../images/img-products/' + product.img[0])}`}
+                                                     alt="product-img"
+                                                     onLoad={this.handleImageLoaded.bind(this)}/>
+                                                     : <img className={this.props.classes.image}
+                                                            src={preloaderImg}
+                                                            alt="product-img"
+                                                            onLoad={this.handleImageLoaded.bind(this)}/>
+                        }
                         <p className={`${this.props.classes.productTitle} ${this.props.classes.descriptionText}`}>{product.title}</p>
                     </div>
                 </Link>
-                <span className={currentAvailability > 0 ? this.props.classes.buyButton : this.props.classes.buyButtonDisabled} onClick={() => {
-                    if (currentAvailability > 0) {
-                        this.props.addCartItem({
-                            id: product._id,
-                            img: product.img[0],
-                            brand: product.brand,
-                            title: product.title,
-                            code: product.code,
-                            category: product.category,
-                            price: product.price,
-                            quantity: 1,
-                            availability: product.availability
-                        })
-                        notify()
-                    }
-                }}>Купить</span>
+                <span
+                    className={currentAvailability > 0 ? this.props.classes.buyButton : this.props.classes.buyButtonDisabled}
+                    onClick={() => {
+                        if (currentAvailability > 0) {
+                            this.props.addCartItem({
+                                id: product._id,
+                                img: product.img[0],
+                                brand: product.brand,
+                                title: product.title,
+                                code: product.code,
+                                category: product.category,
+                                price: product.price,
+                                quantity: 1,
+                                availability: product.availability
+                            })
+                            notify()
+                        }
+                    }}>Купить</span>
                 <Link to={`/product/${product._id}`}>
                     <div>
                         <p className={`${this.props.classes.productPrice} ${this.props.classes.descriptionText}`}>&#8372;{product.price}</p>
                     </div>
                 </Link>
             </div>
-
         );
     };
-
 
     renderBrand = (product) => {
         return (
@@ -393,6 +409,7 @@ class Products extends Component {
                         .filter(filter.filter).map((product) => this.renderProduct(product))}
                 </div>
             </div>
+            // </div>
         )
     };
 }
@@ -400,7 +417,7 @@ class Products extends Component {
 const mapDispatchToProps = (dispatch) => ({
     fetchProducts: () => dispatch(fetchProducts()),
     fetchCategories: () => dispatch(fetchCategories()),
-    setFilter: filter => dispatch({ type: "SET_FILTER", payload: filter }),
+    setFilter: filter => dispatch({type: "SET_FILTER", payload: filter}),
     addCartItem: (data) => dispatch(addCartItem(data))
 });
 

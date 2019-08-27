@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
             fontSize: '16px',
             borderBottom: '0 solid transparent',
             transition: 'all 0.2s ease',
+            '&:hover': {
+                color: theme.palette.primary.dark
+            },
             '&:after': {
                 content: "''",
                 width: '100%',
@@ -33,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
                 transition: 'all 0.2s ease'
             },
             '&:hover:after': {
-                backgroundColor: theme.palette.secondary.main
+                backgroundColor: theme.palette.secondary.main,
             }
         },
         '@media (max-width: 991px)': {

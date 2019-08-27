@@ -48,7 +48,8 @@ const styles = (theme) => ({
         alignItems: 'center',
         width: '140px',
         height: '30px',
-        position: 'relative'
+        position: 'relative',
+        zIndex: '3'
     },
     // textField: {
     //     position: 'relative',
