@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./dbconfig/database');
 const passport = require('passport');
-const PORT = 5000;
+// const PORT = 5000;
 const app = express();
+
+let port = process.env.PORT; //for Heroku
 
 // Note model
 const User = require('./dbmodels/user');
@@ -19,22 +21,6 @@ const Cart = require('./dbmodels/cart');
 //passport
 app.use(passport.initialize());
 require('./passport')(passport);
-
-
-// app.param('alias', function (req, res, next, id) {
-//   // try to get the user details from the User model and attach it to the request object
-//   Product.find(id, function (err, user) {
-//     if (err) {
-//       next(err)
-//     } else if (code) {
-//       req.code = code
-//       next()
-//     } else {
-//       next(new Error('failed to load alias'))
-//     }
-//   })
-// })
-
 
 
 //mongoose connect
@@ -57,11 +43,10 @@ db.on('error', function (err) {
 app.use(bodyParser.json());
 app.use('/', require('./api'));
 
-//test for users
-// app.get('/users', (req, res) => {
-//   res.json(User)
-// });
+if (port == null || port == "") {
+  port = 5000;
+}
 
-app.listen(PORT, (req, res) => {
-  console.log(`Server is listening on port: ${PORT}`)
+app.listen(port, (req, res) => {
+  console.log(`Server is listening on port: ${port}`)
 })
