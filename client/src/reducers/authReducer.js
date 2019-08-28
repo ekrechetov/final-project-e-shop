@@ -1,6 +1,5 @@
 import {
     SET_CURRENT_USER,
-    // GET_LOCAL_CART,
     GET_DB_CART,
     CHANGE_USER_PASSWORD,
     CHANGE_USER_ADDRESSES,
@@ -15,7 +14,7 @@ const initialState = {
     isAuthenticated: false,
     isPasswordChanged: false,
     isFetching: false,
-    isCartDbGeted: false,
+    isCartGeted: false,
     addresses: {
         firstname: '',
         lastname: '',
@@ -68,7 +67,7 @@ export default function(state = initialState, action) {
         case GET_DB_CART:
             return {
                 ...state,
-                isCartGeted: true,
+                isCartGeted: true
             }
 
         default:

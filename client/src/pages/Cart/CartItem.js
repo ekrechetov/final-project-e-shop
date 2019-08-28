@@ -14,7 +14,11 @@ class CartItem extends Component {
           <Link to={`/product/${productItem.id}`} style={{backgroundImage: `url(${require(`../../images/img-products/${productItem.img}`)})`}} className="cart-item-link"></Link>
         </td>
 
-        <td>{productItem.category} {productItem.brand} {productItem.title} </td>
+        <td>
+          <Link to={`/product/${productItem.id}`} className="cart-item-title-link">
+            {productItem.category} {productItem.brand} {productItem.title}
+          </Link>
+        </td>
         
         <td className="cart-item-qnt">
           <QntSelector qnt={productItem.quantity}

@@ -1,5 +1,9 @@
 .cart-item {
   font-family: Roboto, sans-serif;
+  .cart-item-title-link {
+    text-decoration: none;
+    color: black;
+  }
 
   td {
     display: grid;

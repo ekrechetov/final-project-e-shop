@@ -30,9 +30,9 @@ class Cart extends Component {
       <div>
         <div className='cart-header-bg'>
           <Container maxWidth="md" className='cart-header'>
-            <div>
-              <CartNav/>
+            <div>              
               <h2 className="cart-header-title">Корзина</h2>
+              <CartNav/>
             </div>
             <Link to="/"><CloseButton/></Link>
           </Container>

@@ -278,33 +278,23 @@ router.get('/cart/:userId', (req, res) => {
     });  
 });
 
-//put cart:
+//put user cart:
 router.put("/user_cart", (req, res) => {
     Cart.updateOne(
-        {userId: req.body.currentUserId},
+        {userId: req.body.currentUserId},        
         {cartProducts: req.body.cartItems},
         function(err, result) {     
             if(err) return console.log(err);
             res.send(result);
-            // console.log(req.body);
+            // If is not cart, create:
+            if (result.n == 0 && req.body.cartItems) {
+                const cart = new Cart({userId: req.body.currentUserId, cartProducts: req.body.cartItems, userName: req.body.currentUserName});
+                cart.save(function(err) {
+                    if (err) return console.log(err);                     
+                });
+            }            
         } 
     );
 });
-//post cart:
-// router.post("/user_cart", (req, res) => {
-//     console.log(req.params);
-//     console.log(req.body);
-//     Cart.updateOne(
-//         {userId: req.body.currentUserId},
-//         {cartProducts: req.body.cartItems},
-//         function(err, result) {     
-//             if(err) return console.log(err);
-//             res.send(result);
-//             // console.log(req);
-//         } 
-//     );
-// });
-
-
 
 module.exports = router;

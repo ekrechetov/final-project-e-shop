@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
-// import axios from 'axios';
-// import {getLocalCart} from '../../actions/getLocalCart';
-// import {getDbCart} from '../../actions/getDbCart';
-// import saveCartToDb from '../../actions/saveCartToDb';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import {withTheme, withStyles} from '@material-ui/core/styles';

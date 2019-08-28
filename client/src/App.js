@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import {connect} from 'react-redux';
 import {Router, Switch as SwitchRoute, Route} from 'react-router-dom';
 import { Beforeunload } from 'react-beforeunload';
 import {connect} from 'react-redux';
@@ -73,16 +72,33 @@ class App extends Component {
       getScreenHeight(header);
     });
 
-    // Get cart from Locale Storage:
+    // Get cart from Locale Storage on load:
     if (this.props.auth.isAuthenticated === false
       &&
       localStorage.getItem('parfumanCart') !== null) {           
       const localStorageCart = JSON.parse(localStorage.getItem('parfumanCart'));
       this.props.dispatch(getLocalCart(localStorageCart));
     }
-    // Get cart from database:
+    // Get cart from database on load:
     if (this.props.auth.isAuthenticated) {
       const userId = this.props.auth.user.id;
+      axios.get('/cart/' + userId)
+      .then(res => {
+          // if (res.data) {
+              this.props.dispatch(getDbCart(res.data.cartProducts));
+              localStorage.setItem('parfumanCart', JSON.stringify(res.data.cartProducts));
+          // }
+      })
+      .catch(error => {
+          console.log(error);
+      }); 
+    }
+  }
+ 
+  render() {
+    //Get cart from DB after login:      
+    if (this.props.auth.isAuthenticated && !this.props.auth.isCartGeted) {
+      const userId = this.props.auth.user.id
       axios.get('/cart/' + userId)
       .then(res => {
           // console.log(res.data.cartProducts);
@@ -92,76 +108,64 @@ class App extends Component {
           }
       })
       .catch(error => {
-      //   this.setState({hasErrored: true});
           console.log(error);
-      }); 
+      });            
     }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    //Get cart from DB after login:
-    if (nextProps.auth.isAuthenticated && !nextProps.auth.isCartGeted) {
-        const userId = nextProps.auth.user.id
-        axios.get('/cart/' + userId)
-        .then(res => {
-            // console.log(res.data.cartProducts);
-            if (res.data) {
-                this.props.dispatch(getDbCart(res.data.cartProducts));
-                localStorage.setItem('parfumanCart', JSON.stringify(res.data.cartProducts));
-            }
-        })
-        .catch(error => {
-        //   this.setState({hasErrored: true});
-            console.log(error);
-        });            
-    }
+      
     //Save cart to DB after logout:
-    if (!nextProps.auth.isAuthenticated) {
+    // if (!this.props.auth.isAuthenticated && this.props.auth.isCartGeted) {
+    //   const data = {
+    //     cartItems: this.props.cartItems,
+    //     currentUserId: this.props.auth.user.id,
+    //     currentUserName: this.props.auth.user.name
+    //   }
+    //   saveCartToDb(data);
+    //   // this.props.dispatch({type: LOGOUT});
+    // }
+
+    // Message for save cart to DB on "unload" event:
+    if (this.props.cartItems.length != 0 && this.props.auth.isAuthenticated) {
+      window.addEventListener("beforeunload", function(e) {
+        let xhr = new XMLHttpRequest();
+        xhr.open('PUT', '/user_cart', true);
+        xhr.send();       
+        e.preventDefault();
+        let confirmationMessage = 'You confirm unloud?';
+        (e || window.event).returnValue = confirmationMessage;
+        return confirmationMessage; 
+        }, false);
+      // navigator.sendBeacon("/user_cart", data);});
+    }
+
+    //for save cart on "unload" event:
+    const  saveCart = () => {
+      // To local storage:
+      if (this.props.cartItems.length != 0) {
+        localStorage.setItem('parfumanCart', JSON.stringify(this.props.cartItems));
+      }
+      else {
+        if (localStorage.getItem('parfumanCart')) {
+          localStorage.removeItem("parfumanCart");
+        }
+      }
+      // To data base:
+      if(this.props.cartItems.length != 0 && this.props.auth.isAuthenticated) {
         const data = {
-            cartItems: this.props.cartItems,
-            currentUserId: this.props.auth.user.id
+          cartItems: this.props.cartItems,
+          currentUserId: this.props.auth.user.id,
+          currentUserName: this.props.auth.user.name
         }
         saveCartToDb(data);
-    }
-} 
- 
-    render() {
-      // Save cart to DB on "unload" event:
-      // if (this.props.cartItems.length != 0) {
-      //   const data = {
-      //     cartItems: this.props.cartItems,
-      //     currentUserId: this.props.auth.user.id
-      //   }
-      //   console.log(data.cartItems);
-      //   window.addEventListener("unload", function() {
-      //       if (data.currentUserId) {
-      //       navigator.sendBeacon("/user_cart", data);
-      //     }
-      //   }); 
-      // }      
-
-      const  saveCart = () => {
-        // To local storage:
-        if (this.props.cartItems.length != 0) {
-          localStorage.setItem('parfumanCart', JSON.stringify(this.props.cartItems));
+      } 
+      if (this.props.cartItems.length == 0 && this.props.auth.isAuthenticated) {
+        const data = {
+          cartItems: [],
+          currentUserId: this.props.auth.user.id,
+          currentUserName: this.props.auth.user.name
         }
-        else {
-          if (localStorage.getItem('parfumanCart')) {
-            localStorage.removeItem("parfumanCart");
-          }
-        }
-        // To data base:
-        if(this.props.cartItems.length != 0 && this.props.auth.isAuthenticated) {
-          const data = {
-            cartItems: this.props.cartItems,
-            currentUserId: this.props.auth.user.id
-          }
-          saveCartToDb(data);
-        } 
-        // if (this.props.cartItems.length == 0) {
-
-        // }
-      };
+        saveCartToDb(data);
+      }
+    };
     return (          
       <Beforeunload onBeforeunload={saveCart}>
         <Router history={newHistory}>
@@ -196,24 +200,3 @@ const mapStoreToProps = (store) => {
 }
 
 export default connect(mapStoreToProps)(withStyles(styles)(App));
-
-/* class App extends Component {
-render() {
-return (
-<Provider store = {store}>
-<Router>
-<div>
-<Navbar />
-<Route path="/" component={Home} />
-<div className="container">
-<Route exact path="/register" component={Register} />
-<Route exact path="/login" component={Login} />
-</div>
-</div>
-<Route exact path="/product-details" component={ProductDetails} />
-</Router>
-</Provider>
-);
-}
-}
-*/
