@@ -13,7 +13,7 @@ const styles = (theme) => ({
         alignItems: 'center',
         maxWidth: '250px',
         position: 'relative',
-        zIndex: '3'
+        zIndex: '25'
     },
     searchInput: {
         boxSizing: 'border-box',

@@ -8,7 +8,7 @@ import {makeStyles} from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
         listItem: {
             display: 'flex',
-            justifyContent: 'flex-end',
+            justifyContent: 'flex-start',
             listStyle: 'none',
             fontWeight: 'bold'
         },
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
                 marginBottom: '20px',
             },
             link: {
-                padding: '5px 10px 5px 10%',
+                padding: '5px 10% 5px 20px',
                 fontSize: '1rem',
             }
         }

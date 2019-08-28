@@ -8,23 +8,17 @@ import {getLocalCart} from './actions/getLocalCart';
 import {getDbCart} from './actions/getDbCart';
 import saveCartToDb from './actions/saveCartToDb';
 import Box from '@material-ui/core/Box';
-// import { makeStyles, Switch } from '@material-ui/core';
 import {setCurrentUser, logoutUser} from './actions/authentication';
 import Account from './components/Account';
-// import Login from './components/Login';
-// import Home from './components/Home';
 import Register from './components/Register';
-// import Slider from "./components/Slider/Slider";
 import MainPage from "./components/MainPage/MainPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Cart from './pages/Cart/Cart';
 import ProductDetails from './pages/ProductDetails'
 import ScrollUpButton from "react-scroll-up-button";
-// import SignInUp from './components/SignInUp/SignInUp';
 import setAuthToken from './setAuthToken';
 import store from './store';
-// import img from './0r7qN8U.png';
 import Checkout from './pages/Checkout/Checkout';
 import Profile from './pages/Profile/Profile';
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -36,15 +30,11 @@ const newHistory = createBrowserHistory();
 const styles = (theme) => ({
   page: {
     width: '100%',
-    // backgroundImage: 'url(' + img + ');'
-    //backgroundColor: 'red'
   },
 
   containerBox: {
     width: '100%',
     fontFamily: 'Roboto, sans-serif',
-
-    // backgroundImage: 'url(' + img + ');'
   },
 });
 

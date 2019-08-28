@@ -13,7 +13,7 @@ import {addCartItem} from '../actions/addCartItem';
 import arrowDown from './arrow-down.png';
 import arrowUp from './arrow-up.png';
 import checkMark from './check-mark.png';
-import preloaderImg from './preloader.svg'
+import preloaderImg from './preloader.gif'
 
 const styles = (theme) => ({
     productsContainer: {
@@ -128,8 +128,8 @@ const styles = (theme) => ({
         flexWrap: 'wrap',
         width: '23%',
         maxHeight: '335px',
-        padding: '0.7% 1.5% 7% 1.5%',
-        margin: '1%',
+        padding: '0.7% 1.5% 7.2% 1.5%',
+        margin: '1.025% 1%',
         border: '1px solid orange',
         borderRadius: '3px',
         transition: 'transform .2s linear',
@@ -207,19 +207,26 @@ const styles = (theme) => ({
     '@media (max-width: 1199px)': {
         productItemWrap: {
             width: '31.3%',
-            paddingBottom: '100px'
+            paddingBottom: '100px',
+            '&:hover': {
+                transform: 'translateY(-7px)',
+            },
         },
     },
-    '@media (max-width: 767px)': {
+    '@media (max-width: 899px)': {
         productItemWrap: {
             width: '48%',
-            paddingBottom: '100px'
+            paddingBottom: '100px',
+            margin: '1.05% 1%',
+            '&:hover': {
+                transform: 'translateY(-0px)',
+            },
         },
     },
-    '@media (max-width: 480px)': {
+    '@media (max-width: 599px)': {
         productItemWrap: {
             width: '100%',
-            paddingBottom: '100px'
+            paddingBottom: '100px',
         },
     },
 });

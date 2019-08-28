@@ -37,7 +37,6 @@ const styles = (theme) => ({
     },
     title: {
         fontSize: '2.6rem',
-        // marginBottom: '25px'
         transform: 'translateY(-25px)'
     },
     descriptionText: {
@@ -87,7 +86,6 @@ const styles = (theme) => ({
             }
         },
         specialOfferContainer: {
-            // maxHeight: '245px',
             top: '200px',
             padding: '50px',
         },
@@ -104,8 +102,8 @@ const styles = (theme) => ({
         },
         specialOffersLink: {
             padding: '15px 20px',
-            top: '22px',
-            left: '230px',
+            top: '140px',
+            left: '49px',
         },
         specialOffersLinkButton: {
             fontSize: '1rem'
@@ -116,13 +114,14 @@ const styles = (theme) => ({
             fontSize: '2.1rem',
         },
         specialOffersLink: {
-            top: '49px',
-            left: '180px',
+            top: '145px',
+            left: '49px',
         }
     },
     '@media (max-width: 420px)': {
         specialOffersLink: {
-            top: '41px'
+            top: '150px',
+            left: '49px',
         }
     }
 });

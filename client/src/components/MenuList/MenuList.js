@@ -9,8 +9,7 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex',
             justifyContent: 'center',
             minWidth: '100%',
-            zIndex: '2',
-            // transform: 'translate(0, 25px)',
+            zIndex: '20',
             borderTop: '1px solid' + theme.palette.secondary.main,
             marginTop: '1%'
         },
@@ -37,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
                 marginTop: '0',
                 position: 'absolute',
                 right: '20px',
-                // transform: 'translate(0, 0)',
                 borderTop: '0'
             },
             closeButton: {
@@ -62,31 +60,16 @@ const useStyles = makeStyles((theme) => ({
                 padding: '30px 25px 0 0',
                 position: 'absolute',
                 top: '62px',
-                // left: '3%',
                 opacity: '0',
                 borderRadius: '3px',
                 backgroundColor: theme.palette.primary.main,
                 transition: 'all 0.5s ease',
                 boxShadow: '0 0 5px 1px rgba(0, 0, 0, 0.2)',
-
-                // '&:before': {
-                //     content: '""',
-                //     display: 'flex',
-                //     position: 'relative',
-                //     width: '20px',
-                //     height: '20px',
-                //     backgroundImage: 'url(' + closeButton + ')',
-                //     backgroundPosition: 'center',
-                //     backgroundRepeat: 'no-repeat',
-                //     backgroundSize: 'cover'
-                // }
             },
             burgerMenuButton: {
                 display: 'flex',
                 width: '24px',
                 height: '24px',
-                // right: '0',
-                // backgroundImage: 'url(' + burgerMenuButtonImg + ');',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
@@ -99,15 +82,14 @@ const useStyles = makeStyles((theme) => ({
 let toggleMenu = () => {
     const menuList = document.querySelector('#menuList');
     const burgerButton = document.querySelector('#burgerMenuButton');
-    // console.log(menuList.child);
     if (getComputedStyle(menuList).getPropertyValue('display') === 'none') {
-        menuList.style.cssText = 'display: flex; max-height: 450px; opacity: 0.1; left: -30%';
+        menuList.style.cssText = 'display: flex; max-height: 450px; opacity: 0.1; right: -34%';
         burgerButton.style.backgroundImage = 'url(' + closeButton + ')';
         let animLeft = setInterval(() => {
-            if (menuList.style.left === '3%') {
+            if (menuList.style.right === '-4%') {
                 clearInterval(animLeft)
             } else {
-                menuList.style.left = Number(menuList.style.left.slice(0, -1)) + 3 + '%'
+                menuList.style.right = Number(menuList.style.right.slice(0, -1)) + 2 + '%'
             }
         }, 10);
         let animOpacity = setInterval(() => {
@@ -118,13 +100,13 @@ let toggleMenu = () => {
             }
         }, 10)
     } else {
-        menuList.style.cssText = 'display: none; max-height: 0; opacity: 0.1; left: 3%';
+        menuList.style.cssText = 'display: none; max-height: 0; opacity: 0.1; right: -4%';
         burgerButton.style.backgroundImage = 'url(' + burgerMenuButtonImg + ')';
         let animLeft = setInterval(() => {
-            if (menuList.style.left === '-30%') {
+            if (menuList.style.right === '-34%') {
                 clearInterval(animLeft)
             } else {
-                menuList.style.left = Number(menuList.style.left.slice(0, -1)) - 3 + '%'
+                menuList.style.right = Number(menuList.style.right.slice(0, -1)) - 2 + '%'
             }
         }, 10);
         let animOpacity = setInterval(() => {
@@ -137,17 +119,13 @@ let toggleMenu = () => {
     }
 };
 
-let closeMenu = () => {
-    // document.querySelector('#burgerMenuButton').click();
-}
-
 document.addEventListener('click', (event) => {
     let target = event.target;
     const burgerButton = document.querySelector('#burgerMenuButton');
     let menuButton = document.getElementById('burgerMenuButton');
     let menuList = document.querySelector('#menuList');
     if (target !== menuButton && !target.classList.contains('menu-list--item') && target.getAttribute('id') !== 'menuList' && window.innerWidth <= 767) {
-        menuList.style.cssText = 'display: none; max-height: 0; opacity: 0.1; left: 3%';
+        menuList.style.cssText = 'display: none; max-height: 0; opacity: 0.1; right: -4%';
         burgerButton.style.backgroundImage = 'url(' + burgerMenuButtonImg + ')';
     }
 });
@@ -171,7 +149,7 @@ export default function MenuList() {
                   style={{backgroundImage: 'url(' + burgerMenuButtonImg + ')'}}/>
             <div className={classes.menuListContainer}>
                 <ul className={classes.menuList} id='menuList'>
-                    <li className={classes.closeButton}/>
+                    {/*<li className={classes.closeButton}/>*/}
                     <Categories/>
                 </ul>
             </div>
