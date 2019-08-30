@@ -1,12 +1,7 @@
 import React from 'react';
-import {fade, withStyles, withTheme, makeStyles} from '@material-ui/core/styles';
-import {display, flexbox} from '@material-ui/system';
-import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
-import MenuList from '../MenuList/MenuList'
+import { makeStyles} from '@material-ui/core/styles';
 import SocialNetworksList from "../SocialNetworksList/SocialNetworksList";
 import Logo from "../Logo/Logo";
-
 
 const useStyles = makeStyles((theme) => ({
         footer: {

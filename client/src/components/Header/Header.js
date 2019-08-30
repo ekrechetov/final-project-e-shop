@@ -1,18 +1,11 @@
 import React, {Component} from 'react';
-import {Provider} from 'react-redux';
-import {BrowserRouter, Route} from 'react-router-dom';
-import {Link} from 'react-router-dom';
-import {makeStyles} from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
-import AccountBox from '@material-ui/icons/AccountBox';
 import Logo from '../Logo/Logo';
 import SearchInput from '../SearchInput/SearchInput';
 import MenuList from '../MenuList/MenuList'
 import Badges from "../Badges/Badges";
 import AccountIcon from "../AccountIcon/AccountIcon";
-import store from "../../store";
-import Register from "../Register";
 import withStyles from "@material-ui/core/styles/withStyles";
 import ContactInfo from '../ContactInfo/ContactInfo'
 // import { fetchCategories } from '../../actions/categories';
@@ -20,8 +13,6 @@ import {connect} from 'react-redux';
 import {fetchProducts} from '../../actions/products';
 import {fetchCategories} from '../../actions/categories';
 import {getProducts} from '../../selectors/Products';
-import {flexbox} from "@material-ui/system";
-
 
 const styles = (theme) => ({
     header: {

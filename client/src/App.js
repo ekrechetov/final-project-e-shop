@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Router, Switch as SwitchRoute, Route} from 'react-router-dom';
+import {Router, Route} from 'react-router-dom';
 import { Beforeunload } from 'react-beforeunload';
 import {connect} from 'react-redux';
 import jwt_decode from 'jwt-decode';

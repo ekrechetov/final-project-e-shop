@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import AccountBox from '@material-ui/icons/AccountBox';
 import {withStyles} from '@material-ui/styles';
-import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPhoneSquare} from '@fortawesome/free-solid-svg-icons'
 

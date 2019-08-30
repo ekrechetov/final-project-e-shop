@@ -30,14 +30,14 @@
         box-sizing: border-box;
         text-align: center;
         cursor: pointer;
-        line-height: calcFluidSize(15, 30, 320, 768);
+        // line-height: calcFluidSize(15, 30, 320, 768);
     }   
     &__decrement {
         height: 50%;
         cursor: pointer;
         box-sizing: border-box;
         text-align: center;
-        line-height: calcFluidSize(15, 30, 320, 768);
+        // line-height: calcFluidSize(15, 30, 320, 768);
     }
 }
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {incrementCartItem, decrementCartItem, changeInputQnt} from '../../actions/changeCartItemQnt';
-import { makeStyles } from '@material-ui/core/styles';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ReportProblem } from '@material-ui/icons'
