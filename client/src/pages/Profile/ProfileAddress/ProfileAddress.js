@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import './ProfileAddress.sass'
 import { compose } from 'redux'
 import { connect } from 'react-redux'

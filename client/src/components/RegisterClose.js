@@ -11,7 +11,6 @@ const BootstrapButton = withStyles({
         backgroundColor: 'transparent',
         fontWeight: 'bold',
         color: '#ff8f00',
-        fontWeight: 'bold',
         border: 'none',
         '&:hover': {
             backgroundColor: 'transparent',
@@ -33,7 +32,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CustomizedButtons() {
-    const classes = useStyles();
     return (
         <Fragment>
             <BootstrapButton variant="contained" color="primary" disableRipple >

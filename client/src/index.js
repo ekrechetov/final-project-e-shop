@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import {grey, blue, orange} from '@material-ui/core/colors/';
+import {grey, orange} from '@material-ui/core/colors/';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {deepOrange} from "@material-ui/core/colors";

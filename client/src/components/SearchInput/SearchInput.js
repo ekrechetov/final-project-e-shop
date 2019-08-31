@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { maxWidth } from '@material-ui/system';
+// import { makeStyles } from '@material-ui/core/styles';
+// import { maxWidth } from '@material-ui/system';
 import searchIcon from './magnifying-glass.png'
 import withStyles from "@material-ui/core/styles/withStyles";
 import SearchResultWindow from "../SearchResultWindow/SearchResultWindow"

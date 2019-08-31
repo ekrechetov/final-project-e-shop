@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { incrementQuantity, decrementQuantity, changeQuantity } from '../../actions/quantity'
 import { connect } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ReportProblem } from '@material-ui/icons'

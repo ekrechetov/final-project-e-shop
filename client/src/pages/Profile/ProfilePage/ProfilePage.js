@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 import ProfileAddress from '../ProfileAddress/ProfileAddress'
 import ProfilePassword from '../ProfilePassword/ProfilePassword'
-import { fetchUserAddresses } from '../../../actions/authentication'
+// import { fetchUserAddresses } from '../../../actions/authentication'
 
 const styles = theme => ({
   profilePage: {
