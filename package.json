@@ -1,0 +1,22 @@
+{
+  "name": "final-project-e-shop",
+  "version": "1.0.0",
+  "description": "e-shop using node react mongoDB",
+  "engines": {
+    "npm": "6.4.1",
+    "node": "10.15.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "nodemon server.js --prefix server",
+    "frontend": "npm start --prefix client",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekrechetov/final-project-e-shop.git"
+  },
+  "dependencies": {
+    "concurrently": "^4.1.2"
+  }
+}
