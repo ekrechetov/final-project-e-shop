@@ -8,9 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "backend": "nodemon server.js --prefix server",
-    "frontend": "npm start --prefix client",
-    "start": "concurrently \"npm run frontend\" \"npm run backend\""
+    "start": "npm run dev --prefix client"
   },
   "repository": {
     "type": "git",
