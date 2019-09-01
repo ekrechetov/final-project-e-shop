@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex',
             justifyContent: 'center',
             minWidth: '100%',
-            zIndex: '20',
+            zIndex: '1',
             borderTop: '1px solid' + theme.palette.secondary.main,
             marginTop: '1%'
         },
