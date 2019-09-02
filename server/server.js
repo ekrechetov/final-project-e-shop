@@ -22,6 +22,14 @@ const Cart = require('./dbmodels/cart');
 app.use(passport.initialize());
 require('./passport')(passport);
 
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+	// Set static folder
+	app.use(express.static('client/build'));​
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+	});
+}
 
 //mongoose connect
 mongoose.connect(config.database, { useNewUrlParser: true, useFindAndModify: false} );
