@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const path = require('path');
 const config = require('./dbconfig/database');
 const passport = require('passport');
 // const PORT = 5000;
 const app = express();
 
-let port = process.env.PORT; //for Heroku
+const port = process.env.PORT || 5000; //for Heroku
 
 // Note model
 const User = require('./dbmodels/user');
@@ -51,9 +52,7 @@ db.on('error', function (err) {
 app.use(bodyParser.json());
 app.use('/', require('./api'));
 
-if (port == null || port == "") {
-  port = 5000;
-}
+app.use(express.static(path.join(__dirname, 'static')))
 
 app.listen(port, (req, res) => {
   console.log(`Server is listening on port: ${port}`)
