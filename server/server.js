@@ -52,7 +52,7 @@ db.on('error', function (err) {
 app.use(bodyParser.json());
 app.use('/', require('./api'));
 
-app.use(express.static(path.join(__dirname, 'static')))
+app.use(express.static(path.join(__dirname, 'static')));
 
 app.listen(port, (req, res) => {
   console.log(`Server is listening on port: ${port}`)

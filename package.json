@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install --prefix server && npm start --prefix server"
+    "start": "npm run build && npm install --prefix server && npm start --prefix server",
+    "build": "npm run build --prefix client && rm -f ./server/static/*.* && cp -a client/build server/static/"
   },
   "repository": {
     "type": "git",
