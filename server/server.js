@@ -4,14 +4,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const config = require('./dbconfig/database');
 const passport = require('passport');
-// const PORT = 5000;
 const app = express();
 
 const port = process.env.PORT || 5000; //for Heroku
 
 // Note model
 const User = require('./dbmodels/user');
-
 
 // Product model
 const Product = require('./dbmodels/product');
@@ -53,6 +51,11 @@ app.use(bodyParser.json());
 app.use('/', require('./api'));
 
 app.use(express.static(path.join(__dirname, 'static')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'static', 'index.html'));
+  });
+
 
 app.listen(port, (req, res) => {
   console.log(`Server is listening on port: ${port}`)
