@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && npm install --prefix server && npm start --prefix server",
-    "build": "npm run build --prefix client && rm -rf ./server/static/* && cp -a ./client/build ./server/static/"
+    "build": "npm install --prefix client && npm run build --prefix client && rm -rf ./server/static/* && cp -a ./client/build ./server/static/"
   },
   "repository": {
     "type": "git",
