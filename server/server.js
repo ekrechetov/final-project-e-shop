@@ -7,6 +7,7 @@ const passport = require('passport');
 const app = express();
 
 const port = process.env.PORT || 5000; //for Heroku
+const host = '0.0.0.0';  //for Heroku
 
 // Note model
 const User = require('./dbmodels/user');
@@ -57,6 +58,6 @@ if (process.env.NODE_ENV === 'production') {
   //   });
 }
 
-app.listen(port, (req, res) => {
+app.listen(port, host, (req, res) => {
   console.log(`Server is listening on port: ${port}`)
 })
