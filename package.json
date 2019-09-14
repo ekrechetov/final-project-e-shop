@@ -14,7 +14,5 @@
     "type": "git",
     "url": "git+https://github.com/ekrechetov/final-project-e-shop.git"
   },
-  "dependencies": {
-    "concurrently": "^4.1.2"
-  }
+  "dependencies": {}
 }
