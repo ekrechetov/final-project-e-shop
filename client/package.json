@@ -43,13 +43,11 @@
     "redux-form": "^8.2.5",
     "redux-form-input-masks": "^2.0.1",
     "redux-thunk": "^2.3.0",
-    "validator": "^11.0.0"
-  },
-  "peerDependencies": {
+    "validator": "^11.0.0",
     "typescript": "^3.6.2",
     "jss": "^9.7.0"
   },
-
+  "peerDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "server": "cd ../server && nodemon server",
