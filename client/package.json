@@ -45,6 +45,11 @@
     "redux-thunk": "^2.3.0",
     "validator": "^11.0.0"
   },
+  "peerDependencies": {
+    "typescript": "^3.6.2",
+    "jss": "^9.7.0"
+  },
+
   "scripts": {
     "start": "react-scripts start",
     "server": "cd ../server && nodemon server",
