@@ -50,14 +50,14 @@ db.on('error', function (err) {
 app.use(bodyParser.json());
 app.use('/', require('./api'));
 
-// app.use(express.static(path.join(__dirname, 'build')));
 // app.use(express.static('../client/build'));
-app.use(express.static('./build'));
+app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static('./build'));
 
-app.get('*', (req, res) => {
-    // res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+app.get('*', (req, res) => {    
     // res.sendFile('../client/build/index.html');
-    res.sendFile('./build/index.html');
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    // res.sendFile('./build/index.html');
   });
 
 

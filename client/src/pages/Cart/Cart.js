@@ -31,7 +31,7 @@ class Cart extends Component {
         <div className='cart-header-bg'>
           <Container maxWidth="md" className='cart-header'>
             <div>              
-              <h2 className="cart-header-title">Корзина</h2>
+              <h2 className="cart-header-title">Корззина</h2>
               <CartNav/>
             </div>
             <Link to="/"><CloseButton/></Link>
