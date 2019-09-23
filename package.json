@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm install --no-optional --prefix server && npm start --prefix server",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client  && rm -rf /server/build/* && cp -R ./client/build /server/"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client  && rm -rf /server/build/* && cp -R ./client/build ./server/"
     },
   "repository": {
     "type": "git",
