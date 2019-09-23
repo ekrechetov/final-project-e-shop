@@ -52,12 +52,12 @@ app.use('/', require('./api'));
 
 // app.use(express.static(path.join(__dirname, 'build')));
 // app.use(express.static('../client/build'));
-app.use(express.static('../serever/build'));
+app.use(express.static('./build'));
 
 app.get('*', (req, res) => {
     // res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
     // res.sendFile('../client/build/index.html');
-    res.sendFile('../server/build/index.html');
+    res.sendFile('./build/index.html');
   });
 
 
