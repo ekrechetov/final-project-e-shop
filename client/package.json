@@ -48,7 +48,6 @@
     "jss": "^9.7.0",
     "material-ui-pickers": "^2.2.4"
   },
-  "peerDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "server": "cd ../server && nodemon server",
